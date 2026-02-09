@@ -1,0 +1,24 @@
+# Ignore environment file with credentials
+.env
+
+# Ignore old SQLite database
+*.db
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+
+# Streamlit
+.streamlit/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
