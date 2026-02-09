@@ -2,19 +2,38 @@ import psycopg2
 from psycopg2 import pool
 import hashlib
 import os
+import streamlit as st
 from dotenv import load_dotenv
 
-# Load environment variables
+# Load environment variables for local development
 load_dotenv()
 
-# PostgreSQL Configuration
-DB_CONFIG = {
-    'host': os.getenv('DB_HOST', 'localhost'),
-    'port': os.getenv('DB_PORT', '5432'),
-    'database': os.getenv('DB_NAME', 'analytics_db'),
-    'user': os.getenv('DB_USER', 'postgres'),
-    'password': os.getenv('DB_PASSWORD', '')
-}
+# PostgreSQL Configuration - Prioritize Streamlit Secrets for Cloud Deployment
+def get_db_config():
+    """Get database configuration from Streamlit secrets or environment variables"""
+    try:
+        # Check if running on Streamlit Cloud (secrets available)
+        if hasattr(st, "secrets") and "DB_HOST" in st.secrets:
+            return {
+                'host': st.secrets["DB_HOST"],
+                'port': str(st.secrets.get("DB_PORT", "5432")),
+                'database': st.secrets["DB_NAME"],
+                'user': st.secrets["DB_USER"],
+                'password': st.secrets["DB_PASSWORD"]
+            }
+    except Exception:
+        pass
+        
+    # Fallback to environment variables (Local Development)
+    return {
+        'host': os.getenv('DB_HOST', 'localhost'),
+        'port': os.getenv('DB_PORT', '5432'),
+        'database': os.getenv('DB_NAME', 'analytics_db'),
+        'user': os.getenv('DB_USER', 'postgres'),
+        'password': os.getenv('DB_PASSWORD', '')
+    }
+
+DB_CONFIG = get_db_config()
 
 # Connection pool for better performance
 connection_pool = None
@@ -23,6 +42,11 @@ def init_connection_pool():
     """Initialize PostgreSQL connection pool"""
     global connection_pool
     try:
+        # Validate that we have at least a host and database
+        if not DB_CONFIG['host'] or not DB_CONFIG['database']:
+            print("[-] Missing database credentials. Please check Streamlit Secrets or .env file.")
+            return
+
         connection_pool = psycopg2.pool.SimpleConnectionPool(
             1, 10,  # min and max connections
             **DB_CONFIG
@@ -31,7 +55,8 @@ def init_connection_pool():
             print("[+] PostgreSQL connection pool created successfully")
     except Exception as e:
         print(f"[-] Error creating connection pool: {e}")
-        raise
+        # Only raise if we are not in a controlled retry loop
+        # For Streamlit, we'll let it fail gracefully in the UI later
 
 def get_connection():
     """Get a connection from the pool"""

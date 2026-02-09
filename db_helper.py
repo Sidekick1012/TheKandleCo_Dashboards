@@ -5,6 +5,7 @@ PostgreSQL Database Helper - View tables and insert data
 import psycopg2
 import os
 import sys
+import streamlit as st
 from dotenv import load_dotenv
 
 # Fix encoding for Windows
@@ -15,14 +16,29 @@ if sys.platform == 'win32':
 # Load environment variables
 load_dotenv()
 
-# Get database config
-DB_CONFIG = {
-    'host': os.getenv('DB_HOST', 'localhost'),
-    'port': os.getenv('DB_PORT', '5432'),
-    'database': os.getenv('DB_NAME', 'kandle_db'),
-    'user': os.getenv('DB_USER', 'postgres'),
-    'password': os.getenv('DB_PASSWORD', '')
-}
+# Get database config - Support Secrets and Env
+def get_db_config():
+    try:
+        if hasattr(st, "secrets") and "DB_HOST" in st.secrets:
+            return {
+                'host': st.secrets["DB_HOST"],
+                'port': str(st.secrets.get("DB_PORT", "5432")),
+                'database': st.secrets["DB_NAME"],
+                'user': st.secrets["DB_USER"],
+                'password': st.secrets["DB_PASSWORD"]
+            }
+    except Exception:
+        pass
+        
+    return {
+        'host': os.getenv('DB_HOST', 'localhost'),
+        'port': os.getenv('DB_PORT', '5432'),
+        'database': os.getenv('DB_NAME', 'kandle_db'),
+        'user': os.getenv('DB_USER', 'postgres'),
+        'password': os.getenv('DB_PASSWORD', '')
+    }
+
+DB_CONFIG = get_db_config()
 
 def show_all_tables():
     """Show all tables in the database"""
