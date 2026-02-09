@@ -293,20 +293,19 @@ st.markdown("""
     /* ==================== NEW LOGIN FORM DESIGN ==================== */
     .login-container {
         background: linear-gradient(145deg, 
-            rgba(255, 255, 255, 0.9) 0%, 
-            rgba(249, 247, 243, 0.95) 100%);
-        backdrop-filter: blur(20px);
-        border-radius: 20px;
-        padding: 1.3rem 1.6rem;
+            rgba(255, 255, 255, 0.95) 0%, 
+            rgba(249, 247, 243, 0.98) 100%);
+        backdrop-filter: blur(15px);
+        border-radius: 16px;
+        padding: 1.2rem 1.4rem;
         box-shadow: 
-            0 25px 70px rgba(0, 0, 0, 0.08),
-            0 0 0 1px rgba(212, 175, 55, 0.15),
-            inset 0 2px 4px rgba(255, 255, 255, 0.8);
-        margin: 1rem auto;
-        max-width: 360px;
+            0 20px 60px rgba(0, 0, 0, 0.06),
+            0 0 0 1px rgba(212, 175, 55, 0.12);
+        margin: 0.5rem auto;
+        max-width: 320px;
         position: relative;
         overflow: visible;
-        animation: fade-in-scale 1s cubic-bezier(0.34, 1.56, 0.64, 1);
+        animation: fade-in-scale 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
     
     /* Decorative top border */
@@ -316,15 +315,15 @@ st.markdown("""
         top: 0;
         left: 50%;
         transform: translateX(-50%);
-        width: 60%;
-        height: 5px;
+        width: 50%;
+        height: 3px;
         background: linear-gradient(90deg, 
             transparent 0%, 
             var(--primary-gold) 20%,
             var(--accent-gold) 50%,
             var(--primary-gold) 80%, 
             transparent 100%);
-        border-radius: 0 0 20px 20px;
+        border-radius: 0 0 15px 15px;
     }
     
     /* Subtle background pattern */
@@ -349,15 +348,15 @@ st.markdown("""
     
     .login-icon {
         text-align: center;
-        margin-bottom: 0.6rem;
+        margin-bottom: 0.5rem;
     }
     
     .login-icon-circle {
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        width: 50px;
-        height: 50px;
+        width: 45px;
+        height: 45px;
         background: linear-gradient(135deg, var(--primary-gold) 0%, var(--accent-gold) 100%);
         border-radius: 50%;
         box-shadow: 
@@ -368,52 +367,52 @@ st.markdown("""
     
     .login-icon-circle::before {
         content: '🔐';
-        font-size: 1.3rem;
+        font-size: 1.2rem;
     }
     
     @keyframes icon-pulse {
-        0%, 100% { transform: scale(1); box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3), inset 0 -2px 8px rgba(0, 0, 0, 0.1); }
-        50% { transform: scale(1.05); box-shadow: 0 15px 40px rgba(212, 175, 55, 0.4), inset 0 -2px 8px rgba(0, 0, 0, 0.15); }
+        0%, 100% { transform: scale(1); box-shadow: 0 8px 25px rgba(212, 175, 55, 0.25); }
+        50% { transform: scale(1.04); box-shadow: 0 12px 35px rgba(212, 175, 55, 0.35); }
     }
     
     .login-title {
         font-family: 'Playfair Display', serif;
-        font-size: clamp(1.2rem, 3vw, 1.5rem);
+        font-size: clamp(1.1rem, 2.8vw, 1.4rem);
         font-weight: 600;
         text-align: center;
         background: linear-gradient(135deg, var(--primary-dark) 0%, var(--secondary-dark) 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
-        margin-bottom: 0.1rem;
-        letter-spacing: 0.08em;
+        margin-bottom: 0.05rem;
+        letter-spacing: 0.06em;
     }
     
     .login-subtitle {
         font-family: 'Cormorant Garamond', serif;
-        font-size: clamp(0.75rem, 1.5vw, 0.85rem);
+        font-size: clamp(0.7rem, 1.4vw, 0.8rem);
         text-align: center;
         color: var(--text-light);
-        margin-bottom: 1rem;
+        margin-bottom: 0.9rem;
         font-style: italic;
-        letter-spacing: 0.05em;
-        height:10px;
+        letter-spacing: 0.04em;
+        height:8px;
     }
     
     /* Enhanced Input Fields */
     .stTextInput > div > div > input {
-        border: 2px solid transparent;
+        border: 1px solid transparent;
         border-radius: 8px;
-        padding: 0.75rem 1rem;
+        padding: 0.7rem 0.9rem;
         font-family: 'Montserrat', sans-serif;
-        font-size: 0.9rem;
+        font-size: 0.85rem;
         font-weight: 500;
         color: #000000 !important;
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         background: linear-gradient(145deg, #ffffff 0%, var(--bg-cream) 100%);
         box-shadow: 
-            inset 0 2px 8px rgba(0, 0, 0, 0.05),
-            0 2px 4px rgba(0, 0, 0, 0.02);
+            inset 0 1px 6px rgba(0, 0, 0, 0.04),
+            0 1px 3px rgba(0, 0, 0, 0.02);
     }
     
     .stTextInput > div > div > input:focus {
@@ -429,18 +428,18 @@ st.markdown("""
     .stTextInput > div > div > input::placeholder {
         color: #999;
         font-style: italic;
-        font-size: 1.05rem;
+        font-size: 0.8rem;
     }
     
     /* Enhanced Labels */
     .stTextInput > label {
         font-family: 'Montserrat', sans-serif;
-        font-size: 0.65rem;
+        font-size: 0.62rem;
         font-weight: 600;
         color: var(--primary-dark);
-        letter-spacing: 0.06em;
+        letter-spacing: 0.05em;
         text-transform: uppercase;
-        margin-bottom: 0.3rem;
+        margin-bottom: 0.25rem;
         display: block;
     }
     
@@ -465,18 +464,18 @@ st.markdown("""
         color: var(--primary-gold);
         border: 2px solid var(--primary-gold);
         border-radius: 8px;
-        padding: 0.85rem 1.5rem;
+        padding: 0.8rem 1.4rem;
         font-family: 'Montserrat', sans-serif;
-        font-size: 0.85rem;
+        font-size: 0.8rem;
         font-weight: 700;
-        letter-spacing: 0.15em;
+        letter-spacing: 0.14em;
         text-transform: uppercase;
         width: 100%;
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         box-shadow: 
-            0 8px 25px rgba(0, 0, 0, 0.25),
+            0 6px 20px rgba(0, 0, 0, 0.2),
             inset 0 1px 0 rgba(255, 255, 255, 0.1);
-        margin-top: 1.5rem;
+        margin-top: 1.2rem;
         position: relative;
         overflow: hidden;
     }
