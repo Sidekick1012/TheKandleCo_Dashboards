@@ -14,6 +14,7 @@ def get_db_config():
     try:
         # Check if running on Streamlit Cloud (secrets available)
         if hasattr(st, "secrets") and "DB_HOST" in st.secrets:
+            print("[+] Using Streamlit Secrets for database configuration")
             return {
                 'host': st.secrets["DB_HOST"],
                 'port': str(st.secrets.get("DB_PORT", "5432")),
@@ -21,10 +22,15 @@ def get_db_config():
                 'user': st.secrets["DB_USER"],
                 'password': st.secrets["DB_PASSWORD"]
             }
-    except Exception:
+    except Exception as e:
+        print(f"[-] Error reading Streamlit Secrets: {e}")
         pass
         
     # Fallback to environment variables (Local Development)
+    if os.getenv('DB_HOST'):
+        print("[+] Using Environment Variables for database configuration")
+    else:
+        print("[!] No database configuration found in Secrets or Environment Variables")
     return {
         'host': os.getenv('DB_HOST', 'localhost'),
         'port': os.getenv('DB_PORT', '5432'),
@@ -43,9 +49,10 @@ def init_connection_pool():
     global connection_pool
     try:
         # Validate that we have at least a host and database
-        if not DB_CONFIG['host'] or not DB_CONFIG['database']:
-            print("[-] Missing database credentials. Please check Streamlit Secrets or .env file.")
-            return
+        if not DB_CONFIG.get('host') or not DB_CONFIG.get('database'):
+            msg = "Missing database credentials. Please check Streamlit Secrets or .env file."
+            print(f"[-] {msg}")
+            return False, msg
 
         connection_pool = psycopg2.pool.SimpleConnectionPool(
             1, 10,  # min and max connections
@@ -53,15 +60,24 @@ def init_connection_pool():
         )
         if connection_pool:
             print("[+] PostgreSQL connection pool created successfully")
+            return True, "Success"
     except Exception as e:
-        print(f"[-] Error creating connection pool: {e}")
-        # Only raise if we are not in a controlled retry loop
-        # For Streamlit, we'll let it fail gracefully in the UI later
+        msg = f"Error creating connection pool: {e}"
+        print(f"[-] {msg}")
+        return False, msg
+    return False, "Unknown error during initialization"
 
 def get_connection():
     """Get a connection from the pool"""
+    global connection_pool
     if connection_pool is None:
-        init_connection_pool()
+        success, error_msg = init_connection_pool()
+        if not success:
+            raise Exception(f"Database Connection Failed: {error_msg}")
+    
+    if connection_pool is None:
+        raise Exception("Database Connection Pool is not initialized.")
+        
     return connection_pool.getconn()
 
 def release_connection(conn):
@@ -113,6 +129,7 @@ def init_db():
         cursor.close()
         
     except Exception as e:
+        st.error(f"⚠️ Database Error: {e}")
         print(f"[-] Database initialization error: {e}")
         if conn:
             conn.rollback()
