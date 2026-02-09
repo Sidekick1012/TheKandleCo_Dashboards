@@ -297,13 +297,13 @@ st.markdown("""
             rgba(249, 247, 243, 0.95) 100%);
         backdrop-filter: blur(20px);
         border-radius: 32px;
-        padding: 2.5rem 3rem;
+        padding: 1.8rem 2.2rem;
         box-shadow: 
             0 40px 100px rgba(0, 0, 0, 0.12),
             0 0 0 1px rgba(212, 175, 55, 0.15),
             inset 0 2px 4px rgba(255, 255, 255, 0.8);
         margin: 1rem auto;
-        max-width: 580px;
+        max-width: 440px;
         position: relative;
         overflow: visible;
         animation: fade-in-scale 1s cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -356,8 +356,8 @@ st.markdown("""
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        width: 70px;
-        height: 70px;
+        width: 60px;
+        height: 60px;
         background: linear-gradient(135deg, var(--primary-gold) 0%, var(--accent-gold) 100%);
         border-radius: 50%;
         box-shadow: 
@@ -368,7 +368,7 @@ st.markdown("""
     
     .login-icon-circle::before {
         content: '🔐';
-        font-size: 2rem;
+        font-size: 1.6rem;
     }
     
     @keyframes icon-pulse {
@@ -378,23 +378,23 @@ st.markdown("""
     
     .login-title {
         font-family: 'Playfair Display', serif;
-        font-size: clamp(1.5rem, 4vw, 2rem);
+        font-size: clamp(1.4rem, 3.5vw, 1.8rem);
         font-weight: 600;
         text-align: center;
         background: linear-gradient(135deg, var(--primary-dark) 0%, var(--secondary-dark) 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
-        margin-bottom: 0.3rem;
+        margin-bottom: 0.2rem;
         letter-spacing: 0.12em;
     }
     
     .login-subtitle {
         font-family: 'Cormorant Garamond', serif;
-        font-size: clamp(0.9rem, 2vw, 1rem);
+        font-size: clamp(0.85rem, 1.8vw, 0.95rem);
         text-align: center;
         color: var(--text-light);
-        margin-bottom: 2rem;
+        margin-bottom: 1.5rem;
         font-style: italic;
         letter-spacing: 0.08em;
         height:10px;
@@ -403,10 +403,10 @@ st.markdown("""
     /* Enhanced Input Fields */
     .stTextInput > div > div > input {
         border: 2px solid transparent;
-        border-radius: 16px;
-        padding: 1.5rem 2rem;
+        border-radius: 12px;
+        padding: 1rem 1.5rem;
         font-family: 'Montserrat', sans-serif;
-        font-size: 1.2rem;
+        font-size: 1rem;
         font-weight: 500;
         color: #000000 !important;
         transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -435,12 +435,12 @@ st.markdown("""
     /* Enhanced Labels */
     .stTextInput > label {
         font-family: 'Montserrat', sans-serif;
-        font-size: 0.8rem;
+        font-size: 0.75rem;
         font-weight: 600;
         color: var(--primary-dark);
         letter-spacing: 0.1em;
         text-transform: uppercase;
-        margin-bottom: 0.8rem;
+        margin-bottom: 0.5rem;
         display: block;
     }
     
@@ -464,12 +464,12 @@ st.markdown("""
         background-size: 200% 100%;
         color: var(--primary-gold);
         border: 2px solid var(--primary-gold);
-        border-radius: 16px;
-        padding: 1.3rem 3rem;
+        border-radius: 12px;
+        padding: 1.1rem 2rem;
         font-family: 'Montserrat', sans-serif;
-        font-size: 1rem;
+        font-size: 0.95rem;
         font-weight: 700;
-        letter-spacing: 0.25em;
+        letter-spacing: 0.2em;
         text-transform: uppercase;
         width: 100%;
         transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
