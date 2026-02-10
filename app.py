@@ -311,14 +311,14 @@ st.markdown("""
             rgba(255, 255, 255, 0.1) 100%);
         backdrop-filter: blur(20px) saturate(180%);
         -webkit-backdrop-filter: blur(20px) saturate(180%);
-        border-radius: 20px;
-        padding: 1.5rem 1.5rem;
+        border-radius: 16px;
+        padding: 1.2rem 1.2rem;
         box-shadow: 
             0 8px 32px 0 rgba(31, 38, 135, 0.15),
             0 0 0 1px rgba(255, 255, 255, 0.18),
             inset 0 0 60px rgba(255, 255, 255, 0.05);
-        margin: 1rem auto;
-        max-width: 300px;
+        margin: 0.8rem auto;
+        max-width: 280px;
         position: relative;
         overflow: visible;
         animation: float-in 1s cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -340,11 +340,11 @@ st.markdown("""
             #ffd700 75%,
             #ff6b9d 100%);
         background-size: 400% 400%;
-        border-radius: 20px;
+        border-radius: 16px;
         z-index: -1;
         animation: gradient-rotate 8s ease infinite;
-        opacity: 0.5;
-        filter: blur(6px);
+        opacity: 0.4;
+        filter: blur(5px);
     }
     
     @keyframes gradient-rotate {
@@ -367,7 +367,7 @@ st.markdown("""
             radial-gradient(circle at 40% 60%, rgba(0, 212, 255, 0.08) 0%, transparent 40%);
         pointer-events: none;
         z-index: 0;
-        border-radius: 20px;
+        border-radius: 16px;
         animation: orb-float 6s ease-in-out infinite;
     }
     
@@ -383,29 +383,29 @@ st.markdown("""
     
     .login-icon {
         text-align: center;
-        margin-bottom: 0.75rem;
+        margin-bottom: 0.6rem;
     }
     
     .login-icon-circle {
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        width: 50px;
-        height: 50px;
+        width: 45px;
+        height: 45px;
         background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         border-radius: 50%;
         box-shadow: 
-            0 12px 35px rgba(102, 126, 234, 0.3),
-            0 0 0 6px rgba(255, 255, 255, 0.1),
-            inset 0 -3px 10px rgba(0, 0, 0, 0.2);
+            0 10px 30px rgba(102, 126, 234, 0.3),
+            0 0 0 5px rgba(255, 255, 255, 0.1),
+            inset 0 -3px 8px rgba(0, 0, 0, 0.2);
         animation: icon-bounce 3s ease-in-out infinite;
         position: relative;
     }
     
     .login-icon-circle::before {
         content: '🔐';
-        font-size: 1.5rem;
-        filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.3));
+        font-size: 1.3rem;
+        filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
     }
     
     /* Glow effect */
@@ -425,11 +425,11 @@ st.markdown("""
     @keyframes icon-bounce {
         0%, 100% { 
             transform: translateY(0) scale(1);
-            box-shadow: 0 12px 35px rgba(102, 126, 234, 0.3);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
         }
         50% { 
-            transform: translateY(-6px) scale(1.03);
-            box-shadow: 0 18px 45px rgba(102, 126, 234, 0.5);
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.45);
         }
     }
     
@@ -440,14 +440,14 @@ st.markdown("""
     
     .login-title {
         font-family: 'Playfair Display', serif;
-        font-size: clamp(1.2rem, 3vw, 1.5rem);
+        font-size: clamp(1rem, 2.8vw, 1.2rem);
         font-weight: 700;
         text-align: center;
         background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
-        margin-bottom: 0.3rem;
+        margin-bottom: 0.25rem;
         letter-spacing: 0.02em;
         animation: text-shimmer 3s ease-in-out infinite;
         background-size: 200% auto;
@@ -460,13 +460,13 @@ st.markdown("""
     
     .login-subtitle {
         font-family: 'Montserrat', sans-serif;
-        font-size: clamp(0.7rem, 1.5vw, 0.8rem);
+        font-size: clamp(0.65rem, 1.4vw, 0.75rem);
         text-align: center;
         background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
-        margin-bottom: 1.2rem;
+        margin-bottom: 1rem;
         font-weight: 500;
         letter-spacing: 0.05em;
     }
@@ -475,10 +475,10 @@ st.markdown("""
     /* Enhanced Input Fields */
     .stTextInput > div > div > input {
         border: 2px solid rgba(102, 126, 234, 0.2);
-        border-radius: 10px;
-        padding: 0.65rem 0.9rem;
+        border-radius: 8px;
+        padding: 0.6rem 0.8rem;
         font-family: 'Montserrat', sans-serif;
-        font-size: 0.85rem;
+        font-size: 0.8rem;
         font-weight: 500;
         color: #2d3748 !important;
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -501,13 +501,13 @@ st.markdown("""
     .stTextInput > div > div > input::placeholder {
         color: #a0aec0;
         font-style: italic;
-        font-size: 0.8rem;
+        font-size: 0.75rem;
     }
     
     /* Enhanced Labels */
     .stTextInput > label {
         font-family: 'Montserrat', sans-serif;
-        font-size: 0.65rem;
+        font-size: 0.6rem;
         font-weight: 700;
         background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
         -webkit-background-clip: text;
@@ -515,7 +515,7 @@ st.markdown("""
         background-clip: text;
         letter-spacing: 0.08em;
         text-transform: uppercase;
-        margin-bottom: 0.3rem;
+        margin-bottom: 0.25rem;
         display: block;
     }
     
@@ -537,10 +537,10 @@ st.markdown("""
         background-size: 200% 100%;
         color: #ffffff;
         border: none;
-        border-radius: 10px;
-        padding: 0.75rem 1.3rem;
+        border-radius: 8px;
+        padding: 0.7rem 1.2rem;
         font-family: 'Montserrat', sans-serif;
-        font-size: 0.8rem;
+        font-size: 0.75rem;
         font-weight: 700;
         letter-spacing: 0.15em;
         text-transform: uppercase;
@@ -549,7 +549,7 @@ st.markdown("""
         box-shadow: 
             0 8px 25px rgba(102, 126, 234, 0.35),
             inset 0 1px 0 rgba(255, 255, 255, 0.3);
-        margin-top: 1rem;
+        margin-top: 0.9rem;
         position: relative;
         overflow: hidden;
     }
