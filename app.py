@@ -186,7 +186,7 @@ st.markdown("""
     .candle-line-container {
         position: fixed !important;
         top: 20px !important;
-        left: 50% !important;
+        left: 55% !important;
         transform: translateX(-50%) translateZ(0) !important;
         width: auto !important;
         height: 100px !important;
