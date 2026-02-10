@@ -907,17 +907,35 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-# ================= CANDLE HTML (Dashboard Only) =================
-# Show candles only when logged in (on dashboard pages, not login page)
+# ================= CANDLE LINE HEADER (Dashboard Only) =================
+# Show candle line across header when logged in (on dashboard pages, not login page)
 if st.session_state.get('logged_in', False):
     st.markdown("""
-    <div class="candle-container">
+    <div class="candle-line-container">
         <div class="candle">
             <div class="glow"></div>
             <div class="flame"></div>
         </div>
-    </div>
-    <div class="candle-container-right">
+        <div class="candle">
+            <div class="glow"></div>
+            <div class="flame"></div>
+        </div>
+        <div class="candle">
+            <div class="glow"></div>
+            <div class="flame"></div>
+        </div>
+        <div class="candle">
+            <div class="glow"></div>
+            <div class="flame"></div>
+        </div>
+        <div class="candle">
+            <div class="glow"></div>
+            <div class="flame"></div>
+        </div>
+        <div class="candle">
+            <div class="glow"></div>
+            <div class="flame"></div>
+        </div>
         <div class="candle">
             <div class="glow"></div>
             <div class="flame"></div>
