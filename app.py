@@ -161,21 +161,11 @@ st.markdown("""
         color: #1a1a1a !important;
     }
     
-    /* ==================== CANDLE ANIMATION ==================== */
-    .candle-container {
-        position: fixed;
-        top: 20%;
-        left: 5%;
-        z-index: 1;
-        perspective: 1000px;
-    }
     
-    .candle-container-right {
-        position: fixed;
-        top: 20%;
-        right: 5%;
-        z-index: 1;
-        perspective: 1000px;
+    /* Hide candles on login page - removed for no scroll */
+    body:has(.login-container) .candle-container,
+    body:has(.login-container) .candle-container-right {
+        display: none !important;
     }
     
     .candle {
@@ -270,55 +260,59 @@ st.markdown("""
         50% { box-shadow: 0 10px 40px rgba(255, 140, 0, 0.2), inset 0 -2px 15px rgba(212, 175, 55, 0.4); transform: scale(1.01); }
     }
     
-    /* ==================== BRAND HEADER ==================== */
+    
+    /* ==================== BRAND HEADER - The Kandle Co ==================== */
     .brand-header {
         text-align: center;
-        margin: 1rem 0 1.5rem 0;
+        margin: 0.8rem 0 1rem 0;
         animation: fade-in-down 0.8s ease-out;
     }
     
     .brand-title {
         font-family: 'Playfair Display', serif;
-        font-size: clamp(2rem, 6vw, 4rem);
+        font-size: clamp(1.2rem, 4vw, 1.5rem);
         font-weight: 600;
-        letter-spacing: 0.3em;
-        color: var(--primary-dark);
+        letter-spacing: 0.25em;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
         margin: 0;
         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.05);
     }
     
     .brand-subtitle {
         font-family: 'Cormorant Garamond', serif;
-        font-size: clamp(0.85rem, 2.5vw, 1.3rem);
+        font-size: clamp(0.65rem, 2vw, 0.8rem);
         font-weight: 300;
-        letter-spacing: 0.2em;
-        color: var(--text-light);
-        margin-top: 0.5rem;
+        letter-spacing: 0.15em;
+        color: #667eea;
+        margin-top: 0.3rem;
         text-transform: uppercase;
     }
     
     .divider {
-        width: 80px;
+        width: 60px;
         height: 1px;
-        background: linear-gradient(to right, transparent, var(--primary-gold), transparent);
-        margin: 1.5rem auto;
+        background: linear-gradient(to right, transparent, #667eea, transparent);
+        margin: 0.8rem auto;
     }
     
-    /* ==================== MODERN LOGIN FORM DESIGN ==================== */
+    /* ==================== ULTRA-COMPACT LOGIN FORM ==================== */
     .login-container {
         background: linear-gradient(145deg, 
             rgba(255, 255, 255, 0.25) 0%, 
             rgba(255, 255, 255, 0.1) 100%);
         backdrop-filter: blur(20px) saturate(180%);
         -webkit-backdrop-filter: blur(20px) saturate(180%);
-        border-radius: 16px;
-        padding: 1.2rem 1.2rem;
+        border-radius: 14px;
+        padding: 1rem 1rem;
         box-shadow: 
             0 8px 32px 0 rgba(31, 38, 135, 0.15),
             0 0 0 1px rgba(255, 255, 255, 0.18),
             inset 0 0 60px rgba(255, 255, 255, 0.05);
-        margin: 0.8rem auto;
-        max-width: 280px;
+        margin: 0.5rem auto;
+        max-width: 250px;
         position: relative;
         overflow: visible;
         animation: float-in 1s cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -340,11 +334,11 @@ st.markdown("""
             #ffd700 75%,
             #ff6b9d 100%);
         background-size: 400% 400%;
-        border-radius: 16px;
+        border-radius: 14px;
         z-index: -1;
         animation: gradient-rotate 8s ease infinite;
-        opacity: 0.4;
-        filter: blur(5px);
+        opacity: 0.35;
+        filter: blur(4px);
     }
     
     @keyframes gradient-rotate {
@@ -367,7 +361,7 @@ st.markdown("""
             radial-gradient(circle at 40% 60%, rgba(0, 212, 255, 0.08) 0%, transparent 40%);
         pointer-events: none;
         z-index: 0;
-        border-radius: 16px;
+        border-radius: 14px;
         animation: orb-float 6s ease-in-out infinite;
     }
     
@@ -383,28 +377,28 @@ st.markdown("""
     
     .login-icon {
         text-align: center;
-        margin-bottom: 0.6rem;
+        margin-bottom: 0.5rem;
     }
     
     .login-icon-circle {
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        width: 45px;
-        height: 45px;
+        width: 40px;
+        height: 40px;
         background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         border-radius: 50%;
         box-shadow: 
-            0 10px 30px rgba(102, 126, 234, 0.3),
-            0 0 0 5px rgba(255, 255, 255, 0.1),
-            inset 0 -3px 8px rgba(0, 0, 0, 0.2);
+            0 8px 25px rgba(102, 126, 234, 0.3),
+            0 0 0 4px rgba(255, 255, 255, 0.1),
+            inset 0 -2px 6px rgba(0, 0, 0, 0.2);
         animation: icon-bounce 3s ease-in-out infinite;
         position: relative;
     }
     
     .login-icon-circle::before {
         content: '🔐';
-        font-size: 1.3rem;
+        font-size: 1.1rem;
         filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
     }
     
@@ -425,11 +419,11 @@ st.markdown("""
     @keyframes icon-bounce {
         0%, 100% { 
             transform: translateY(0) scale(1);
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
         }
         50% { 
-            transform: translateY(-5px) scale(1.02);
-            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.45);
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 12px 35px rgba(102, 126, 234, 0.4);
         }
     }
     
@@ -440,14 +434,14 @@ st.markdown("""
     
     .login-title {
         font-family: 'Playfair Display', serif;
-        font-size: clamp(1rem, 2.8vw, 1.2rem);
+        font-size: clamp(0.9rem, 2.5vw, 1.1rem);
         font-weight: 700;
         text-align: center;
         background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
-        margin-bottom: 0.25rem;
+        margin-bottom: 0.2rem;
         letter-spacing: 0.02em;
         animation: text-shimmer 3s ease-in-out infinite;
         background-size: 200% auto;
@@ -460,13 +454,13 @@ st.markdown("""
     
     .login-subtitle {
         font-family: 'Montserrat', sans-serif;
-        font-size: clamp(0.65rem, 1.4vw, 0.75rem);
+        font-size: clamp(0.6rem, 1.3vw, 0.7rem);
         text-align: center;
         background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
-        margin-bottom: 1rem;
+        margin-bottom: 0.8rem;
         font-weight: 500;
         letter-spacing: 0.05em;
     }
@@ -475,10 +469,10 @@ st.markdown("""
     /* Enhanced Input Fields */
     .stTextInput > div > div > input {
         border: 2px solid rgba(102, 126, 234, 0.2);
-        border-radius: 8px;
-        padding: 0.6rem 0.8rem;
+        border-radius: 7px;
+        padding: 0.55rem 0.75rem;
         font-family: 'Montserrat', sans-serif;
-        font-size: 0.8rem;
+        font-size: 0.75rem;
         font-weight: 500;
         color: #2d3748 !important;
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -501,13 +495,13 @@ st.markdown("""
     .stTextInput > div > div > input::placeholder {
         color: #a0aec0;
         font-style: italic;
-        font-size: 0.75rem;
+        font-size: 0.7rem;
     }
     
     /* Enhanced Labels */
     .stTextInput > label {
         font-family: 'Montserrat', sans-serif;
-        font-size: 0.6rem;
+        font-size: 0.55rem;
         font-weight: 700;
         background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
         -webkit-background-clip: text;
@@ -515,7 +509,7 @@ st.markdown("""
         background-clip: text;
         letter-spacing: 0.08em;
         text-transform: uppercase;
-        margin-bottom: 0.25rem;
+        margin-bottom: 0.2rem;
         display: block;
     }
     
@@ -537,10 +531,10 @@ st.markdown("""
         background-size: 200% 100%;
         color: #ffffff;
         border: none;
-        border-radius: 8px;
-        padding: 0.7rem 1.2rem;
+        border-radius: 7px;
+        padding: 0.65rem 1.1rem;
         font-family: 'Montserrat', sans-serif;
-        font-size: 0.75rem;
+        font-size: 0.7rem;
         font-weight: 700;
         letter-spacing: 0.15em;
         text-transform: uppercase;
@@ -549,7 +543,7 @@ st.markdown("""
         box-shadow: 
             0 8px 25px rgba(102, 126, 234, 0.35),
             inset 0 1px 0 rgba(255, 255, 255, 0.3);
-        margin-top: 0.9rem;
+        margin-top: 0.8rem;
         position: relative;
         overflow: hidden;
     }
