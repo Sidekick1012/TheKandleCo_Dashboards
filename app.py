@@ -182,22 +182,22 @@ st.markdown("""
     
     
     /* ==================== HEADER CANDLE LINE (Dashboard Only) ==================== */
-    /* Candle line container - simple selector for reliability */
+    /* Candle line container - centered with close spacing */
     .candle-line-container {
         position: fixed !important;
         top: 20px !important;
-        left: 0 !important;
-        right: 0 !important;
-        width: 100% !important;
+        left: 50% !important;
+        transform: translateX(-50%) translateZ(0) !important;
+        width: auto !important;
         height: 100px !important;
         display: flex !important;
-        justify-content: space-evenly !important;
+        justify-content: center !important;
         align-items: flex-start !important;
-        padding: 0 5% !important;
+        gap: 15px !important;
+        padding: 0 !important;
         z-index: 999999 !important;
         pointer-events: none !important;
         overflow: visible !important;
-        transform: translateZ(0) !important;
         will-change: transform !important;
     }
     
@@ -916,14 +916,6 @@ st.markdown("""
 if st.session_state.get('logged_in', False):
     st.markdown("""
     <div class="candle-line-container">
-        <div class="candle">
-            <div class="glow"></div>
-            <div class="flame"></div>
-        </div>
-        <div class="candle">
-            <div class="glow"></div>
-            <div class="flame"></div>
-        </div>
         <div class="candle">
             <div class="glow"></div>
             <div class="flame"></div>
