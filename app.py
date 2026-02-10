@@ -194,9 +194,11 @@ st.markdown("""
         justify-content: space-evenly !important;
         align-items: flex-start !important;
         padding: 0 5% !important;
-        z-index: 9999 !important;
+        z-index: 999999 !important;
         pointer-events: none !important;
         overflow: visible !important;
+        transform: translateZ(0) !important;
+        will-change: transform !important;
     }
     
     /* Individual candles - increased size for better visibility */
@@ -210,6 +212,7 @@ st.markdown("""
             0 8px 20px rgba(0, 0, 0, 0.15),
             inset 0 -2px 8px rgba(212, 175, 55, 0.3) !important;
         animation: candle-flicker 3s ease-in-out infinite !important;
+        z-index: 999999 !important;
     }
     
     /* Stagger animation delays for natural effect */
