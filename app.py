@@ -41,6 +41,37 @@ st.markdown("""
         font-family: 'Montserrat', sans-serif;
     }
     
+    /* AGGRESSIVE NO SCROLL - Force everything to fit viewport */
+    body:has(.login-container),
+    body:has(.login-container) html,
+    body:has(.login-container) .stApp,
+    body:has(.login-container) .main,
+    body:has(.login-container) .block-container,
+    body:has(.login-container) [data-testid="stAppViewContainer"],
+    body:has(.login-container) [data-testid="stHeader"] {
+        overflow: hidden !important;
+        overflow-y: hidden !important;
+        overflow-x: hidden !important;
+        height: 100vh !important;
+        max-height: 100vh !important;
+        position: fixed !important;
+        width: 100% !important;
+    }
+    
+    body:has(.login-container) .block-container {
+        padding: 0.3rem 1rem !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: center !important;
+    }
+    
+    /* Hide Streamlit header and footer on login */
+    body:has(.login-container) [data-testid="stHeader"],
+    body:has(.login-container) footer {
+        display: none !important;
+    }
+    
     /* Global Scroll Control */
     html, body {
         overflow-x: hidden;
@@ -168,15 +199,15 @@ st.markdown("""
 
     
     
-    /* ==================== COMPACT BRAND HEADER ==================== */
+    /* ==================== MINIMAL BRAND HEADER ==================== */
     .brand-header {
         text-align: center;
-        margin: 0.5rem 0 0.3rem 0;
+        margin: 0.3rem 0 0.2rem 0;
     }
     
     .brand-title {
         font-family: 'Playfair Display', serif;
-        font-size: 1.3rem;
+        font-size: 1.1rem;
         font-weight: 600;
         letter-spacing: 0.2em;
         color: #1a1a1a;
@@ -185,29 +216,29 @@ st.markdown("""
     
     .brand-subtitle {
         font-family: 'Montserrat', sans-serif;
-        font-size: 0.7rem;
+        font-size: 0.65rem;
         font-weight: 400;
         letter-spacing: 0.1em;
         color: #666;
-        margin-top: 0.2rem;
+        margin-top: 0.15rem;
         text-transform: uppercase;
     }
     
     .divider {
-        width: 50px;
+        width: 40px;
         height: 2px;
         background: #0066cc;
-        margin: 0.5rem auto;
+        margin: 0.4rem auto;
     }
     
-    /* ==================== COMPACT PROFESSIONAL LOGIN ==================== */
+    /* ==================== MINIMAL PROFESSIONAL LOGIN ==================== */
     .login-container {
         background: #ffffff;
-        border-radius: 8px;
-        padding: 1.2rem 1.5rem;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        margin: 0.3rem auto;
-        max-width: 320px;
+        border-radius: 6px;
+        padding: 1rem 1.2rem;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        margin: 0.2rem auto;
+        max-width: 300px;
         border: 1px solid #e0e0e0;
     }
     
@@ -217,15 +248,15 @@ st.markdown("""
     
     .login-icon {
         text-align: center;
-        margin-bottom: 0.6rem;
+        margin-bottom: 0.5rem;
     }
     
     .login-icon-circle {
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        width: 50px;
-        height: 50px;
+        width: 45px;
+        height: 45px;
         background: #0066cc;
         border-radius: 50%;
         box-shadow: 0 2px 6px rgba(0, 102, 204, 0.2);
@@ -233,25 +264,25 @@ st.markdown("""
     
     .login-icon-circle::before {
         content: '🔒';
-        font-size: 1.5rem;
+        font-size: 1.3rem;
     }
     
     
     .login-title {
         font-family: 'Montserrat', sans-serif;
-        font-size: 1.1rem;
+        font-size: 1rem;
         font-weight: 600;
         text-align: center;
         color: #1a1a1a;
-        margin-bottom: 0.3rem;
+        margin-bottom: 0.25rem;
     }
     
     .login-subtitle {
         font-family: 'Montserrat', sans-serif;
-        font-size: 0.75rem;
+        font-size: 0.7rem;
         text-align: center;
         color: #666;
-        margin-bottom: 1rem;
+        margin-bottom: 0.9rem;
     }
     
     
@@ -303,16 +334,16 @@ st.markdown("""
         color: #ffffff;
         border: none;
         border-radius: 4px;
-        padding: 0.7rem 1.2rem;
+        padding: 0.65rem 1.1rem;
         font-family: 'Montserrat', sans-serif;
-        font-size: 0.85rem;
+        font-size: 0.8rem;
         font-weight: 600;
         letter-spacing: 0.05em;
         text-transform: uppercase;
         width: 100%;
         transition: all 0.2s ease;
         box-shadow: 0 2px 4px rgba(0, 102, 204, 0.2);
-        margin-top: 0.8rem;
+        margin-top: 0.7rem;
     }
     
     .stButton > button[kind="primary"]:hover {
