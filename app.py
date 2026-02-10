@@ -470,6 +470,36 @@ st.markdown("""
         margin: 2rem 0;
         animation: fade-in 1s ease-out;
     }
+    /* Main dashboard title */
+    h1[data-testid="stMarkdownContainer"] p {
+        font-family: 'Playfair Display', serif !important;
+        font-size: clamp(1rem, 3vw, 1.8rem) !important;
+        font-weight: 700 !important;
+        color: var(--primary-dark) !important;
+        margin-bottom: 0.3rem !important;
+        letter-spacing: 0.05em !important;
+    }
+    
+    /* Dashboard subtitle */
+    h2[data-testid="stMarkdownContainer"] p {
+        font-family: 'Montserrat', sans-serif !important;
+        font-size: clamp(0.75rem, 2vw, 1rem) !important;
+        font-weight: 500 !important;
+        color: var(--text-light) !important;
+        margin-bottom: 1rem !important;
+    }
+    
+    /* Section headers */
+    h3[data-testid="stMarkdownContainer"] p {
+        font-family: 'Montserrat', sans-serif !important;
+        font-size: 0.75rem !important;
+        font-weight: 700 !important;
+        text-transform: uppercase !important;
+        letter-spacing: 0.1em !important;
+        color: var(--primary-color) !important;
+        margin-top: 1.5rem !important;
+        margin-bottom: 0.75rem !important;
+    }
     
     .welcome-user {
         font-family: 'Playfair Display', serif;
