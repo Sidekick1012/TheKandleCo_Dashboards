@@ -149,109 +149,29 @@ st.markdown("""
     }
     
     
-    /* Hide candles on login page - removed for no scroll */
-    body:has(.login-container) .candle-container,
-    body:has(.login-container) .candle-container-right {
-        display: none !important;
+    /* Prevent any scrolling on login page */
+    body:has(.login-container), 
+    body:has(.login-container) .main,
+    body:has(.login-container) .block-container {
+        overflow: hidden !important;
+        height: 100vh !important;
+        max-height: 100vh !important;
     }
     
-    .candle {
-        position: relative;
-        width: 60px;
-        height: 100px;
-        background: linear-gradient(to bottom, #fff9e6 0%, #f5e6d3 50%, #e6d4b8 100%);
-        border-radius: 8px 8px 4px 4px;
-        box-shadow: 
-            0 10px 30px rgba(0, 0, 0, 0.2),
-            inset 0 -2px 10px rgba(212, 175, 55, 0.3);
-        animation: candle-flicker 3s ease-in-out infinite;
+    body:has(.login-container) .block-container {
+        padding: 0.5rem 1rem !important;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
-    
-    .candle::before {
-        content: '';
-        position: absolute;
-        top: -5px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 6px;
-        height: 12px;
-        background: #2d2d2d;
-        border-radius: 50% 50% 0 0;
-    }
-    
-    .flame {
-        position: absolute;
-        top: -25px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 14px; /* Slightly wider */
-        height: 35px; /* Slightly taller */
-        background: linear-gradient(to top, 
-            rgba(255, 120, 0, 0.95) 0%, 
-            rgba(255, 180, 0, 0.9) 40%, 
-            rgba(255, 230, 80, 0.6) 80%, 
-            rgba(255, 255, 255, 0.3) 100%);
-        border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-        box-shadow: 
-            0 0 20px rgba(255, 140, 0, 0.9),
-            0 0 40px rgba(255, 100, 0, 0.5),
-            0 0 60px rgba(255, 200, 0, 0.2);
-        animation: flame-dance 1s ease-in-out infinite; /* Faster */
-        filter: blur(0.5px);
-    }
-    
-    .flame::after {
-        content: '';
-        position: absolute;
-        top: 6px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 9px;
-        height: 22px;
-        background: linear-gradient(to top, 
-            rgba(255, 220, 50, 0.95) 0%, 
-            rgba(255, 255, 150, 0.7) 100%);
-        border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-        animation: flame-dance 0.7s ease-in-out infinite reverse; /* Faster */
-    }
-    
-    .glow {
-        position: absolute;
-        top: -45px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 80px; /* Larger glow */
-        height: 80px;
-        background: radial-gradient(circle, 
-            rgba(255, 180, 50, 0.45) 0%, 
-            rgba(255, 140, 0, 0.2) 40%,
-            transparent 75%);
-        border-radius: 50%;
-        animation: glow-pulse 1.8s ease-in-out infinite;
-    }
-    
-    @keyframes flame-dance {
-        0%, 100% { transform: translateX(-50%) scaleY(1) scaleX(1) rotate(0deg); }
-        25% { transform: translateX(-52%) scaleY(1.1) scaleX(0.9) rotate(-1deg); }
-        50% { transform: translateX(-48%) scaleY(0.9) scaleX(1.1) rotate(1deg); }
-        75% { transform: translateX(-51%) scaleY(1.05) scaleX(0.95) rotate(-0.5deg); }
-    }
-    
-    @keyframes glow-pulse {
-        0%, 100% { opacity: 0.7; transform: translateX(-50%) scale(1); }
-        50% { opacity: 0.9; transform: translateX(-50%) scale(1.25); }
-    }
-    
-    @keyframes candle-flicker {
-        0%, 100% { box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2), inset 0 -2px 10px rgba(212, 175, 55, 0.3); transform: scale(1); }
-        50% { box-shadow: 0 10px 40px rgba(255, 140, 0, 0.2), inset 0 -2px 15px rgba(212, 175, 55, 0.4); transform: scale(1.01); }
-    }
+
     
     
-    /* ==================== PROFESSIONAL BRAND HEADER ==================== */
+    /* ==================== COMPACT BRAND HEADER ==================== */
     .brand-header {
         text-align: center;
-        margin: 1rem 0 0.5rem 0;
+        margin: 0.5rem 0 0.3rem 0;
     }
     
     .brand-title {
@@ -277,16 +197,16 @@ st.markdown("""
         width: 50px;
         height: 2px;
         background: #0066cc;
-        margin: 0.8rem auto;
+        margin: 0.5rem auto;
     }
     
-    /* ==================== PROFESSIONAL LOGIN FORM ==================== */
+    /* ==================== COMPACT PROFESSIONAL LOGIN ==================== */
     .login-container {
         background: #ffffff;
         border-radius: 8px;
-        padding: 1.5rem 1.5rem;
+        padding: 1.2rem 1.5rem;
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        margin: 1rem auto;
+        margin: 0.3rem auto;
         max-width: 320px;
         border: 1px solid #e0e0e0;
     }
@@ -297,7 +217,7 @@ st.markdown("""
     
     .login-icon {
         text-align: center;
-        margin-bottom: 0.8rem;
+        margin-bottom: 0.6rem;
     }
     
     .login-icon-circle {
@@ -331,7 +251,7 @@ st.markdown("""
         font-size: 0.75rem;
         text-align: center;
         color: #666;
-        margin-bottom: 1.2rem;
+        margin-bottom: 1rem;
     }
     
     
@@ -378,7 +298,6 @@ st.markdown("""
         display: none;
     }
     
-    /* Professional Button */
     .stButton > button[kind="primary"] {
         background: #0066cc;
         color: #ffffff;
@@ -393,7 +312,7 @@ st.markdown("""
         width: 100%;
         transition: all 0.2s ease;
         box-shadow: 0 2px 4px rgba(0, 102, 204, 0.2);
-        margin-top: 1rem;
+        margin-top: 0.8rem;
     }
     
     .stButton > button[kind="primary"]:hover {
