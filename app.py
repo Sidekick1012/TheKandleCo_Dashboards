@@ -473,32 +473,47 @@ st.markdown("""
     /* Main dashboard title */
     h1[data-testid="stMarkdownContainer"] p {
         font-family: 'Playfair Display', serif !important;
-        font-size: clamp(1rem, 3vw, 1.8rem) !important;
+        font-size: clamp(0.85rem, 2.5vw, 1.4rem) !important;
         font-weight: 700 !important;
         color: var(--primary-dark) !important;
-        margin-bottom: 0.3rem !important;
+        margin-bottom: 0.2rem !important;
         letter-spacing: 0.05em !important;
     }
     
     /* Dashboard subtitle */
     h2[data-testid="stMarkdownContainer"] p {
         font-family: 'Montserrat', sans-serif !important;
-        font-size: clamp(0.75rem, 2vw, 1rem) !important;
+        font-size: clamp(0.65rem, 1.8vw, 0.85rem) !important;
         font-weight: 500 !important;
         color: var(--text-light) !important;
-        margin-bottom: 1rem !important;
+        margin-bottom: 0.75rem !important;
+    }
+    
+    [data-testid="stMetric"] label {
+        font-family: 'Montserrat', sans-serif !important;
+        font-size: 0.6rem !important;
+        font-weight: 600 !important;
+        text-transform: uppercase !important;
+        color: var(--text-light) !important;
+    }
+    
+    [data-testid="stMetric"] [data-testid="stMetricValue"] {
+        font-family: 'Montserrat', sans-serif !important;
+        font-size: 0.95rem !important;
+        font-weight: 700 !important;
+        color: var(--primary-color) !important;
     }
     
     /* Section headers */
     h3[data-testid="stMarkdownContainer"] p {
         font-family: 'Montserrat', sans-serif !important;
-        font-size: 0.75rem !important;
+        font-size: 0.65rem !important;
         font-weight: 700 !important;
         text-transform: uppercase !important;
         letter-spacing: 0.1em !important;
         color: var(--primary-color) !important;
-        margin-top: 1.5rem !important;
-        margin-bottom: 0.75rem !important;
+        margin-top: 1rem !important;
+        margin-bottom: 0.5rem !important;
     }
     
     .welcome-user {
