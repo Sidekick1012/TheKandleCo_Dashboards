@@ -911,38 +911,41 @@ st.markdown("""
 # ================= CANDLE LINE HEADER (Dashboard Only) =================
 # Show candle line across header when logged in (on dashboard pages, not login page)
 if st.session_state.get('logged_in', False):
+    # Add a visible test element to confirm rendering
     st.markdown("""
-    <div class="candle-line-container">
-        <div class="candle">
+    <div class="candle-line-container" style="background: rgba(255,0,0,0.1); border: 2px solid red;">
+        <div class="candle" style="border: 2px solid blue;">
             <div class="glow"></div>
             <div class="flame"></div>
         </div>
-        <div class="candle">
+        <div class="candle" style="border: 2px solid blue;">
             <div class="glow"></div>
             <div class="flame"></div>
         </div>
-        <div class="candle">
+        <div class="candle" style="border: 2px solid blue;">
             <div class="glow"></div>
             <div class="flame"></div>
         </div>
-        <div class="candle">
+        <div class="candle" style="border: 2px solid blue;">
             <div class="glow"></div>
             <div class="flame"></div>
         </div>
-        <div class="candle">
+        <div class="candle" style="border: 2px solid blue;">
             <div class="glow"></div>
             <div class="flame"></div>
         </div>
-        <div class="candle">
+        <div class="candle" style="border: 2px solid blue;">
             <div class="glow"></div>
             <div class="flame"></div>
         </div>
-        <div class="candle">
+        <div class="candle" style="border: 2px solid blue;">
             <div class="glow"></div>
             <div class="flame"></div>
         </div>
     </div>
     """, unsafe_allow_html=True)
+    # Debug message
+    st.write("DEBUG: Candle HTML rendered")
 
 # ================= LOGIC =================
 init_db()
