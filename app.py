@@ -898,8 +898,9 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-# ================= CANDLE HTML =================
-if not st.session_state.get('logged_in', False):
+# ================= CANDLE HTML (Dashboard Only) =================
+# Show candles only when logged in (on dashboard pages, not login page)
+if st.session_state.get('logged_in', False):
     st.markdown("""
     <div class="candle-container">
         <div class="candle">
