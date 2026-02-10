@@ -182,34 +182,34 @@ st.markdown("""
     
     
     /* ==================== HEADER CANDLE LINE (Dashboard Only) ==================== */
-    /* Candle line container - spans full width of header */
-    body:not(:has(.login-container)) .candle-line-container {
-        position: fixed;
-        top: 15px;
-        left: 0;
-        right: 0;
-        width: 100%;
-        height: 100px;
-        display: flex;
-        justify-content: space-evenly;
-        align-items: flex-start;
-        padding: 0 5%;
+    /* Candle line container - simple selector for reliability */
+    .candle-line-container {
+        position: fixed !important;
+        top: 80px !important;
+        left: 0 !important;
+        right: 0 !important;
+        width: 100% !important;
+        height: 100px !important;
+        display: flex !important;
+        justify-content: space-evenly !important;
+        align-items: flex-start !important;
+        padding: 0 5% !important;
         z-index: 9999 !important;
-        pointer-events: all;
-        overflow: visible;
+        pointer-events: none !important;
+        overflow: visible !important;
     }
     
-    /* Individual candles smaller for header line */
+    /* Individual candles - increased size for better visibility */
     .candle-line-container .candle {
-        position: relative;
-        width: 35px;
-        height: 60px;
-        background: linear-gradient(to bottom, #fff9e6 0%, #f5e6d3 50%, #e6d4b8 100%);
-        border-radius: 6px 6px 3px 3px;
+        position: relative !important;
+        width: 40px !important;
+        height: 70px !important;
+        background: linear-gradient(to bottom, #fff9e6 0%, #f5e6d3 50%, #e6d4b8 100%) !important;
+        border-radius: 6px 6px 3px 3px !important;
         box-shadow: 
             0 8px 20px rgba(0, 0, 0, 0.15),
-            inset 0 -2px 8px rgba(212, 175, 55, 0.3);
-        animation: candle-flicker 3s ease-in-out infinite;
+            inset 0 -2px 8px rgba(212, 175, 55, 0.3) !important;
+        animation: candle-flicker 3s ease-in-out infinite !important;
     }
     
     /* Stagger animation delays for natural effect */
