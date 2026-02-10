@@ -180,21 +180,114 @@ st.markdown("""
     }
     
     
-    /* Prevent any scrolling on login page */
-    body:has(.login-container), 
-    body:has(.login-container) .main,
-    body:has(.login-container) .block-container {
-        overflow: hidden !important;
-        height: 100vh !important;
-        max-height: 100vh !important;
+    /* ==================== CANDLES ON DASHBOARD ONLY ==================== */
+    /* Show candles only when NOT on login page */
+    body:not(:has(.login-container)) .candle-container {
+        position: fixed;
+        top: 80px;
+        left: 20px;
+        z-index: 1000;
+        perspective: 1000px;
     }
     
-    body:has(.login-container) .block-container {
-        padding: 0.5rem 1rem !important;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
+    body:not(:has(.login-container)) .candle-container-right {
+        position: fixed;
+        top: 80px;
+        right: 20px;
+        z-index: 1000;
+        perspective: 1000px;
+    }
+    
+    .candle {
+        position: relative;
+        width: 50px;
+        height: 80px;
+        background: linear-gradient(to bottom, #fff9e6 0%, #f5e6d3 50%, #e6d4b8 100%);
+        border-radius: 8px 8px 4px 4px;
+        box-shadow: 
+            0 10px 30px rgba(0, 0, 0, 0.2),
+            inset 0 -2px 10px rgba(212, 175, 55, 0.3);
+        animation: candle-flicker 3s ease-in-out infinite;
+    }
+    
+    .candle::before {
+        content: '';
+        position: absolute;
+        top: -5px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 5px;
+        height: 10px;
+        background: #2d2d2d;
+        border-radius: 50% 50% 0 0;
+    }
+    
+    .flame {
+        position: absolute;
+        top: -20px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 12px;
+        height: 30px;
+        background: linear-gradient(to top, 
+            rgba(255, 120, 0, 0.95) 0%, 
+            rgba(255, 180, 0, 0.9) 40%, 
+            rgba(255, 230, 80, 0.6) 80%, 
+            rgba(255, 255, 255, 0.3) 100%);
+        border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+        box-shadow: 
+            0 0 20px rgba(255, 140, 0, 0.9),
+            0 0 40px rgba(255, 100, 0, 0.5),
+            0 0 60px rgba(255, 200, 0, 0.2);
+        animation: flame-dance 1s ease-in-out infinite;
+        filter: blur(0.5px);
+    }
+    
+    .flame::after {
+        content: '';
+        position: absolute;
+        top: 5px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 8px;
+        height: 18px;
+        background: linear-gradient(to top, 
+            rgba(255, 220, 50, 0.95) 0%, 
+            rgba(255, 255, 150, 0.7) 100%);
+        border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+        animation: flame-dance 0.7s ease-in-out infinite reverse;
+    }
+    
+    .glow {
+        position: absolute;
+        top: -35px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 70px;
+        height: 70px;
+        background: radial-gradient(circle, 
+            rgba(255, 180, 50, 0.45) 0%, 
+            rgba(255, 140, 0, 0.2) 40%,
+            transparent 75%);
+        border-radius: 50%;
+        animation: glow-pulse 1.8s ease-in-out infinite;
+    }
+    
+    @keyframes flame-dance {
+        0%, 100% { transform: translateX(-50%) scaleY(1) scaleX(1) rotate(0deg); }
+        25% { transform: translateX(-52%) scaleY(1.1) scaleX(0.9) rotate(-1deg); }
+        50% { transform: translateX(-48%) scaleY(0.9) scaleX(1.1) rotate(1deg); }
+        75% { transform: translateX(-51%) scaleY(1.05) scaleX(0.95) rotate(-0.5deg); }
+    }
+    
+    @keyframes glow-pulse {
+        0%, 100% { opacity: 0.7; transform: translateX(-50%) scale(1); }
+        50% { opacity: 0.9; transform: translateX(-50%) scale(1.25); }
+    }
+    
+    @keyframes candle-flicker {
+        0%, 100% { box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2), inset 0 -2px 10px rgba(212, 175, 55, 0.3); transform: scale(1); }
+        50% { box-shadow: 0 10px 40px rgba(255, 140, 0, 0.2), inset 0 -2px 15px rgba(212, 175, 55, 0.4); transform: scale(1.01); }
     }
 
     
