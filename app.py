@@ -35,23 +35,10 @@ st.markdown("""
     }
     
     
-    /* Login-only background override */
+    /* Login-only background - Clean Professional */
     body:has(.login-container) .stApp {
-        background: linear-gradient(135deg, 
-            #667eea 0%, 
-            #764ba2 25%, 
-            #f093fb 50%, 
-            #4facfe 75%, 
-            #667eea 100%);
-        background-size: 400% 400%;
-        animation: gradient-shift 15s ease infinite;
+        background: #f5f5f5;
         font-family: 'Montserrat', sans-serif;
-    }
-    
-    @keyframes gradient-shift {
-        0% { background-position: 0% 50%; }
-        50% { background-position: 100% 50%; }
-        100% { background-position: 0% 50%; }
     }
     
     /* Global Scroll Control */
@@ -261,325 +248,163 @@ st.markdown("""
     }
     
     
-    /* ==================== BRAND HEADER - The Kandle Co ==================== */
+    /* ==================== PROFESSIONAL BRAND HEADER ==================== */
     .brand-header {
         text-align: center;
-        margin: 0.8rem 0 1rem 0;
-        animation: fade-in-down 0.8s ease-out;
+        margin: 1rem 0 0.5rem 0;
     }
     
     .brand-title {
         font-family: 'Playfair Display', serif;
-        font-size: clamp(1.2rem, 4vw, 1.5rem);
+        font-size: 1.3rem;
         font-weight: 600;
-        letter-spacing: 0.25em;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
+        letter-spacing: 0.2em;
+        color: #1a1a1a;
         margin: 0;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.05);
     }
     
     .brand-subtitle {
-        font-family: 'Cormorant Garamond', serif;
-        font-size: clamp(0.65rem, 2vw, 0.8rem);
-        font-weight: 300;
-        letter-spacing: 0.15em;
-        color: #667eea;
-        margin-top: 0.3rem;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 0.7rem;
+        font-weight: 400;
+        letter-spacing: 0.1em;
+        color: #666;
+        margin-top: 0.2rem;
         text-transform: uppercase;
     }
     
     .divider {
-        width: 60px;
-        height: 1px;
-        background: linear-gradient(to right, transparent, #667eea, transparent);
+        width: 50px;
+        height: 2px;
+        background: #0066cc;
         margin: 0.8rem auto;
     }
     
-    /* ==================== ULTRA-COMPACT LOGIN FORM ==================== */
+    /* ==================== PROFESSIONAL LOGIN FORM ==================== */
     .login-container {
-        background: linear-gradient(145deg, 
-            rgba(255, 255, 255, 0.25) 0%, 
-            rgba(255, 255, 255, 0.1) 100%);
-        backdrop-filter: blur(20px) saturate(180%);
-        -webkit-backdrop-filter: blur(20px) saturate(180%);
-        border-radius: 14px;
-        padding: 1rem 1rem;
-        box-shadow: 
-            0 8px 32px 0 rgba(31, 38, 135, 0.15),
-            0 0 0 1px rgba(255, 255, 255, 0.18),
-            inset 0 0 60px rgba(255, 255, 255, 0.05);
-        margin: 0.5rem auto;
-        max-width: 250px;
-        position: relative;
-        overflow: visible;
-        animation: float-in 1s cubic-bezier(0.34, 1.56, 0.64, 1);
-        border: 1px solid rgba(255, 255, 255, 0.3);
-    }
-    
-    /* Animated gradient border */
-    .login-container::before {
-        content: '';
-        position: absolute;
-        top: -2px;
-        left: -2px;
-        right: -2px;
-        bottom: -2px;
-        background: linear-gradient(45deg, 
-            #ff6b9d 0%,
-            #c06bff 25%,
-            #00d4ff 50%,
-            #ffd700 75%,
-            #ff6b9d 100%);
-        background-size: 400% 400%;
-        border-radius: 14px;
-        z-index: -1;
-        animation: gradient-rotate 8s ease infinite;
-        opacity: 0.35;
-        filter: blur(4px);
-    }
-    
-    @keyframes gradient-rotate {
-        0% { background-position: 0% 50%; }
-        50% { background-position: 100% 50%; }
-        100% { background-position: 0% 50%; }
-    }
-    
-    /* Floating orbs background */
-    .login-container::after {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: 
-            radial-gradient(circle at 20% 20%, rgba(138, 43, 226, 0.1) 0%, transparent 40%),
-            radial-gradient(circle at 80% 80%, rgba(255, 107, 157, 0.1) 0%, transparent 40%),
-            radial-gradient(circle at 40% 60%, rgba(0, 212, 255, 0.08) 0%, transparent 40%);
-        pointer-events: none;
-        z-index: 0;
-        border-radius: 14px;
-        animation: orb-float 6s ease-in-out infinite;
-    }
-    
-    @keyframes orb-float {
-        0%, 100% { transform: scale(1) translateY(0); }
-        50% { transform: scale(1.05) translateY(-10px); }
+        background: #ffffff;
+        border-radius: 8px;
+        padding: 1.5rem 1.5rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        margin: 1rem auto;
+        max-width: 320px;
+        border: 1px solid #e0e0e0;
     }
     
     .login-content {
         position: relative;
-        z-index: 1;
     }
     
     .login-icon {
         text-align: center;
-        margin-bottom: 0.5rem;
+        margin-bottom: 0.8rem;
     }
     
     .login-icon-circle {
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        width: 40px;
-        height: 40px;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        width: 50px;
+        height: 50px;
+        background: #0066cc;
         border-radius: 50%;
-        box-shadow: 
-            0 8px 25px rgba(102, 126, 234, 0.3),
-            0 0 0 4px rgba(255, 255, 255, 0.1),
-            inset 0 -2px 6px rgba(0, 0, 0, 0.2);
-        animation: icon-bounce 3s ease-in-out infinite;
-        position: relative;
+        box-shadow: 0 2px 6px rgba(0, 102, 204, 0.2);
     }
     
     .login-icon-circle::before {
-        content: '🔐';
-        font-size: 1.1rem;
-        filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+        content: '🔒';
+        font-size: 1.5rem;
     }
     
-    /* Glow effect */
-    .login-icon-circle::after {
-        content: '';
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 100%;
-        height: 100%;
-        border-radius: 50%;
-        background: radial-gradient(circle, rgba(102, 126, 234, 0.4) 0%, transparent 70%);
-        animation: pulse-glow 2s ease-in-out infinite;
-    }
-    
-    @keyframes icon-bounce {
-        0%, 100% { 
-            transform: translateY(0) scale(1);
-            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
-        }
-        50% { 
-            transform: translateY(-4px) scale(1.02);
-            box-shadow: 0 12px 35px rgba(102, 126, 234, 0.4);
-        }
-    }
-    
-    @keyframes pulse-glow {
-        0%, 100% { opacity: 0.4; transform: translate(-50%, -50%) scale(1); }
-        50% { opacity: 0.8; transform: translate(-50%, -50%) scale(1.3); }
-    }
     
     .login-title {
-        font-family: 'Playfair Display', serif;
-        font-size: clamp(0.9rem, 2.5vw, 1.1rem);
-        font-weight: 700;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 1.1rem;
+        font-weight: 600;
         text-align: center;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        margin-bottom: 0.2rem;
-        letter-spacing: 0.02em;
-        animation: text-shimmer 3s ease-in-out infinite;
-        background-size: 200% auto;
-    }
-    
-    @keyframes text-shimmer {
-        0%, 100% { background-position: 0% center; }
-        50% { background-position: 100% center; }
+        color: #1a1a1a;
+        margin-bottom: 0.3rem;
     }
     
     .login-subtitle {
         font-family: 'Montserrat', sans-serif;
-        font-size: clamp(0.6rem, 1.3vw, 0.7rem);
+        font-size: 0.75rem;
         text-align: center;
-        background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        margin-bottom: 0.8rem;
-        font-weight: 500;
-        letter-spacing: 0.05em;
+        color: #666;
+        margin-bottom: 1.2rem;
     }
     
     
-    /* Enhanced Input Fields */
+    /* Professional Input Fields */
     .stTextInput > div > div > input {
-        border: 2px solid rgba(102, 126, 234, 0.2);
-        border-radius: 7px;
-        padding: 0.55rem 0.75rem;
+        border: 1px solid #d0d0d0;
+        border-radius: 4px;
+        padding: 0.65rem 0.85rem;
         font-family: 'Montserrat', sans-serif;
-        font-size: 0.75rem;
-        font-weight: 500;
-        color: #2d3748 !important;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        background: linear-gradient(145deg, #ffffff 0%, #f7fafc 100%);
-        box-shadow: 
-            inset 0 2px 8px rgba(0, 0, 0, 0.05),
-            0 2px 10px rgba(102, 126, 234, 0.1);
+        font-size: 0.85rem;
+        font-weight: 400;
+        color: #1a1a1a !important;
+        transition: all 0.2s ease;
+        background: #ffffff;
+        box-shadow: none;
     }
     
     .stTextInput > div > div > input:focus {
-        border-color: #667eea;
-        box-shadow: 
-            0 0 0 4px rgba(102, 126, 234, 0.15),
-            0 8px 24px rgba(102, 126, 234, 0.2),
-            inset 0 2px 8px rgba(102, 126, 234, 0.1);
+        border-color: #0066cc;
+        box-shadow: 0 0 0 2px rgba(0, 102, 204, 0.1);
         background: #ffffff;
-        transform: translateY(-2px);
+        outline: none;
     }
     
     .stTextInput > div > div > input::placeholder {
-        color: #a0aec0;
-        font-style: italic;
-        font-size: 0.7rem;
+        color: #999;
+        font-style: normal;
+        font-size: 0.85rem;
     }
     
-    /* Enhanced Labels */
+    /* Professional Labels */
     .stTextInput > label {
         font-family: 'Montserrat', sans-serif;
-        font-size: 0.55rem;
-        font-weight: 700;
-        background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        letter-spacing: 0.08em;
+        font-size: 0.7rem;
+        font-weight: 600;
+        color: #1a1a1a;
+        letter-spacing: 0.02em;
         text-transform: uppercase;
-        margin-bottom: 0.2rem;
+        margin-bottom: 0.3rem;
         display: block;
     }
     
     .stTextInput > label::before {
-        content: '●';
-        display: inline-block;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        margin-right: 8px;
-        vertical-align: middle;
-        font-size: 0.6rem;
+        display: none;
     }
     
-    /* Enhanced Submit Button */
+    /* Professional Button */
     .stButton > button[kind="primary"] {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        background-size: 200% 100%;
+        background: #0066cc;
         color: #ffffff;
         border: none;
-        border-radius: 7px;
-        padding: 0.65rem 1.1rem;
+        border-radius: 4px;
+        padding: 0.7rem 1.2rem;
         font-family: 'Montserrat', sans-serif;
-        font-size: 0.7rem;
-        font-weight: 700;
-        letter-spacing: 0.15em;
+        font-size: 0.85rem;
+        font-weight: 600;
+        letter-spacing: 0.05em;
         text-transform: uppercase;
         width: 100%;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        box-shadow: 
-            0 8px 25px rgba(102, 126, 234, 0.35),
-            inset 0 1px 0 rgba(255, 255, 255, 0.3);
-        margin-top: 0.8rem;
-        position: relative;
-        overflow: hidden;
-    }
-    
-    .stButton > button[kind="primary"]::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(90deg, 
-            transparent 0%, 
-            rgba(255, 255, 255, 0.3) 50%, 
-            transparent 100%);
-        transition: left 0.6s ease;
+        transition: all 0.2s ease;
+        box-shadow: 0 2px 4px rgba(0, 102, 204, 0.2);
+        margin-top: 1rem;
     }
     
     .stButton > button[kind="primary"]:hover {
-        transform: translateY(-3px) scale(1.02);
-        box-shadow: 
-            0 15px 40px rgba(102, 126, 234, 0.6),
-            0 0 0 4px rgba(102, 126, 234, 0.2),
-            inset 0 1px 0 rgba(255, 255, 255, 0.4);
-        background-position: 100% 0;
-    }
-    
-    .stButton > button[kind="primary"]:hover::before {
-        left: 100%;
+        background: #0052a3;
+        transform: translateY(-1px);
+        box-shadow: 0 4px 8px rgba(0, 102, 204, 0.3);
     }
     
     .stButton > button[kind="primary"]:active {
-        transform: translateY(-1px) scale(1);
-        box-shadow: 
-            0 8px 20px rgba(102, 126, 234, 0.5),
-            inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        transform: translateY(0);
+        box-shadow: 0 2px 4px rgba(0, 102, 204, 0.2);
     }
     
     /* ==================== DASHBOARD ==================== */
