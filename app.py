@@ -202,7 +202,8 @@ st.markdown("""
     /* ==================== MINIMAL BRAND HEADER ==================== */
     .brand-header {
         text-align: center;
-        margin: 0.3rem 0 0.2rem 0;
+        margin: 0 0 0.2rem 0;
+        padding-top: 0;
     }
     
     .brand-title {
