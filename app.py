@@ -185,7 +185,7 @@ st.markdown("""
     /* Candle line container - simple selector for reliability */
     .candle-line-container {
         position: fixed !important;
-        top: 5px !important;
+        top: 20px !important;
         left: 0 !important;
         right: 0 !important;
         width: 100% !important;
@@ -916,10 +916,6 @@ st.markdown("""
 if st.session_state.get('logged_in', False):
     st.markdown("""
     <div class="candle-line-container">
-        <div class="candle">
-            <div class="glow"></div>
-            <div class="flame"></div>
-        </div>
         <div class="candle">
             <div class="glow"></div>
             <div class="flame"></div>
