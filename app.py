@@ -34,10 +34,24 @@ st.markdown("""
         font-family: 'Inter', sans-serif;
     }
     
+    
     /* Login-only background override */
     body:has(.login-container) .stApp {
-        background: linear-gradient(135deg, #f9f7f3 0%, #ede8df 100%);
+        background: linear-gradient(135deg, 
+            #667eea 0%, 
+            #764ba2 25%, 
+            #f093fb 50%, 
+            #4facfe 75%, 
+            #667eea 100%);
+        background-size: 400% 400%;
+        animation: gradient-shift 15s ease infinite;
         font-family: 'Montserrat', sans-serif;
+    }
+    
+    @keyframes gradient-shift {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
     }
     
     /* Global Scroll Control */
@@ -290,43 +304,56 @@ st.markdown("""
         margin: 1.5rem auto;
     }
     
-    /* ==================== NEW LOGIN FORM DESIGN ==================== */
+    /* ==================== MODERN LOGIN FORM DESIGN ==================== */
     .login-container {
         background: linear-gradient(145deg, 
-            rgba(255, 255, 255, 0.95) 0%, 
-            rgba(249, 247, 243, 0.98) 100%);
-        backdrop-filter: blur(15px);
-        border-radius: 16px;
-        padding: 1.2rem 1.4rem;
+            rgba(255, 255, 255, 0.25) 0%, 
+            rgba(255, 255, 255, 0.1) 100%);
+        backdrop-filter: blur(20px) saturate(180%);
+        -webkit-backdrop-filter: blur(20px) saturate(180%);
+        border-radius: 20px;
+        padding: 1.5rem 1.5rem;
         box-shadow: 
-            0 20px 60px rgba(0, 0, 0, 0.06),
-            0 0 0 1px rgba(212, 175, 55, 0.12);
-        margin: 0.5rem auto;
-        max-width: 320px;
+            0 8px 32px 0 rgba(31, 38, 135, 0.15),
+            0 0 0 1px rgba(255, 255, 255, 0.18),
+            inset 0 0 60px rgba(255, 255, 255, 0.05);
+        margin: 1rem auto;
+        max-width: 300px;
         position: relative;
         overflow: visible;
-        animation: fade-in-scale 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+        animation: float-in 1s cubic-bezier(0.34, 1.56, 0.64, 1);
+        border: 1px solid rgba(255, 255, 255, 0.3);
     }
     
-    /* Decorative top border */
+    /* Animated gradient border */
     .login-container::before {
         content: '';
         position: absolute;
-        top: 0;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 50%;
-        height: 3px;
-        background: linear-gradient(90deg, 
-            transparent 0%, 
-            var(--primary-gold) 20%,
-            var(--accent-gold) 50%,
-            var(--primary-gold) 80%, 
-            transparent 100%);
-        border-radius: 0 0 15px 15px;
+        top: -2px;
+        left: -2px;
+        right: -2px;
+        bottom: -2px;
+        background: linear-gradient(45deg, 
+            #ff6b9d 0%,
+            #c06bff 25%,
+            #00d4ff 50%,
+            #ffd700 75%,
+            #ff6b9d 100%);
+        background-size: 400% 400%;
+        border-radius: 20px;
+        z-index: -1;
+        animation: gradient-rotate 8s ease infinite;
+        opacity: 0.5;
+        filter: blur(6px);
     }
     
-    /* Subtle background pattern */
+    @keyframes gradient-rotate {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+    
+    /* Floating orbs background */
     .login-container::after {
         content: '';
         position: absolute;
@@ -335,10 +362,18 @@ st.markdown("""
         right: 0;
         bottom: 0;
         background: 
-            radial-gradient(circle at 20% 30%, rgba(212, 175, 55, 0.02) 0%, transparent 50%),
-            radial-gradient(circle at 80% 70%, rgba(212, 175, 55, 0.03) 0%, transparent 50%);
+            radial-gradient(circle at 20% 20%, rgba(138, 43, 226, 0.1) 0%, transparent 40%),
+            radial-gradient(circle at 80% 80%, rgba(255, 107, 157, 0.1) 0%, transparent 40%),
+            radial-gradient(circle at 40% 60%, rgba(0, 212, 255, 0.08) 0%, transparent 40%);
         pointer-events: none;
         z-index: 0;
+        border-radius: 20px;
+        animation: orb-float 6s ease-in-out infinite;
+    }
+    
+    @keyframes orb-float {
+        0%, 100% { transform: scale(1) translateY(0); }
+        50% { transform: scale(1.05) translateY(-10px); }
     }
     
     .login-content {
@@ -348,85 +383,123 @@ st.markdown("""
     
     .login-icon {
         text-align: center;
-        margin-bottom: 0.5rem;
+        margin-bottom: 0.75rem;
     }
     
     .login-icon-circle {
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        width: 45px;
-        height: 45px;
-        background: linear-gradient(135deg, var(--primary-gold) 0%, var(--accent-gold) 100%);
+        width: 50px;
+        height: 50px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         border-radius: 50%;
         box-shadow: 
-            0 10px 30px rgba(212, 175, 55, 0.3),
-            inset 0 -2px 8px rgba(0, 0, 0, 0.1);
-        animation: icon-pulse 3s ease-in-out infinite;
+            0 12px 35px rgba(102, 126, 234, 0.3),
+            0 0 0 6px rgba(255, 255, 255, 0.1),
+            inset 0 -3px 10px rgba(0, 0, 0, 0.2);
+        animation: icon-bounce 3s ease-in-out infinite;
+        position: relative;
     }
     
     .login-icon-circle::before {
         content: '🔐';
-        font-size: 1.2rem;
+        font-size: 1.5rem;
+        filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.3));
     }
     
-    @keyframes icon-pulse {
-        0%, 100% { transform: scale(1); box-shadow: 0 8px 25px rgba(212, 175, 55, 0.25); }
-        50% { transform: scale(1.04); box-shadow: 0 12px 35px rgba(212, 175, 55, 0.35); }
+    /* Glow effect */
+    .login-icon-circle::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(102, 126, 234, 0.4) 0%, transparent 70%);
+        animation: pulse-glow 2s ease-in-out infinite;
+    }
+    
+    @keyframes icon-bounce {
+        0%, 100% { 
+            transform: translateY(0) scale(1);
+            box-shadow: 0 12px 35px rgba(102, 126, 234, 0.3);
+        }
+        50% { 
+            transform: translateY(-6px) scale(1.03);
+            box-shadow: 0 18px 45px rgba(102, 126, 234, 0.5);
+        }
+    }
+    
+    @keyframes pulse-glow {
+        0%, 100% { opacity: 0.4; transform: translate(-50%, -50%) scale(1); }
+        50% { opacity: 0.8; transform: translate(-50%, -50%) scale(1.3); }
     }
     
     .login-title {
         font-family: 'Playfair Display', serif;
-        font-size: clamp(1.1rem, 2.8vw, 1.4rem);
-        font-weight: 600;
+        font-size: clamp(1.2rem, 3vw, 1.5rem);
+        font-weight: 700;
         text-align: center;
-        background: linear-gradient(135deg, var(--primary-dark) 0%, var(--secondary-dark) 100%);
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
-        margin-bottom: 0.05rem;
-        letter-spacing: 0.06em;
+        margin-bottom: 0.3rem;
+        letter-spacing: 0.02em;
+        animation: text-shimmer 3s ease-in-out infinite;
+        background-size: 200% auto;
+    }
+    
+    @keyframes text-shimmer {
+        0%, 100% { background-position: 0% center; }
+        50% { background-position: 100% center; }
     }
     
     .login-subtitle {
-        font-family: 'Cormorant Garamond', serif;
-        font-size: clamp(0.7rem, 1.4vw, 0.8rem);
+        font-family: 'Montserrat', sans-serif;
+        font-size: clamp(0.7rem, 1.5vw, 0.8rem);
         text-align: center;
-        color: var(--text-light);
-        margin-bottom: 0.9rem;
-        font-style: italic;
-        letter-spacing: 0.04em;
-        height:8px;
+        background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 1.2rem;
+        font-weight: 500;
+        letter-spacing: 0.05em;
     }
+    
     
     /* Enhanced Input Fields */
     .stTextInput > div > div > input {
-        border: 1px solid transparent;
-        border-radius: 8px;
-        padding: 0.7rem 0.9rem;
+        border: 2px solid rgba(102, 126, 234, 0.2);
+        border-radius: 10px;
+        padding: 0.65rem 0.9rem;
         font-family: 'Montserrat', sans-serif;
         font-size: 0.85rem;
         font-weight: 500;
-        color: #000000 !important;
+        color: #2d3748 !important;
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        background: linear-gradient(145deg, #ffffff 0%, var(--bg-cream) 100%);
+        background: linear-gradient(145deg, #ffffff 0%, #f7fafc 100%);
         box-shadow: 
-            inset 0 1px 6px rgba(0, 0, 0, 0.04),
-            0 1px 3px rgba(0, 0, 0, 0.02);
+            inset 0 2px 8px rgba(0, 0, 0, 0.05),
+            0 2px 10px rgba(102, 126, 234, 0.1);
     }
     
     .stTextInput > div > div > input:focus {
-        border-color: var(--primary-gold);
+        border-color: #667eea;
         box-shadow: 
-            0 0 0 4px rgba(212, 175, 55, 0.12),
-            inset 0 2px 8px rgba(212, 175, 55, 0.08),
-            0 8px 20px rgba(212, 175, 55, 0.15);
-        background: var(--white);
+            0 0 0 4px rgba(102, 126, 234, 0.15),
+            0 8px 24px rgba(102, 126, 234, 0.2),
+            inset 0 2px 8px rgba(102, 126, 234, 0.1);
+        background: #ffffff;
         transform: translateY(-2px);
     }
     
     .stTextInput > div > div > input::placeholder {
-        color: #999;
+        color: #a0aec0;
         font-style: italic;
         font-size: 0.8rem;
     }
@@ -434,48 +507,49 @@ st.markdown("""
     /* Enhanced Labels */
     .stTextInput > label {
         font-family: 'Montserrat', sans-serif;
-        font-size: 0.62rem;
-        font-weight: 600;
-        color: var(--primary-dark);
-        letter-spacing: 0.05em;
+        font-size: 0.65rem;
+        font-weight: 700;
+        background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        letter-spacing: 0.08em;
         text-transform: uppercase;
-        margin-bottom: 0.25rem;
+        margin-bottom: 0.3rem;
         display: block;
     }
     
     .stTextInput > label::before {
-        content: '';
+        content: '●';
         display: inline-block;
-        width: 4px;
-        height: 4px;
-        background: var(--primary-gold);
-        border-radius: 50%;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
         margin-right: 8px;
         vertical-align: middle;
+        font-size: 0.6rem;
     }
     
     /* Enhanced Submit Button */
     .stButton > button[kind="primary"] {
-        background: linear-gradient(135deg, 
-            var(--primary-dark) 0%, 
-            var(--secondary-dark) 50%,
-            var(--primary-dark) 100%);
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         background-size: 200% 100%;
-        color: var(--primary-gold);
-        border: 2px solid var(--primary-gold);
-        border-radius: 8px;
-        padding: 0.8rem 1.4rem;
+        color: #ffffff;
+        border: none;
+        border-radius: 10px;
+        padding: 0.75rem 1.3rem;
         font-family: 'Montserrat', sans-serif;
         font-size: 0.8rem;
         font-weight: 700;
-        letter-spacing: 0.14em;
+        letter-spacing: 0.15em;
         text-transform: uppercase;
         width: 100%;
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         box-shadow: 
-            0 6px 20px rgba(0, 0, 0, 0.2),
-            inset 0 1px 0 rgba(255, 255, 255, 0.1);
-        margin-top: 1.2rem;
+            0 8px 25px rgba(102, 126, 234, 0.35),
+            inset 0 1px 0 rgba(255, 255, 255, 0.3);
+        margin-top: 1rem;
         position: relative;
         overflow: hidden;
     }
@@ -489,18 +563,18 @@ st.markdown("""
         height: 100%;
         background: linear-gradient(90deg, 
             transparent 0%, 
-            rgba(255, 255, 255, 0.1) 50%, 
+            rgba(255, 255, 255, 0.3) 50%, 
             transparent 100%);
         transition: left 0.6s ease;
     }
     
     .stButton > button[kind="primary"]:hover {
-        transform: translateY(-3px);
+        transform: translateY(-3px) scale(1.02);
         box-shadow: 
-            0 12px 35px rgba(212, 175, 55, 0.5),
-            inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            0 15px 40px rgba(102, 126, 234, 0.6),
+            0 0 0 4px rgba(102, 126, 234, 0.2),
+            inset 0 1px 0 rgba(255, 255, 255, 0.4);
         background-position: 100% 0;
-        border-color: var(--accent-gold);
     }
     
     .stButton > button[kind="primary"]:hover::before {
@@ -508,10 +582,10 @@ st.markdown("""
     }
     
     .stButton > button[kind="primary"]:active {
-        transform: translateY(-1px);
+        transform: translateY(-1px) scale(1);
         box-shadow: 
-            0 6px 20px rgba(212, 175, 55, 0.4),
-            inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            0 8px 20px rgba(102, 126, 234, 0.5),
+            inset 0 1px 0 rgba(255, 255, 255, 0.2);
     }
     
     /* ==================== DASHBOARD ==================== */
@@ -651,6 +725,17 @@ st.markdown("""
         to {
             opacity: 1;
             transform: scale(1);
+        }
+    }
+    
+    @keyframes float-in {
+        from {
+            opacity: 0;
+            transform: translateY(30px) scale(0.95);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0) scale(1);
         }
     }
     
