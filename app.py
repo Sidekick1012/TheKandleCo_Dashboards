@@ -180,55 +180,65 @@ st.markdown("""
     }
     
     
-    /* ==================== CANDLES ON DASHBOARD ONLY ==================== */
-    /* Show candles only when NOT on login page */
-    body:not(:has(.login-container)) .candle-container {
+    
+    /* ==================== HEADER CANDLE LINE (Dashboard Only) ==================== */
+    /* Candle line container - spans full width of header */
+    body:not(:has(.login-container)) .candle-line-container {
         position: fixed;
-        top: 80px;
-        left: 20px;
+        top: 10px;
+        left: 0;
+        right: 0;
+        width: 100%;
+        height: 90px;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: flex-start;
+        padding: 0 5%;
         z-index: 1000;
-        perspective: 1000px;
+        pointer-events: none;
     }
     
-    body:not(:has(.login-container)) .candle-container-right {
-        position: fixed;
-        top: 80px;
-        right: 20px;
-        z-index: 1000;
-        perspective: 1000px;
-    }
-    
-    .candle {
+    /* Individual candles smaller for header line */
+    .candle-line-container .candle {
         position: relative;
-        width: 50px;
-        height: 80px;
+        width: 35px;
+        height: 60px;
         background: linear-gradient(to bottom, #fff9e6 0%, #f5e6d3 50%, #e6d4b8 100%);
-        border-radius: 8px 8px 4px 4px;
+        border-radius: 6px 6px 3px 3px;
         box-shadow: 
-            0 10px 30px rgba(0, 0, 0, 0.2),
-            inset 0 -2px 10px rgba(212, 175, 55, 0.3);
+            0 8px 20px rgba(0, 0, 0, 0.15),
+            inset 0 -2px 8px rgba(212, 175, 55, 0.3);
         animation: candle-flicker 3s ease-in-out infinite;
     }
     
-    .candle::before {
+    /* Stagger animation delays for natural effect */
+    .candle-line-container .candle:nth-child(1) { animation-delay: 0s; }
+    .candle-line-container .candle:nth-child(2) { animation-delay: 0.3s; }
+    .candle-line-container .candle:nth-child(3) { animation-delay: 0.6s; }
+    .candle-line-container .candle:nth-child(4) { animation-delay: 0.9s; }
+    .candle-line-container .candle:nth-child(5) { animation-delay: 1.2s; }
+    .candle-line-container .candle:nth-child(6) { animation-delay: 0.4s; }
+    .candle-line-container .candle:nth-child(7) { animation-delay: 0.7s; }
+    
+    .candle-line-container .candle::before {
         content: '';
         position: absolute;
-        top: -5px;
+        top: -4px;
         left: 50%;
         transform: translateX(-50%);
-        width: 5px;
-        height: 10px;
+        width: 4px;
+        height: 8px;
         background: #2d2d2d;
         border-radius: 50% 50% 0 0;
     }
     
-    .flame {
+    .candle-line-container .flame {
         position: absolute;
-        top: -20px;
+        top: -16px;
         left: 50%;
         transform: translateX(-50%);
-        width: 12px;
-        height: 30px;
+        width: 10px;
+        height: 24px;
         background: linear-gradient(to top, 
             rgba(255, 120, 0, 0.95) 0%, 
             rgba(255, 180, 0, 0.9) 40%, 
@@ -236,21 +246,20 @@ st.markdown("""
             rgba(255, 255, 255, 0.3) 100%);
         border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
         box-shadow: 
-            0 0 20px rgba(255, 140, 0, 0.9),
-            0 0 40px rgba(255, 100, 0, 0.5),
-            0 0 60px rgba(255, 200, 0, 0.2);
+            0 0 15px rgba(255, 140, 0, 0.8),
+            0 0 30px rgba(255, 100, 0, 0.4);
         animation: flame-dance 1s ease-in-out infinite;
-        filter: blur(0.5px);
+        filter: blur(0.4px);
     }
     
-    .flame::after {
+    .candle-line-container .flame::after {
         content: '';
         position: absolute;
-        top: 5px;
+        top: 4px;
         left: 50%;
         transform: translateX(-50%);
-        width: 8px;
-        height: 18px;
+        width: 6px;
+        height: 14px;
         background: linear-gradient(to top, 
             rgba(255, 220, 50, 0.95) 0%, 
             rgba(255, 255, 150, 0.7) 100%);
@@ -258,17 +267,17 @@ st.markdown("""
         animation: flame-dance 0.7s ease-in-out infinite reverse;
     }
     
-    .glow {
+    .candle-line-container .glow {
         position: absolute;
-        top: -35px;
+        top: -28px;
         left: 50%;
         transform: translateX(-50%);
-        width: 70px;
-        height: 70px;
+        width: 50px;
+        height: 50px;
         background: radial-gradient(circle, 
-            rgba(255, 180, 50, 0.45) 0%, 
-            rgba(255, 140, 0, 0.2) 40%,
-            transparent 75%);
+            rgba(255, 180, 50, 0.4) 0%, 
+            rgba(255, 140, 0, 0.15) 40%,
+            transparent 70%);
         border-radius: 50%;
         animation: glow-pulse 1.8s ease-in-out infinite;
     }
