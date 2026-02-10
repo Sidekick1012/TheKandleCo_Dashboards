@@ -185,7 +185,7 @@ st.markdown("""
     /* Candle line container - simple selector for reliability */
     .candle-line-container {
         position: fixed !important;
-        top: 80px !important;
+        top: 5px !important;
         left: 0 !important;
         right: 0 !important;
         width: 100% !important;
