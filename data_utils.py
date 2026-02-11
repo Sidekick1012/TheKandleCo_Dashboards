@@ -338,6 +338,11 @@ def get_yoy_growth_data():
     df = df.copy()
     df[['month_name', 'year']] = df['month_year'].str.split('-', expand=True)
     
+    # Filter out rows where year is None or empty
+    df = df[df['year'].notna() & (df['year'] != '')]
+    
+    if df.empty: return pd.DataFrame()
+    
     # Pivot
     df_pivot = df.pivot_table(index='month_name', columns='year', values='total_sales', aggfunc='sum')
     
