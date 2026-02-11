@@ -61,9 +61,12 @@ def load_view():
         df_sp = data_utils.apply_filters(data_utils.get_stockist_performance(), selected_year, selected_months)
         if not df_sp.empty:
             df_ts = df_sp.groupby('stockist_name')['sales_amount'].sum().reset_index().sort_values('sales_amount', ascending=False).head(5)
+            df_ts.reset_index(drop=True, inplace=True)
+            df_ts.index = df_ts.index + 1  # Start from 1
+            df_ts.index.name = 'Rank'
             df_ts.columns = ['Stockist Name', 'Sales Amount']
             df_ts['Sales Amount'] = df_ts['Sales Amount'].apply(lambda x: f"Rs. {x:,.0f}")
-            st.dataframe(df_ts, use_container_width=True, hide_index=True)
+            st.dataframe(df_ts, use_container_width=True)
         else:
             st.info("No stockist data for selection.")
     
