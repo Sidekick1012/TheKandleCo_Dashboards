@@ -26,7 +26,8 @@ def load_view():
     st.markdown("### Comparative Performance Table")
     # Replace NaN with dash for better display
     df_display = df_yoy.fillna('-')
-    st.dataframe(df_display.style.highlight_max(axis=1, color='#d4af3733'), use_container_width=True)
+    # Format numbers as currency where not dash
+    st.dataframe(df_display, use_container_width=True)
     
     # --- Monthly Comparison Chart ---
     st.markdown("### Month-on-Month Same Period Comparison")
