@@ -25,40 +25,51 @@ def load_view():
     # --- Growth Heatmap ---
     st.markdown("### Comparative Performance Heatmap")
     
-    # Prepare data for heatmap
+    import plotly.graph_objects as go
+    
+    # Prepare data
     df_heatmap = df_yoy.copy()
     
-    # Create text labels with "None" for missing values
-    text_labels = df_heatmap.map(lambda x: 'None' if pd.isna(x) else f'Rs. {x:,.0f}')
+    # Get years and months
+    years = df_heatmap.columns.tolist()
+    months = df_heatmap.index.tolist()
     
-    # Replace NaN with 0 for color scaling (won't show in text)
-    df_heatmap_values = df_heatmap.fillna(0)
+    # Prepare values and text
+    z_values = []
+    text_values = []
     
-    # Create heatmap
-    fig_heatmap = px.imshow(
-        df_heatmap_values.T,  # Transpose so years are rows
-        labels=dict(x="Month", y="Year", color="Sales (Rs)"),
-        x=df_heatmap_values.index.tolist(),
-        y=df_heatmap_values.columns.tolist(),
-        color_continuous_scale='YlOrRd',  # Yellow to Red
-        text_auto=False,  # We'll add custom text
-        aspect='auto'
-    )
+    for year in years:
+        year_values = []
+        year_text = []
+        for month in months:
+            val = df_heatmap.loc[month, year]
+            if pd.isna(val):
+                year_values.append(0)  # For coloring
+                year_text.append('None')
+            else:
+                year_values.append(val)
+                year_text.append(f'Rs. {val:,.0f}')
+        z_values.append(year_values)
+        text_values.append(year_text)
     
-    # Add custom text annotations
-    for i, year in enumerate(df_heatmap_values.columns):
-        for j, month in enumerate(df_heatmap_values.index):
-            fig_heatmap.add_annotation(
-                text=text_labels.loc[month, year],
-                x=j, y=i,
-                showarrow=False,
-                font=dict(color='black' if df_heatmap_values.loc[month, year] < df_heatmap_values.max().max()/2 else 'white')
-            )
+    # Create heatmap with graph_objects
+    fig_heatmap = go.Figure(data=go.Heatmap(
+        z=z_values,
+        x=months,
+        y=years,
+        text=text_values,
+        texttemplate='%{text}',
+        textfont={"size": 10},
+        colorscale='YlOrRd',
+        showscale=True,
+        hoverongaps=False
+    ))
     
     fig_heatmap.update_layout(
-        height=400,
-        xaxis_title="Month",
-        yaxis_title="Year"
+        title='Sales Performance by Year and Month',
+        xaxis_title='Month',
+        yaxis_title='Year',
+        height=300
     )
     
     st.plotly_chart(fig_heatmap, use_container_width=True)
