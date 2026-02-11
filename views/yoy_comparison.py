@@ -29,7 +29,7 @@ def load_view():
     df_heatmap = df_yoy.copy()
     
     # Create text labels with "None" for missing values
-    text_labels = df_heatmap.applymap(lambda x: 'None' if pd.isna(x) else f'Rs. {x:,.0f}')
+    text_labels = df_heatmap.map(lambda x: 'None' if pd.isna(x) else f'Rs. {x:,.0f}')
     
     # Replace NaN with 0 for color scaling (won't show in text)
     df_heatmap_values = df_heatmap.fillna(0)
