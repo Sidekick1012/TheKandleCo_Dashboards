@@ -22,12 +22,46 @@ def load_view():
         st.warning("Insufficient data for Year-over-Year analysis.")
         return
 
-    # --- Growth Table ---
-    st.markdown("### Comparative Performance Table")
-    # Replace NaN with dash for better display
-    df_display = df_yoy.fillna('-')
-    # Format numbers as currency where not dash
-    st.dataframe(df_display, use_container_width=True)
+    # --- Growth Heatmap ---
+    st.markdown("### Comparative Performance Heatmap")
+    
+    # Prepare data for heatmap
+    df_heatmap = df_yoy.copy()
+    
+    # Create text labels with "None" for missing values
+    text_labels = df_heatmap.applymap(lambda x: 'None' if pd.isna(x) else f'Rs. {x:,.0f}')
+    
+    # Replace NaN with 0 for color scaling (won't show in text)
+    df_heatmap_values = df_heatmap.fillna(0)
+    
+    # Create heatmap
+    fig_heatmap = px.imshow(
+        df_heatmap_values.T,  # Transpose so years are rows
+        labels=dict(x="Month", y="Year", color="Sales (Rs)"),
+        x=df_heatmap_values.index.tolist(),
+        y=df_heatmap_values.columns.tolist(),
+        color_continuous_scale='YlOrRd',  # Yellow to Red
+        text_auto=False,  # We'll add custom text
+        aspect='auto'
+    )
+    
+    # Add custom text annotations
+    for i, year in enumerate(df_heatmap_values.columns):
+        for j, month in enumerate(df_heatmap_values.index):
+            fig_heatmap.add_annotation(
+                text=text_labels.loc[month, year],
+                x=j, y=i,
+                showarrow=False,
+                font=dict(color='black' if df_heatmap_values.loc[month, year] < df_heatmap_values.max().max()/2 else 'white')
+            )
+    
+    fig_heatmap.update_layout(
+        height=400,
+        xaxis_title="Month",
+        yaxis_title="Year"
+    )
+    
+    st.plotly_chart(fig_heatmap, use_container_width=True)
     
     # --- Monthly Comparison Chart ---
     st.markdown("### Month-on-Month Same Period Comparison")
