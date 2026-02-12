@@ -389,3 +389,50 @@ def get_product_profitability_proxy():
         {"name": "Ocean Breeze", "margin": 55, "volume": 800, "category": "Star"},
     ]
     return pd.DataFrame(products)
+
+# ================= CUSTOMER & PRODUCT DIRECTORY FUNCTIONS =================
+
+def get_all_customers():
+    """Get all unique customers from custom orders with totals"""
+    query = """
+        SELECT 
+            customer_name,
+            SUM(total_rev) as total_revenue,
+            SUM(order_amount) as total_orders,
+            COUNT(*) as order_count
+        FROM custom_orders
+        WHERE customer_name IS NOT NULL
+        GROUP BY customer_name
+        ORDER BY total_revenue DESC
+    """
+    return fetch_data(query)
+
+def get_all_stockists():
+    """Get all unique stockists/partners with performance metrics"""
+    query = """
+        SELECT 
+            stockist_name,
+            SUM(sales_amount) as total_sales,
+            COUNT(DISTINCT month_year) as active_months
+        FROM stockist_sales_detail
+        WHERE stockist_name IS NOT NULL AND stockist_name != ''
+        GROUP BY stockist_name
+        ORDER BY total_sales DESC
+    """
+    return fetch_data(query)
+
+def get_sales_channel_summary():
+    """Get summary of all sales channels"""
+    query = """
+        SELECT 
+            month_year,
+            online_sales,
+            stockist_sales,
+            custom_order_sales,
+            exhibition_sales,
+            total_sales
+        FROM sales_master
+        ORDER BY month_year DESC
+    """
+    return fetch_data(query)
+

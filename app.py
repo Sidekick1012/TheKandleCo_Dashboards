@@ -1037,7 +1037,7 @@ else:
     from views import (
         executive_command, revenue_sales, product_profitability,
         cost_margin, seasonality, cash_flow, yoy_comparison,
-        early_warning, customer_channel
+        early_warning, customer_channel, customer_product_directory
     )
 
     # --- Fixed Top Header for Dashboard ---
@@ -1086,6 +1086,7 @@ else:
         "YoY Comparative Analysis": yoy_comparison,
         "Early Warning System": early_warning,
         "Customer & Channel": customer_channel,
+        "Customer & Product Directory": customer_product_directory,
     }
     
     selected_dash_name = st.sidebar.radio("", list(dashboards.keys()))
