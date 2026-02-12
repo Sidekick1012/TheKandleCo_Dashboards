@@ -184,6 +184,34 @@ class MockDataGenerator:
             })
         return pd.DataFrame(data)
 
+    def get_all_customers(self):
+        """Mock data for all customers directory"""
+        customers = ["Hotel One", "Serena", "Corporate Gift Co", "Wedding Planner A", "Cafe X", 
+                    "Pearl Continental", "Marriott Hotel", "Elite Events", "Grand Banquet"]
+        data = []
+        for c in customers:
+            data.append({
+                "customer_name": c,
+                "total_revenue": np.random.randint(200000, 800000),
+                "total_orders": np.random.randint(100000, 400000),
+                "order_count": np.random.randint(3, 15)
+            })
+        return pd.DataFrame(data)
+    
+    def get_all_stockists(self):
+        """Mock data for all stockists directory"""
+        stockists = ["Luxe Living", "Home & Hearth", "The Gift Shop", "Urban Decor", 
+                    "Pure Home", "Style Studio", "Decor Zone", "Lifestyle Boutique"]
+        data = []
+        for s in stockists:
+            data.append({
+                "stockist_name": s,
+                "total_sales": np.random.randint(500000, 2000000),
+                "active_months": np.random.randint(6, 24)
+            })
+        return pd.DataFrame(data)
+
+
 # ================= DB CONNECTION =================
 mock_gen = MockDataGenerator()
 
@@ -235,6 +263,9 @@ def fetch_data(query, params=None):
     elif "profit_loss_summary" in q_lower:
         return mock_gen.get_profit_loss_trends()
     elif "stockist_sales_detail" in q_lower:
+        # Check if it's the aggregated stockist directory query
+        if "sum(sales_amount)" in q_lower and "group by stockist_name" in q_lower:
+            return mock_gen.get_all_stockists()
         return mock_gen.get_stockist_performance()
     elif "commission_details" in q_lower:
         return mock_gen.get_commission_data()
@@ -257,6 +288,9 @@ def fetch_data(query, params=None):
             return r
         return mock_gen.get_receivables_detail()
     elif "custom_orders" in q_lower:
+        # Check if it's the aggregated customer directory query
+        if "sum(total_rev)" in q_lower and "group by customer_name" in q_lower:
+            return mock_gen.get_all_customers()
         return mock_gen.get_custom_orders()
     elif "count(distinct stockist_name)" in q_lower:
         return pd.DataFrame([{"count": 6}])
