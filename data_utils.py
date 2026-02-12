@@ -450,16 +450,57 @@ def get_alerts(year=2025, months=None):
     return alerts
 
 def get_product_profitability_proxy():
-    products = [
-        {"name": "Lavender Bliss", "margin": 65, "volume": 1200, "category": "Star"},
-        {"name": "Vanilla Bean", "margin": 60, "volume": 900, "category": "Cash Cow"},
-        {"name": "Rose Petal", "margin": 40, "volume": 1100, "category": "Cash Cow"},
-        {"name": "Sandalwood", "margin": 70, "volume": 300, "category": "Question Mark"},
-        {"name": "Citrus Burst", "margin": 35, "volume": 400, "category": "Dog"},
-        {"name": "Jasmine Night", "margin": 45, "volume": 200, "category": "Dog"},
-        {"name": "Ocean Breeze", "margin": 55, "volume": 800, "category": "Star"},
-    ]
-    return pd.DataFrame(products)
+    # Get real products
+    df_products = get_all_products()
+    
+    if df_products.empty:
+        return pd.DataFrame()
+        
+    # Generate synthetic volume and margin data for the REAL products
+    # In a real scenario, this would come from joining sales_details with product costs
+    
+    products_data = []
+    
+    for _, row in df_products.iterrows():
+        # Cost is known, Price is known
+        cost = row['cost']
+        price = row['price']
+        
+        # Calculate Margin %
+        margin_pct = ((price - cost) / price) * 100
+        
+        # Simulate Volume based on category and random variation
+        if row['category'] == 'Candle':
+            if row['variant'] == '100g':
+                volume = np.random.randint(500, 1500) # High volume, lower price
+            else:
+                volume = np.random.randint(200, 800) # Lower volume, higher price
+        else:
+             volume = np.random.randint(100, 500) # Other items
+             
+        # Categorize (BCG Matrix)
+        # Margin Threshold: ~50%
+        # Volume Threshold: ~600
+        
+        if margin_pct >= 55 and volume >= 600:
+            category = "Star"
+        elif margin_pct < 55 and volume >= 600:
+            category = "Cash Cow"
+        elif margin_pct >= 55 and volume < 600:
+            category = "Question Mark"
+        else:
+            category = "Dog"
+            
+        products_data.append({
+            "name": f"{row['name']} ({row['variant']})",
+            "margin": round(margin_pct, 1),
+            "volume": volume,
+            "category": category,
+            "cost": cost,
+            "price": price
+        })
+        
+    return pd.DataFrame(products_data)
 
 # ================= CUSTOMER & PRODUCT DIRECTORY FUNCTIONS =================
 
@@ -509,8 +550,14 @@ def get_sales_channel_summary():
 
 def get_all_products():
     """Get the full product catalog"""
-    # Since we don't have a products table yet, we return the static list from mock generator
-    # In future this would be: fetch_data("SELECT * FROM products")
+    # 1. Try to fetch from Real Database
+    query = "SELECT sku, name, variant, category, cost, price FROM products ORDER BY category, name"
+    df = fetch_data(query)
+    
+    if not df.empty:
+         return df
+         
+    # 2. Fallback to Mock if DB is empty or connection fails
     return mock_gen.get_all_products()
 
 
