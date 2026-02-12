@@ -211,6 +211,43 @@ class MockDataGenerator:
             })
         return pd.DataFrame(data)
 
+    def get_all_products(self):
+        """Real product catalog from 2024-2025 Working Notes"""
+        products = [
+            # 100g Candles (Selling: 2000, Cost: ~732)
+            {"sku": "7001", "name": "Burning Firewood", "variant": "100g", "category": "Candle", "cost": 732, "price": 2000},
+            {"sku": "7003", "name": "Cinnamon Apple", "variant": "100g", "category": "Candle", "cost": 732, "price": 2000},
+            {"sku": "7004", "name": "Citrus Bloom", "variant": "100g", "category": "Candle", "cost": 732, "price": 2000},
+            {"sku": "7005", "name": "Double Shot Espresso", "variant": "100g", "category": "Candle", "cost": 732, "price": 2000},
+            {"sku": "7006", "name": "Flower Bouquet", "variant": "100g", "category": "Candle", "cost": 732, "price": 2000},
+            {"sku": "7007", "name": "Honeysuckle Jasmine", "variant": "100g", "category": "Candle", "cost": 732, "price": 2000},
+            {"sku": "7008", "name": "Lavender Breeze", "variant": "100g", "category": "Candle", "cost": 732, "price": 2000},
+            {"sku": "7011", "name": "Oud Fusion", "variant": "100g", "category": "Candle", "cost": 732, "price": 2000},
+            {"sku": "7012", "name": "Pink Blossoms", "variant": "100g", "category": "Candle", "cost": 732, "price": 2000},
+            {"sku": "7013", "name": "Rose & Sandalwood", "variant": "100g", "category": "Candle", "cost": 732, "price": 2000},
+            {"sku": "7015", "name": "Toasted Vanilla", "variant": "100g", "category": "Candle", "cost": 732, "price": 2000},
+            {"sku": "7016", "name": "Tropical Peach", "variant": "100g", "category": "Candle", "cost": 732, "price": 2000},
+            {"sku": "7017", "name": "Watermelon Summer", "variant": "100g", "category": "Candle", "cost": 732, "price": 2000},
+            {"sku": "7018", "name": "White Garden", "variant": "100g", "category": "Candle", "cost": 732, "price": 2000},
+            
+            # 250g Candles (Selling: 3800, Cost: ~1598)
+            {"sku": "7020", "name": "Burning Firewood", "variant": "250g", "category": "Candle", "cost": 1598, "price": 3800},
+            {"sku": "7022", "name": "Cinnamon Apple", "variant": "250g", "category": "Candle", "cost": 1598, "price": 3800},
+            {"sku": "7023", "name": "Citrus Bloom", "variant": "250g", "category": "Candle", "cost": 1598, "price": 3800},
+            {"sku": "7024", "name": "Double Shot Espresso", "variant": "250g", "category": "Candle", "cost": 1598, "price": 3800},
+            {"sku": "7025", "name": "Flower Bouquet", "variant": "250g", "category": "Candle", "cost": 1598, "price": 3800},
+            {"sku": "7026", "name": "Honeysuckle Jasmine", "variant": "250g", "category": "Candle", "cost": 1598, "price": 3800},
+            {"sku": "7027", "name": "Lavender Breeze", "variant": "250g", "category": "Candle", "cost": 1598, "price": 3800},
+            {"sku": "7030", "name": "Oud Fusion", "variant": "250g", "category": "Candle", "cost": 1598, "price": 3800},
+            
+            # Other Categories (Inferred)
+            {"sku": "8001", "name": "Standard Diffuser", "variant": "100ml", "category": "Diffuser", "cost": 1200, "price": 2800},
+            {"sku": "8002", "name": "Refill Pack", "variant": "100ml", "category": "Refill", "cost": 800, "price": 1800},
+            {"sku": "8003", "name": "Room Spray", "variant": "100ml", "category": "Spray", "cost": 600, "price": 1500},
+        ]
+        return pd.DataFrame(products)
+
+
 
 # ================= DB CONNECTION =================
 mock_gen = MockDataGenerator()
@@ -469,4 +506,11 @@ def get_sales_channel_summary():
         ORDER BY month_year DESC
     """
     return fetch_data(query)
+
+def get_all_products():
+    """Get the full product catalog"""
+    # Since we don't have a products table yet, we return the static list from mock generator
+    # In future this would be: fetch_data("SELECT * FROM products")
+    return mock_gen.get_all_products()
+
 

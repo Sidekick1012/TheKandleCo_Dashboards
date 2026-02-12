@@ -9,7 +9,7 @@ def load_view():
     st.markdown("*A comprehensive view of all customers, stockists, and sales channels in one place.*")
     
     # Create tabs for better organization
-    tab1, tab2, tab3 = st.tabs(["👥 Customers", "🏪 Stockists/Partners", "📊 Sales Channels"])
+    tab1, tab2, tab3, tab4 = st.tabs(["👥 Customers", "🏪 Stockists/Partners", "📊 Sales Channels", "🕯️ Product Catalog"])
     
     # ==================== TAB 1: CUSTOMERS ====================
     with tab1:
@@ -144,3 +144,58 @@ def load_view():
                 df_display[col] = df_display[col].apply(lambda x: f"Rs. {x:,.0f}")
             
             st.dataframe(df_display, use_container_width=True, hide_index=True)
+
+    # ==================== TAB 4: PRODUCT CATALOG ====================
+    with tab4:
+        st.markdown("### 🕯️ Product Catalog")
+        
+        # Load product data
+        df_products = data_utils.get_all_products()
+        
+        if df_products.empty:
+            st.info("No product data available.")
+        else:
+            # Summary stats
+            col1, col2, col3 = st.columns(3)
+            with col1:
+                st.metric("Total Products", len(df_products))
+            with col2:
+                candle_count = len(df_products[df_products['category'] == 'Candle'])
+                st.metric("Candle Variants", candle_count)
+            with col3:
+                other_count = len(df_products[df_products['category'] != 'Candle'])
+                st.metric("Other Products", other_count)
+                
+            st.markdown("---")
+            
+            # Format numbers
+            df_display = df_products.copy()
+            df_display.columns = ['SKU', 'Product Name', 'Variant', 'Category', 'Cost Price', 'Selling Price']
+            
+            # Format currency columns
+            for col in ['Cost Price', 'Selling Price']:
+                df_display[col] = df_display[col].apply(lambda x: f"Rs. {x:,.0f}")
+            
+            # Allow filtering by category
+            categories = ['All'] + sorted(df_products['category'].unique().tolist())
+            selected_cat = st.selectbox("Filter by Category", categories)
+            
+            if selected_cat != 'All':
+                df_display = df_display[df_display['Category'] == selected_cat]
+            
+            st.dataframe(df_display, use_container_width=True, hide_index=True)
+            
+            # Price Analysis Chart
+            st.markdown("### 💰 Price Analysis (Cost vs Selling Price)")
+            
+            # Prepare data for chart (numeric)
+            df_chart = df_products[['name', 'variant', 'cost', 'price', 'category']].copy()
+            df_chart['Product Label'] = df_chart['name'] + " (" + df_chart['variant'] + ")"
+            
+            fig = px.bar(df_chart, x='Product Label', y=['cost', 'price'],
+                         barmode='group',
+                         labels={'value': 'Amount (Rs)', 'variable': 'Type', 'Product Label': 'Product'},
+                         title="Cost Price (Blue) vs Selling Price (Red)",
+                         color_discrete_map={'cost': '#1f77b4', 'price': '#d62728'})
+            
+            st.plotly_chart(fig, use_container_width=True)
