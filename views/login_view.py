@@ -68,7 +68,6 @@ def show_login_page():
         text-align: center !important;
         animation: fadeUp 1.2s ease !important;
         margin: 0 auto !important;
-        border: 1px solid rgba(255,255,255,0.1) !important;
     }
 
     .login-header {
@@ -79,30 +78,31 @@ def show_login_page():
     }
 
     /* ===== INPUTS ===== */
-    /* 1. Target the outermost container of the input */
+    /* Target the outermost container of the input */
     div[data-testid="stTextInput"] {
         background: transparent !important;
+        margin-bottom: 20px !important;
     }
 
-    /* 2. Target the BaseWeb input container (the box) */
+    /* Target the BaseWeb input container (the box) */
     div[data-baseweb="input"] {
-        background-color: rgba(255, 255, 255, 0.05) !important;
-        border: 1px solid rgba(255, 255, 255, 0.1) !important;
+        background-color: rgba(255, 255, 255, 0.08) !important;
+        border: none !important;
         border-radius: 10px !important;
         color: white !important;
-        padding: 5px !important;
     }
 
-    /* 3. Target the actual input element */
+    /* Target the actual input element */
     input[type="text"], input[type="password"] {
         background: transparent !important;
-        color: white !important;
+        color: #fff !important;
         font-family: 'Poppins', sans-serif !important;
         font-size: 14px !important;
         caret-color: #e6c79c !important;
+        padding: 14px !important;
     }
 
-    /* 4. Remove default focus borders */
+    /* Remove default focus borders */
     div[data-baseweb="base-input"] {
         background: transparent !important;
         border: none !important;
@@ -115,11 +115,6 @@ def show_login_page():
     /* Remove default labels */
     div[data-testid="stTextInput"] label {
         display: none !important;
-    }
-    
-    /* Remove top margin/padding from Streamlit widgets */
-    .stTextInput {
-        margin-bottom: 20px !important;
     }
 
     /* ===== BUTTON ===== */
@@ -134,20 +129,20 @@ def show_login_page():
         letter-spacing: 2px !important;
         cursor: pointer !important;
         transition: 0.3s ease !important;
-        margin-top: 10px !important;
+        margin-top: 0px !important;
     }
 
     .stButton > button:hover {
         background: #e6c79c !important;
         transform: scale(1.03) !important;
         color: #2a1f16 !important;
-        border: none !important;
     }
     
     .stButton > button:focus {
         color: #2a1f16 !important;
         border: none !important;
         box-shadow: none !important;
+        outline: none !important;
     }
     
     .stButton > button:active {
