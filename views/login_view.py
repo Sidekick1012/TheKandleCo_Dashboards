@@ -8,9 +8,13 @@ def show_login_page():
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
     /* Force fullpage background */
-    .stApp {
-        background: radial-gradient(circle at center, #2a1f16 0%, #0f0c09 70%);
-        font-family: 'Poppins', sans-serif;
+    [data-testid="stAppViewContainer"] {
+        background: radial-gradient(circle at center, #2a1f16 0%, #0f0c09 70%) !important;
+        font-family: 'Poppins', sans-serif !important;
+    }
+    
+    [data-testid="stHeader"] {
+        background: transparent !important;
     }
 
     /* Hide standard Streamlit elements */
@@ -20,10 +24,11 @@ def show_login_page():
     .block-container {
         padding: 0 !important;
         max-width: 100% !important;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 100vh;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        height: 100vh !important;
+        flex-direction: column !important;
     }
 
     /* ===== BRAND ===== */
@@ -34,101 +39,119 @@ def show_login_page():
     }
 
     .brand-title {
-        font-family: 'Playfair Display', serif;
-        font-size: 52px;
-        letter-spacing: 6px;
-        font-weight: 600;
-        color: #e6c79c;
-        margin: 0;
+        font-family: 'Playfair Display', serif !important;
+        font-size: 52px !important;
+        letter-spacing: 6px !important;
+        font-weight: 600 !important;
+        color: #e6c79c !important;
+        margin: 0 !important;
+        line-height: 1.2 !important;
     }
 
     .brand-subtitle {
-        margin-top: 10px;
-        font-size: 12px;
-        letter-spacing: 6px;
-        color: #b08968;
-        text-transform: uppercase;
+        margin-top: 10px !important;
+        font-size: 12px !important;
+        letter-spacing: 6px !important;
+        color: #b08968 !important;
+        text-transform: uppercase !important;
     }
 
     /* ===== LOGIN BOX ===== */
     .login-box {
-        width: 380px;
-        padding: 50px 40px;
-        border-radius: 20px;
-        background: rgba(255,255,255,0.05);
-        backdrop-filter: blur(20px);
-        box-shadow: 0 0 60px rgba(212,163,115,0.2);
-        text-align: center;
-        animation: fadeUp 1.2s ease;
-        margin: 0 auto;
+        width: 380px !important;
+        padding: 50px 40px !important;
+        border-radius: 20px !important;
+        background: rgba(255,255,255,0.05) !important;
+        backdrop-filter: blur(20px) !important;
+        -webkit-backdrop-filter: blur(20px) !important;
+        box-shadow: 0 0 60px rgba(212,163,115,0.2) !important;
+        text-align: center !important;
+        animation: fadeUp 1.2s ease !important;
+        margin: 0 auto !important;
+        border: 1px solid rgba(255,255,255,0.1) !important;
     }
 
     .login-header {
-        font-family: 'Playfair Display', serif;
-        margin-bottom: 30px;
-        font-size: 28px;
-        color: #e6c79c;
+        font-family: 'Playfair Display', serif !important;
+        margin-bottom: 30px !important;
+        font-size: 28px !important;
+        color: #e6c79c !important;
     }
 
     /* ===== INPUTS ===== */
-    /* Targeting Streamlit Widgets */
+    /* Targeting Streamlit Widgets deeply */
     .stTextInput > div > div > input {
-        width: 100%;
-        padding: 14px;
-        border-radius: 10px;
-        border: none;
-        outline: none;
-        background: rgba(255,255,255,0.08);
-        color: #fff;
-        font-size: 14px;
+        width: 100% !important;
+        padding: 14px !important;
+        border-radius: 10px !important;
+        border: none !important;
+        outline: none !important;
+        background: rgba(255,255,255,0.08) !important;
+        color: #fff !important;
+        font-family: 'Poppins', sans-serif !important;
+        font-size: 14px !important;
     }
     
     .stTextInput > div > div > input::placeholder {
-        color: #aaa;
+        color: #aaa !important;
     }
     
+    .stTextInput > div {
+        border: none !important;
+    }
+
     /* Remove default labels if we want clean look */
     .stTextInput label {
-        display: none;
+        display: none !important;
     }
 
     /* ===== BUTTON ===== */
     .stButton > button {
-        width: 100%;
-        padding: 14px;
-        border-radius: 10px;
-        border: none;
-        background: #c89b6d;
-        color: #2a1f16;
-        font-weight: 600;
-        letter-spacing: 2px;
-        cursor: pointer;
-        transition: 0.3s ease;
+        width: 100% !important;
+        padding: 14px !important;
+        border-radius: 10px !important;
+        border: none !important;
+        background: #c89b6d !important;
+        color: #2a1f16 !important;
+        font-weight: 600 !important;
+        letter-spacing: 2px !important;
+        cursor: pointer !important;
+        transition: 0.3s ease !important;
+        margin-top: 10px !important;
     }
 
     .stButton > button:hover {
-        background: #e6c79c;
-        transform: scale(1.03);
-        color: #2a1f16;
+        background: #e6c79c !important;
+        transform: scale(1.03) !important;
+        color: #2a1f16 !important;
+        border: none !important;
     }
     
     .stButton > button:focus {
-        color: #2a1f16;
+        color: #2a1f16 !important;
+        border: none !important;
+        box-shadow: none !important;
+    }
+    
+    .stButton > button:active {
+        color: #2a1f16 !important;
+        background: #c89b6d !important;
     }
 
     /* ===== FOOTER ===== */
     .custom-footer {
-        position: fixed;
-        bottom: 30px;
-        width: 100%;
-        text-align: center;
-        font-size: 14px;
-        color: #8c6b4f;
+        position: fixed !important;
+        bottom: 30px !important;
+        width: 100% !important;
+        text-align: center !important;
+        font-size: 14px !important;
+        color: #8c6b4f !important;
+        left: 0 !important;
     }
 
     .custom-footer span {
-        color: #e6c79c;
-        font-weight: 500;
+        color: #e6c79c !important;
+        font-weight: 500 !important;
     }
 
     /* ===== ANIMATIONS ===== */
@@ -143,8 +166,8 @@ def show_login_page():
     }
 
     @media(max-width: 420px) {
-        .login-box { width: 90%; }
-        .brand-title { font-size: 38px; }
+        .login-box { width: 90% !important; }
+        .brand-title { font-size: 38px !important; }
     }
     </style>
     """, unsafe_allow_html=True)
