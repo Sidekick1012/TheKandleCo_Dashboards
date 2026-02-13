@@ -185,7 +185,7 @@ div[data-testid="stTextInput"] label {
 }
 </style>
 """
-    st.markdown(LOGIN_STYLE, unsafe_allow_html=True)
+    st.html(LOGIN_STYLE)
 
     # HTML Structure
     col1, col2, col3 = st.columns([1, 2, 1])
