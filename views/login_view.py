@@ -4,7 +4,8 @@ import time
 
 def show_login_page():
     # Inject Custom CSS
-    st.markdown("""
+    # CSS Style Definition
+    LOGIN_STYLE = """
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 /* Force fullpage background */
@@ -183,7 +184,8 @@ div[data-testid="stTextInput"] label {
     .brand-title { font-size: 38px !important; }
 }
 </style>
-""", unsafe_allow_html=True)
+"""
+    st.markdown(LOGIN_STYLE, unsafe_allow_html=True)
 
     # HTML Structure
     col1, col2, col3 = st.columns([1, 2, 1])
