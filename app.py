@@ -36,9 +36,6 @@ st.set_page_config(
 
 from views.login_view import show_login_page
 
-# Load Custom CSS
-ui.load_css()
-
 # Initialize DB for Login
 init_db()
 
@@ -52,6 +49,10 @@ if 'selected_months' not in st.session_state:
 if not st.session_state.get("authenticated", False):
     show_login_page()
     st.stop()
+
+# Load Custom CSS (only after authentication)
+ui.load_css()
+
 
 # ================= DASHBOARD LAYOUT =================
 
