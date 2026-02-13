@@ -1,0 +1,158 @@
+/* ==================== GLOBAL THEME ==================== */
+/* Main Background */
+body {
+    background-color: #F8F9FA;
+    font-family: 'Inter', sans-serif;
+    color: #2D3748;
+}
+
+/* Sidebar Styling */
+[data-testid="stSidebar"] {
+    background-color: #1A365D !important; /* Dark Navy/Green Theme */
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    padding-top: 2rem;
+}
+
+[data-testid="stSidebar"] hr {
+    margin: 1rem 0;
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Sidebar Menu Items */
+.stRadio > div {
+    background-color: transparent;
+    color: white;
+}
+
+.stRadio > label {
+    color: rgba(255, 255, 255, 0.8) !important;
+    font-size: 14px;
+    padding: 10px 15px;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.stRadio > label:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white !important;
+}
+
+/* Active Sidebar Item */
+.stRadio > label[data-checked="true"] {
+    background-color: #38A169 !important; /* Green Accent */
+    color: white !important;
+    font-weight: 600;
+}
+
+
+/* ==================== METRIC CARDS ==================== */
+/* Card Container Base */
+div[data-testid="stMetricValue"] {
+    font-size: 24px !important;
+    font-weight: 700;
+}
+
+/* Card 1: Total Balance (Green) */
+.metric-card-1 {
+    background-color: #2F855A;
+    color: white;
+    padding: 1.5rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Card 2: Total Sales (Yellow) */
+.metric-card-2 {
+    background-color: #ECC94B;
+    color: #2D3748;
+    padding: 1.5rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Card 3: Total Expenses (Dark Teal) */
+.metric-card-3 {
+    background-color: #2C7A7B;
+    color: white;
+    padding: 1.5rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Card 4: Total Visitors (Dark Blue) */
+.metric-card-4 {
+    background-color: #2B6CB0;
+    color: white;
+    padding: 1.5rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Icons inside cards (using FontAwesome class structure if available, or just emojis) */
+.card-icon {
+    font-size: 2rem;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    opacity: 0.8;
+}
+
+/* ==================== CONTENT CARDS (Glassmorphism) ==================== */
+.content-card {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+h3 {
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #2D3748;
+}
+
+/* Progress Bars in Observations */
+.progress-container {
+    background-color: #EDF2F7;
+    border-radius: 999px;
+    height: 8px;
+    width: 100%;
+    margin-top: 5px;
+}
+
+.progress-bar {
+    background-color: #38A169;
+    height: 100%;
+    border-radius: 999px;
+}
+
+/* ==================== CALENDAR WIDGET (Sidebar) ==================== */
+.calendar-widget {
+    background: white;
+    border-radius: 12px;
+    padding: 15px;
+    margin-top: auto; /* Push to bottom */
+    color: #2D3748;
+    text-align: center;
+}
+
+.calendar-header {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* ==================== CUSTOM TWEAKS ==================== */
+/* Hide Streamlit Header/Footer */
+header {visibility: hidden;}
+footer {visibility: hidden;}
+.block-container {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}

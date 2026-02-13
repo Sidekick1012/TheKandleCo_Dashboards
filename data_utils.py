@@ -254,7 +254,19 @@ mock_gen = MockDataGenerator()
 
 def get_db_connection():
     try:
-        # Check Streamlit Secrets first
+        # 1. Try Environment Variables (Prioritize Local Dev with .env)
+        if os.getenv('DB_HOST'):
+            conn = psycopg2.connect(
+                host=os.getenv('DB_HOST'),
+                port=os.getenv('DB_PORT', '5432'),
+                database=os.getenv('DB_NAME'),
+                user=os.getenv('DB_USER'),
+                password=os.getenv('DB_PASSWORD'),
+                connect_timeout=3
+            )
+            return conn
+
+        # 2. Fallback to Streamlit Secrets (Cloud Deployment)
         if hasattr(st, "secrets") and "DB_HOST" in st.secrets:
             conn = psycopg2.connect(
                 host=st.secrets["DB_HOST"],
@@ -266,19 +278,9 @@ def get_db_connection():
             )
             return conn
             
-        # Fallback to Environment Variables
-        if os.getenv('DB_HOST'):
-            conn = psycopg2.connect(
-                host=os.getenv('DB_HOST'),
-                port=os.getenv('DB_PORT', '5432'),
-                database=os.getenv('DB_NAME'),
-                user=os.getenv('DB_USER'),
-                password=os.getenv('DB_PASSWORD'),
-                connect_timeout=3
-            )
-            return conn
         return None
-    except Exception:
+    except Exception as e:
+        print(f"❌ DB Connection Error in data_utils: {e}")
         return None
 
 def fetch_data(query, params=None):
@@ -509,8 +511,7 @@ def get_all_customers():
     query = """
         SELECT 
             customer_name,
-            SUM(total_rev) as total_revenue,
-            SUM(order_amount) as total_orders,
+            SUM(order_amount) as total_revenue,
             COUNT(*) as order_count
         FROM custom_orders
         WHERE customer_name IS NOT NULL
