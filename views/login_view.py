@@ -79,8 +79,8 @@ def show_login_page():
     }
 
     /* ===== INPUTS ===== */
-    /* Targeting Streamlit Widgets deeply */
-    .stTextInput > div > div > input {
+    /* Target all text inputs on the page */
+    input[type="text"], input[type="password"] {
         width: 100% !important;
         padding: 14px !important;
         border-radius: 10px !important;
@@ -92,16 +92,24 @@ def show_login_page():
         font-size: 14px !important;
     }
     
-    .stTextInput > div > div > input::placeholder {
-        color: #aaa !important;
-    }
-    
-    .stTextInput > div {
+    /* Target the container of the input to remove borders/backgrounds */
+    div[data-baseweb="input"] {
+        background: transparent !important;
         border: none !important;
+        border-radius: 10px !important;
     }
 
-    /* Remove default labels if we want clean look */
-    .stTextInput label {
+    div[data-testid="stTextInput"] {
+        background: transparent !important;
+        border: none !important;
+    }
+    
+    input::placeholder {
+        color: #aaa !important;
+    }
+
+    /* Remove default labels */
+    div[data-testid="stTextInput"] label {
         display: none !important;
     }
 
