@@ -79,31 +79,35 @@ def show_login_page():
     }
 
     /* ===== INPUTS ===== */
-    /* Target all text inputs on the page */
-    input[type="text"], input[type="password"] {
-        width: 100% !important;
-        padding: 14px !important;
-        border-radius: 10px !important;
-        border: none !important;
-        outline: none !important;
-        background: rgba(255,255,255,0.08) !important;
-        color: #fff !important;
-        font-family: 'Poppins', sans-serif !important;
-        font-size: 14px !important;
-    }
-    
-    /* Target the container of the input to remove borders/backgrounds */
-    div[data-baseweb="input"] {
-        background: transparent !important;
-        border: none !important;
-        border-radius: 10px !important;
-    }
-
+    /* 1. Target the outermost container of the input */
     div[data-testid="stTextInput"] {
         background: transparent !important;
+    }
+
+    /* 2. Target the BaseWeb input container (the box) */
+    div[data-baseweb="input"] {
+        background-color: rgba(255, 255, 255, 0.05) !important;
+        border: 1px solid rgba(255, 255, 255, 0.1) !important;
+        border-radius: 10px !important;
+        color: white !important;
+        padding: 5px !important;
+    }
+
+    /* 3. Target the actual input element */
+    input[type="text"], input[type="password"] {
+        background: transparent !important;
+        color: white !important;
+        font-family: 'Poppins', sans-serif !important;
+        font-size: 14px !important;
+        caret-color: #e6c79c !important;
+    }
+
+    /* 4. Remove default focus borders */
+    div[data-baseweb="base-input"] {
+        background: transparent !important;
         border: none !important;
     }
-    
+
     input::placeholder {
         color: #aaa !important;
     }
@@ -111,6 +115,11 @@ def show_login_page():
     /* Remove default labels */
     div[data-testid="stTextInput"] label {
         display: none !important;
+    }
+    
+    /* Remove top margin/padding from Streamlit widgets */
+    .stTextInput {
+        margin-bottom: 20px !important;
     }
 
     /* ===== BUTTON ===== */
