@@ -5,184 +5,185 @@ import time
 def show_login_page():
     # Inject Custom CSS
     st.markdown("""
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
-    <style>
-    /* Force fullpage background */
-    [data-testid="stAppViewContainer"] {
-        background: radial-gradient(circle at center, #2a1f16 0%, #0f0c09 70%) !important;
-        font-family: 'Poppins', sans-serif !important;
-    }
-    
-    [data-testid="stHeader"] {
-        background: transparent !important;
-    }
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* Force fullpage background */
+[data-testid="stAppViewContainer"] {
+    background: radial-gradient(circle at center, #2a1f16 0%, #0f0c09 70%) !important;
+    font-family: 'Poppins', sans-serif !important;
+}
 
-    /* Hide standard Streamlit elements */
-    header, footer, #MainMenu {visibility: hidden !important;}
-    
-    /* Center container override */
-    .block-container {
-        padding: 0 !important;
-        max-width: 100% !important;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-        height: 100vh !important;
-        flex-direction: column !important;
-    }
+[data-testid="stHeader"] {
+    background: transparent !important;
+}
 
-    /* ===== BRAND ===== */
-    .brand-container {
-        text-align: center;
-        margin-bottom: 40px;
-        animation: fadeDown 1.2s ease;
-    }
+/* Hide standard Streamlit elements */
+header, footer, #MainMenu {visibility: hidden !important;}
 
-    .brand-title {
-        font-family: 'Playfair Display', serif !important;
-        font-size: 52px !important;
-        letter-spacing: 6px !important;
-        font-weight: 600 !important;
-        color: #e6c79c !important;
-        margin: 0 !important;
-        line-height: 1.2 !important;
-    }
+/* Center container override */
+.block-container {
+    padding: 0 !important;
+    max-width: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    height: 100vh !important;
+    flex-direction: column !important;
+}
 
-    .brand-subtitle {
-        margin-top: 10px !important;
-        font-size: 12px !important;
-        letter-spacing: 6px !important;
-        color: #b08968 !important;
-        text-transform: uppercase !important;
-    }
+/* ===== BRAND ===== */
+.brand-container {
+    text-align: center;
+    margin-bottom: 40px;
+    animation: fadeDown 1.2s ease;
+}
 
-    /* ===== LOGIN BOX ===== */
-    .login-box {
-        width: 380px !important;
-        padding: 50px 40px !important;
-        border-radius: 20px !important;
-        background: rgba(255,255,255,0.05) !important;
-        backdrop-filter: blur(20px) !important;
-        -webkit-backdrop-filter: blur(20px) !important;
-        box-shadow: 0 0 60px rgba(212,163,115,0.2) !important;
-        text-align: center !important;
-        animation: fadeUp 1.2s ease !important;
-        margin: 0 auto !important;
-    }
+.brand-title {
+    font-family: 'Playfair Display', serif !important;
+    font-size: 52px !important;
+    letter-spacing: 6px !important;
+    font-weight: 600 !important;
+    color: #e6c79c !important;
+    margin: 0 !important;
+    line-height: 1.2 !important;
+}
 
-    .login-header {
-        font-family: 'Playfair Display', serif !important;
-        margin-bottom: 30px !important;
-        font-size: 28px !important;
-        color: #e6c79c !important;
-    }
+.brand-subtitle {
+    margin-top: 10px !important;
+    font-size: 12px !important;
+    letter-spacing: 6px !important;
+    color: #b08968 !important;
+    text-transform: uppercase !important;
+}
 
-    /* ===== INPUTS ===== */
-    /* Target the outermost container of the input */
-    div[data-testid="stTextInput"] {
-        background: transparent !important;
-        margin-bottom: 20px !important;
-    }
+/* ===== LOGIN BOX ===== */
+.login-box {
+    width: 380px !important;
+    padding: 50px 40px !important;
+    border-radius: 20px !important;
+    background: rgba(255,255,255,0.05) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    box-shadow: 0 0 60px rgba(212,163,115,0.2) !important;
+    text-align: center !important;
+    animation: fadeUp 1.2s ease !important;
+    margin: 0 auto !important;
+}
 
-    /* Target the BaseWeb input container (the box) */
-    div[data-baseweb="input"] {
-        background-color: rgba(255, 255, 255, 0.08) !important;
-        border: none !important;
-        border-radius: 10px !important;
-        color: white !important;
-    }
+.login-header {
+    font-family: 'Playfair Display', serif !important;
+    margin-bottom: 30px !important;
+    font-size: 28px !important;
+    color: #e6c79c !important;
+    flash-control: text !important;
+}
 
-    /* Target the actual input element */
-    input[type="text"], input[type="password"] {
-        background: transparent !important;
-        color: #fff !important;
-        font-family: 'Poppins', sans-serif !important;
-        font-size: 14px !important;
-        caret-color: #e6c79c !important;
-        padding: 14px !important;
-    }
+/* ===== INPUTS ===== */
+/* Target the outermost container of the input */
+div[data-testid="stTextInput"] {
+    background: transparent !important;
+    margin-bottom: 20px !important;
+}
 
-    /* Remove default focus borders */
-    div[data-baseweb="base-input"] {
-        background: transparent !important;
-        border: none !important;
-    }
+/* Target the BaseWeb input container (the box) */
+div[data-baseweb="input"] {
+    background-color: rgba(255, 255, 255, 0.08) !important;
+    border: none !important;
+    border-radius: 10px !important;
+    color: white !important;
+}
 
-    input::placeholder {
-        color: #aaa !important;
-    }
+/* Target the actual input element */
+input[type="text"], input[type="password"] {
+    background: transparent !important;
+    color: #fff !important;
+    font-family: 'Poppins', sans-serif !important;
+    font-size: 14px !important;
+    caret-color: #e6c79c !important;
+    padding: 14px !important;
+}
 
-    /* Remove default labels */
-    div[data-testid="stTextInput"] label {
-        display: none !important;
-    }
+/* Remove default focus borders */
+div[data-baseweb="base-input"] {
+    background: transparent !important;
+    border: none !important;
+}
 
-    /* ===== BUTTON ===== */
-    .stButton > button {
-        width: 100% !important;
-        padding: 14px !important;
-        border-radius: 10px !important;
-        border: none !important;
-        background: #c89b6d !important;
-        color: #2a1f16 !important;
-        font-weight: 600 !important;
-        letter-spacing: 2px !important;
-        cursor: pointer !important;
-        transition: 0.3s ease !important;
-        margin-top: 0px !important;
-    }
+input::placeholder {
+    color: #aaa !important;
+}
 
-    .stButton > button:hover {
-        background: #e6c79c !important;
-        transform: scale(1.03) !important;
-        color: #2a1f16 !important;
-    }
-    
-    .stButton > button:focus {
-        color: #2a1f16 !important;
-        border: none !important;
-        box-shadow: none !important;
-        outline: none !important;
-    }
-    
-    .stButton > button:active {
-        color: #2a1f16 !important;
-        background: #c89b6d !important;
-    }
+/* Remove default labels */
+div[data-testid="stTextInput"] label {
+    display: none !important;
+}
 
-    /* ===== FOOTER ===== */
-    .custom-footer {
-        position: fixed !important;
-        bottom: 30px !important;
-        width: 100% !important;
-        text-align: center !important;
-        font-size: 14px !important;
-        color: #8c6b4f !important;
-        left: 0 !important;
-    }
+/* ===== BUTTON ===== */
+.stButton > button {
+    width: 100% !important;
+    padding: 14px !important;
+    border-radius: 10px !important;
+    border: none !important;
+    background: #c89b6d !important;
+    color: #2a1f16 !important;
+    font-weight: 600 !important;
+    letter-spacing: 2px !important;
+    cursor: pointer !important;
+    transition: 0.3s ease !important;
+    margin-top: 0px !important;
+}
 
-    .custom-footer span {
-        color: #e6c79c !important;
-        font-weight: 500 !important;
-    }
+.stButton > button:hover {
+    background: #e6c79c !important;
+    transform: scale(1.03) !important;
+    color: #2a1f16 !important;
+}
 
-    /* ===== ANIMATIONS ===== */
-    @keyframes fadeDown {
-        from { opacity: 0; transform: translateY(-30px); }
-        to { opacity: 1; transform: translateY(0); }
-    }
+.stButton > button:focus {
+    color: #2a1f16 !important;
+    border: none !important;
+    box-shadow: none !important;
+    outline: none !important;
+}
 
-    @keyframes fadeUp {
-        from { opacity: 0; transform: translateY(30px); }
-        to { opacity: 1; transform: translateY(0); }
-    }
+.stButton > button:active {
+    color: #2a1f16 !important;
+    background: #c89b6d !important;
+}
 
-    @media(max-width: 420px) {
-        .login-box { width: 90% !important; }
-        .brand-title { font-size: 38px !important; }
-    }
-    </style>
-    """, unsafe_allow_html=True)
+/* ===== FOOTER ===== */
+.custom-footer {
+    position: fixed !important;
+    bottom: 30px !important;
+    width: 100% !important;
+    text-align: center !important;
+    font-size: 14px !important;
+    color: #8c6b4f !important;
+    left: 0 !important;
+}
+
+.custom-footer span {
+    color: #e6c79c !important;
+    font-weight: 500 !important;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media(max-width: 420px) {
+    .login-box { width: 90% !important; }
+    .brand-title { font-size: 38px !important; }
+}
+</style>
+""", unsafe_allow_html=True)
 
     # HTML Structure
     col1, col2, col3 = st.columns([1, 2, 1])
