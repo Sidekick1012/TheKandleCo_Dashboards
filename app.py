@@ -58,6 +58,7 @@ ui.load_css()
 
 from views.seasonality_view import show_seasonality_view
 from views.cash_flow_view import show_cash_flow_view
+from views.unit_economics_view import show_unit_economics_view
 
 # --- Sidebar ---
 with st.sidebar:
@@ -79,6 +80,7 @@ with st.sidebar:
         "📊 Revenue Overview", 
         "📅 Seasonality Advisor", 
         "💰 Cash Flow Strategist",
+        "🩺 Margin Doctor",
         "📈 Sales Analysis", 
         "💸 Expense Tracker", 
         "📦 Inventory Status", 
@@ -207,6 +209,9 @@ elif page == "📅 Seasonality Advisor":
 
 elif page == "💰 Cash Flow Strategist":
     show_cash_flow_view()
+
+elif page == "🩺 Margin Doctor":
+    show_unit_economics_view()
 
 else:
     st.info(f"Page '{page}' is under development.")

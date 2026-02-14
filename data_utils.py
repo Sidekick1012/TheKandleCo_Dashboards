@@ -451,58 +451,97 @@ def get_alerts(year=2025, months=None):
         
     return alerts
 
-def get_product_profitability_proxy():
-    # Get real products
+def get_unit_economics_data():
+    """
+    Enhanced version of profitability proxy for the 'Margin Doctor' dashboard.
+    Calculates SKU-level margins and estimates volumes.
+    """
     df_products = get_all_products()
-    
     if df_products.empty:
         return pd.DataFrame()
         
-    # Generate synthetic volume and margin data for the REAL products
-    # In a real scenario, this would come from joining sales_details with product costs
-    
     products_data = []
     
+    # Calculate Overhead Overhead (Marketing + Packaging)
+    df_exp = get_expense_breakdown()
+    if not df_exp.empty:
+        # Total historical avg for overheads
+        avg_marketing = df_exp['advertising_promotions'].mean()
+        avg_packing = df_exp['packing_material'].mean()
+    else:
+        avg_marketing, avg_packing = 50000, 20000 # Fallbacks
+        
+    # Estimate total units sold per month to get 'Overhead per Unit'
+    # Proxy: Let's assume an average of 1000 units sold across all SKUs per month
+    est_monthly_units = 1200 
+    mkt_per_unit = avg_marketing / est_monthly_units
+    pack_per_unit = avg_packing / est_monthly_units
+    
     for _, row in df_products.iterrows():
-        # Cost is known, Price is known
         cost = row['cost']
         price = row['price']
         
-        # Calculate Margin %
-        margin_pct = ((price - cost) / price) * 100
+        # Gross Margin (Price - Material Cost)
+        gross_profit = price - cost
+        margin_pct = (gross_profit / price) * 100
         
-        # Simulate Volume based on category and random variation
-        if row['category'] == 'Candle':
-            if row['variant'] == '100g':
-                volume = np.random.randint(500, 1500) # High volume, lower price
-            else:
-                volume = np.random.randint(200, 800) # Lower volume, higher price
+        # Simulate Volume (Historical trend proxy)
+        # Some are popular (Winners), some are niche
+        if "Oud" in row['name'] or "Lavender" in row['name']:
+            vol_multiplier = 1.5
+        elif "Vanilla" in row['name'] or "Cinnamon" in row['name']:
+            vol_multiplier = 1.2
         else:
-             volume = np.random.randint(100, 500) # Other items
-             
-        # Categorize (BCG Matrix)
-        # Margin Threshold: ~50%
-        # Volume Threshold: ~600
-        
-        if margin_pct >= 55 and volume >= 600:
-            category = "Star"
-        elif margin_pct < 55 and volume >= 600:
-            category = "Cash Cow"
-        elif margin_pct >= 55 and volume < 600:
-            category = "Question Mark"
-        else:
-            category = "Dog"
+            vol_multiplier = 1.0
             
+        base_vol = 800 if row['variant'] == '100g' else 300
+        volume = int(np.random.normal(base_vol * vol_multiplier, 50))
+        
         products_data.append({
-            "name": f"{row['name']} ({row['variant']})",
-            "margin": round(margin_pct, 1),
-            "volume": volume,
-            "category": category,
-            "cost": cost,
-            "price": price
+            "SKU": row['sku'],
+            "Product": f"{row['name']} ({row['variant']})",
+            "Category": row['category'],
+            "Sales Volume": volume,
+            "Gross Margin %": round(margin_pct, 1),
+            "Price": price,
+            "Material Cost": cost,
+            "Marketing per Unit": round(mkt_per_unit, 0),
+            "Packing per Unit": round(pack_per_unit, 0),
+            "Net Profit per Unit": round(gross_profit - mkt_per_unit - pack_per_unit, 0)
         })
         
     return pd.DataFrame(products_data)
+
+def get_cost_per_unit_data(sku=None):
+    """
+    Returns the breakdown of costs for a specific SKU or a general average.
+    """
+    df_econ = get_unit_economics_data()
+    if df_econ.empty:
+        return pd.DataFrame()
+        
+    if sku:
+        row = df_econ[df_econ['SKU'] == sku].iloc[0]
+    else:
+        # Pick a representative one (e.g. 100g Burning Firewood)
+        row = df_econ.iloc[0]
+        
+    breakdown = [
+        {"Component": "Raw Materials", "Cost": row['Material Cost']},
+        {"Component": "Packaging", "Cost": row['Packing per Unit']},
+        {"Component": "Marketing (Ad Spend)", "Cost": row['Marketing per Unit']},
+        # Proxying Shipping at ~5% of price
+        {"Component": "Shipping/Logistics", "Cost": round(row['Price'] * 0.05, 0)}
+    ]
+    return pd.DataFrame(breakdown)
+
+def get_product_profitability_proxy():
+    # Keep legacy for compatibility or wrap the new one
+    return get_unit_economics_data().rename(columns={
+        "Product": "name",
+        "Gross Margin %": "margin",
+        "Sales Volume": "volume"
+    })
 
 # ================= CUSTOMER & PRODUCT DIRECTORY FUNCTIONS =================
 
