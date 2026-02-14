@@ -95,26 +95,27 @@ with st.sidebar:
                 height: auto;
             }
 
-            /* Premium Logout Button - HEAVY DESIGN */
+            /* Premium Logout Button - HEAVY & COMPACT */
             div.stButton > button:first-child {
                 background: linear-gradient(90deg, #d4af37 0%, #ecc94b 100%) !important;
                 color: #1A365D !important;
                 border: none !important;
-                border-radius: 10px !important;
+                border-radius: 6px !important;
                 width: 100% !important;
-                font-weight: 800 !important;
+                font-weight: 900 !important;
                 text-transform: uppercase !important;
-                letter-spacing: 1.5px !important;
-                margin-top: 0.5rem !important;
-                padding: 0.6rem !important;
-                box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3) !important;
-                transition: all 0.3s ease !important;
+                letter-spacing: 2px !important;
+                margin-top: 0rem !important;
+                padding: 0.3rem 0 !important; /* Extremely low height */
+                min-height: 35px !important;
+                font-size: 0.8rem !important;
+                box-shadow: 0 2px 10px rgba(212, 175, 55, 0.3) !important;
+                transition: all 0.2s ease !important;
             }
             div.stButton > button:first-child:hover {
-                transform: translateY(-2px) !important;
-                box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5) !important;
+                transform: scale(1.02) !important;
+                box-shadow: 0 4px 15px rgba(212, 175, 55, 0.5) !important;
                 background: linear-gradient(90deg, #ecc94b 0%, #d4af37 100%) !important;
-                color: #0F172A !important;
             }
         </style>
     """, unsafe_allow_html=True)
@@ -163,7 +164,6 @@ with st.sidebar:
         st.session_state.selected_months = selected_months
         st.rerun()
     
-    st.markdown("---")
     
     if st.button("Logout"):
         st.session_state.authenticated = False
