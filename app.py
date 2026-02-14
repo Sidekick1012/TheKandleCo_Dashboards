@@ -62,7 +62,9 @@ with st.sidebar:
     import os
     try:
         logo_path = os.path.join(os.path.dirname(__file__), "assets", "logo.png")
-        st.image(logo_path, width=100)
+        col1, col2, col3 = st.columns([1, 2, 1])
+        with col2:
+            st.image(logo_path, width=100)
     except Exception as e:
         # Fallback if image not found or fails to open
         st.markdown('<div style="text-align: center; margin-bottom: 2rem; color: white; font-family: Playfair Display; font-size: 1.5rem;">The Kandle Co.</div>', unsafe_allow_html=True)

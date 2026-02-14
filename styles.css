@@ -11,7 +11,7 @@ body {
     background-color: #1A365D !important;
     /* Dark Navy/Green Theme */
     border-radius: 0 !important;
-    padding-top: 0.5rem !important;
+    padding-top: 0.2rem !important;
 }
 
 [data-testid="stSidebar"] hr {
