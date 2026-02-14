@@ -87,7 +87,7 @@ with st.sidebar:
             /* Logo Positioning - Move higher and center */
             .sidebar-logo-container {
                 text-align: center;
-                margin-top: -30px !important;
+                margin-top: -80px !important;
                 margin-bottom: 10px !important;
             }
             .sidebar-logo-container img {
