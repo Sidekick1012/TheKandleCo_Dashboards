@@ -36,36 +36,37 @@ header, footer, #MainMenu {visibility: hidden !important;}
 /* ===== BRAND ===== */
 .brand-container {
     text-align: center;
-    margin-bottom: 25px; /* Reduced from 40px */
+    margin-bottom: 25px;
     animation: fadeDown 1.0s ease-out;
 }
 
 .brand-title {
     font-family: 'Playfair Display', serif !important;
-    font-size: 32px !important; /* Reduced from 40px */
-    letter-spacing: 4px !important; /* Reduced from 6px */
+    font-size: 32px !important;
+    letter-spacing: 4px !important;
     font-weight: 700 !important;
-    color: #2a1f16 !important; /* Dark brown for contrast on white */
+    color: #2a1f16 !important; /* Keep dark for the main title on white bg */
     margin: 0 !important;
     line-height: 1.2 !important;
 }
 
 .brand-subtitle {
     margin-top: 5px !important;
-    font-size: 10px !important; /* Reduced from 12px */
+    font-size: 10px !important;
     letter-spacing: 4px !important;
     color: #8c6b4f !important;
     text-transform: uppercase !important;
 }
 
 /* ===== LOGIN BOX ===== */
+/* Dark card to support the light text usage requested */
 .login-box {
-    width: 320px !important; /* Reduced from 380px */
-    padding: 30px 25px !important; /* Reduced padding */
+    width: 320px !important;
+    padding: 30px 25px !important;
     border-radius: 15px !important;
-    background: #ffffff !important;
-    border: 1px solid #f0f0f0 !important;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.08) !important; /* Soft shadow */
+    background: #2a1f16 !important; /* Dark Brown background */
+    border: 1px solid #3e2f24 !important;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.15) !important;
     text-align: center !important;
     animation: fadeUp 1.0s ease-out !important;
     margin: 0 auto !important;
@@ -74,46 +75,46 @@ header, footer, #MainMenu {visibility: hidden !important;}
 
 .login-box:hover {
     transform: translateY(-5px);
-    box-shadow: 0 15px 50px rgba(0,0,0,0.12) !important;
+    box-shadow: 0 15px 50px rgba(0,0,0,0.25) !important;
 }
 
 .login-header {
     font-family: 'Playfair Display', serif !important;
     margin-bottom: 15px !important;
-    font-size: 22px !important; /* Reduced from 28px */
-    color: #2a1f16 !important;
+    font-size: 22px !important;
+    color: #e6c79c !important; /* RESTORED GOLD COLOR */
     font-weight: 600 !important;
 }
 
 /* ===== INPUTS ===== */
 /* Target the outermost container of the input */
 div[data-testid="stTextInput"] {
-    margin-bottom: 15px !important; /* Reduced margin */
+    margin-bottom: 15px !important;
 }
 
 /* Target the BaseWeb input container (the box) */
 div[data-baseweb="input"] {
-    background-color: #f7f7f7 !important; /* Light grey bg */
-    border: 1px solid #eee !important;
+    background-color: rgba(255, 255, 255, 0.08) !important; /* Restored glass style */
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
     border-radius: 8px !important;
-    color: #333 !important;
+    color: white !important;
     transition: border-color 0.3s, box-shadow 0.3s;
 }
 
 div[data-baseweb="input"]:focus-within {
     border-color: #e6c79c !important;
-    background-color: #fff !important;
+    background-color: rgba(255, 255, 255, 0.12) !important;
     box-shadow: 0 0 0 2px rgba(230, 199, 156, 0.2) !important;
 }
 
 /* Target the actual input element */
 input[type="text"], input[type="password"] {
     background: transparent !important;
-    color: #333 !important; /* Dark text */
+    color: #fff !important; /* Restored White Text */
     font-family: 'Poppins', sans-serif !important;
-    font-size: 12px !important; /* Reduced from 14px */
-    caret-color: #c89b6d !important;
-    padding: 10px 12px !important; /* Reduced padding */
+    font-size: 12px !important;
+    caret-color: #e6c79c !important;
+    padding: 10px 12px !important;
 }
 
 /* Remove default focus borders */
@@ -123,7 +124,7 @@ div[data-baseweb="base-input"] {
 }
 
 input::placeholder {
-    color: #999 !important;
+    color: #aaa !important; /* Restored lighter placeholder */
     font-size: 12px !important;
 }
 
@@ -135,23 +136,23 @@ div[data-testid="stTextInput"] label {
 /* ===== BUTTON ===== */
 .stButton > button {
     width: 100% !important;
-    padding: 10px !important; /* Reduced padding */
+    padding: 10px !important;
     border-radius: 8px !important;
     border: none !important;
-    background: #2a1f16 !important; /* Dark button for contrast */
-    color: #ffffff !important;
-    font-weight: 500 !important;
+    background: #c89b6d !important; /* Restored lighter button */
+    color: #2a1f16 !important; /* Dark text on button */
+    font-weight: 600 !important;
     font-size: 13px !important;
     letter-spacing: 1px !important;
     cursor: pointer !important;
     transition: all 0.3s ease !important;
     margin-top: 5px !important;
-    box-shadow: 0 4px 15px rgba(42, 31, 22, 0.2) !important;
+    box-shadow: 0 4px 15px rgba(200, 155, 109, 0.2) !important;
 }
 
 .stButton > button:hover {
-    background: #c89b6d !important; /* Gold on hover */
-    color: #fff !important;
+    background: #e6c79c !important;
+    color: #2a1f16 !important;
     transform: translateY(-2px) !important;
     box-shadow: 0 6px 20px rgba(200, 155, 109, 0.3) !important;
 }
@@ -166,14 +167,14 @@ div[data-testid="stTextInput"] label {
     bottom: 20px !important;
     width: 100% !important;
     text-align: center !important;
-    font-size: 11px !important; /* Reduced from 20px */
-    color: #aaa !important;
+    font-size: 11px !important;
+    color: #8c6b4f !important; /* Darker footer for white bg */
     left: 0 !important;
     animation: fadeIn 2s ease-in;
 }
 
 .custom-footer span {
-    color: #c89b6d !important;
+    color: #2a1f16 !important; 
     font-weight: 500 !important;
 }
 
