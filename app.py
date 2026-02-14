@@ -56,6 +56,9 @@ ui.load_css()
 
 # ================= DASHBOARD LAYOUT =================
 
+from views.seasonality_view import show_seasonality_view
+from views.cash_flow_view import show_cash_flow_view
+
 # --- Sidebar ---
 with st.sidebar:
     # Logo Section
@@ -72,7 +75,15 @@ with st.sidebar:
         st.markdown('<div style="text-align: center; margin-bottom: 2rem; color: white; font-family: Playfair Display; font-size: 1.5rem;">The Kandle Co.</div>', unsafe_allow_html=True)
     # --- Navigator ---
     st.markdown('<div style="color: #ecc94b; font-weight: 600; font-size: 0.75rem; letter-spacing: 2px; margin: 2rem 0 1rem 0; opacity: 0.8;">NAVIGATOR</div>', unsafe_allow_html=True)
-    page = st.radio("Menu", ["📊 Revenue Overview", "📈 Sales Analysis", "💸 Expense Tracker", "📦 Inventory Status", "⚙️ Settings"], label_visibility="collapsed")
+    page = st.radio("Menu", [
+        "📊 Revenue Overview", 
+        "📅 Seasonality Advisor", 
+        "💰 Cash Flow Strategist",
+        "📈 Sales Analysis", 
+        "💸 Expense Tracker", 
+        "📦 Inventory Status", 
+        "⚙️ Settings"
+    ], label_visibility="collapsed")
     
     st.markdown("---")
     
@@ -100,92 +111,102 @@ with st.sidebar:
         st.session_state.authenticated = False
         st.rerun()
 
-# --- Main Content ---
+# --- Main Content Routing ---
 
-# Top Row: Metric Cards
-# Fetch Data for Cards
-df_sales = get_monthly_sales_trend()
-df_curr = apply_filters(df_sales, st.session_state.selected_year, st.session_state.selected_months)
-
-total_sales = df_curr['total_sales'].sum() if not df_curr.empty else 0
-total_expenses = 0 # Placeholder until expense sync
-net_profit = 0 # Placeholder
-
-cols = st.columns(4)
-
-with cols[0]:
-    ui.metric_card("Total Balance", "Rs. 0", "Current Session", "metric-card-1", icon="💰") 
-with cols[1]:
-    ui.metric_card("Total Sales", f"Rs. {total_sales:,.0f}", f"{st.session_state.selected_year} Selection", "metric-card-2", icon="💼")
-with cols[2]:
-    ui.metric_card("Total Expenses", "Rs. 0", "Current Session", "metric-card-3", icon="💸")
-with cols[3]:
-    ui.metric_card("Total Visitors", "0", "Current Session", "metric-card-4", icon="👥")
-
-# Row 2: Charts and Lists
-c1, c2 = st.columns([2, 1])
-
-with c1:
-    st.markdown('<div class="content-card">', unsafe_allow_html=True)
-    st.markdown('<h3>Observations</h3>', unsafe_allow_html=True)
+if page == "📊 Revenue Overview":
+    # Top Row: Metric Cards
+    # Fetch Data for Cards
+    df_sales = get_monthly_sales_trend()
+    df_curr = apply_filters(df_sales, st.session_state.selected_year, st.session_state.selected_months)
     
-    # Observe based on current selection
-    ui.observation_item("Sales Goal", f"{st.session_state.selected_year}", 100 if total_sales > 0 else 0)
+    total_sales = df_curr['total_sales'].sum() if not df_curr.empty else 0
+    total_expenses = 0 # Placeholder until expense sync
+    net_profit = 0 # Placeholder
     
-    st.markdown('</div>', unsafe_allow_html=True)
+    cols = st.columns(4)
     
-    # Graph Section
-    st.markdown('<div class="content-card">', unsafe_allow_html=True)
-    st.markdown('<h3>Sales Trend</h3>', unsafe_allow_html=True)
+    with cols[0]:
+        ui.metric_card("Total Balance", "Rs. 0", "Current Session", "metric-card-1", icon="💰") 
+    with cols[1]:
+        ui.metric_card("Total Sales", f"Rs. {total_sales:,.0f}", f"{st.session_state.selected_year} Selection", "metric-card-2", icon="💼")
+    with cols[2]:
+        ui.metric_card("Total Expenses", "Rs. 0", "Current Session", "metric-card-3", icon="💸")
+    with cols[3]:
+        ui.metric_card("Total Visitors", "0", "Current Session", "metric-card-4", icon="👥")
     
-    # Show trend for whole year or selected months
-    df_trend = apply_filters(df_sales, st.session_state.selected_year, None) # Trend for whole year
+    # Row 2: Charts and Lists
+    c1, c2 = st.columns([2, 1])
     
-    if not df_trend.empty:
-        fig = px.line(df_trend, x='month_year', y='total_sales', markers=True)
-        fig.update_layout(
-            plot_bgcolor='white',
-            paper_bgcolor='white',
-            margin=dict(t=10, l=10, r=10, b=10),
-            xaxis=dict(showgrid=False),
-            yaxis=dict(showgrid=True, gridcolor='#eee'),
-            height=250
-        )
-        fig.update_traces(line_color='#2F855A', line_width=3)
-        st.plotly_chart(fig, use_container_width=True)
-    else:
-        st.info("No sales data available for trend graph.")
+    with c1:
+        st.markdown('<div class="content-card">', unsafe_allow_html=True)
+        st.markdown('<h3>Observations</h3>', unsafe_allow_html=True)
         
-    st.markdown('</div>', unsafe_allow_html=True)
-
-with c2:
-    st.markdown('<div class="content-card">', unsafe_allow_html=True)
-    st.markdown('<h3>Stats</h3>', unsafe_allow_html=True)
+        # Observe based on current selection
+        ui.observation_item("Sales Goal", f"{st.session_state.selected_year}", 100 if total_sales > 0 else 0)
+        
+        st.markdown('</div>', unsafe_allow_html=True)
+        
+        # Graph Section
+        st.markdown('<div class="content-card">', unsafe_allow_html=True)
+        st.markdown('<h3>Sales Trend</h3>', unsafe_allow_html=True)
+        
+        # Show trend for whole year or selected months
+        df_trend = apply_filters(df_sales, st.session_state.selected_year, None) # Trend for whole year
+        
+        if not df_trend.empty:
+            fig = px.line(df_trend, x='month_year', y='total_sales', markers=True)
+            fig.update_layout(
+                plot_bgcolor='white',
+                paper_bgcolor='white',
+                margin=dict(t=10, l=10, r=10, b=10),
+                xaxis=dict(showgrid=False),
+                yaxis=dict(showgrid=True, gridcolor='#eee'),
+                height=250
+            )
+            fig.update_traces(line_color='#2F855A', line_width=3)
+            st.plotly_chart(fig, use_container_width=True)
+        else:
+            st.info("No sales data available for trend graph.")
+            
+        st.markdown('</div>', unsafe_allow_html=True)
     
-    # Mock Stats
-    ui.stats_item("Online", "52%", "#ECC94B", "🛒")
-    ui.stats_item("Stockists", "21%", "#38A169", "🏢")
-    ui.stats_item("Exhibitions", "74%", "#2B6CB0", "🎪")
-    ui.stats_item("Custom", "14%", "#2D3748", "🎁")
-    
-    st.markdown('</div>', unsafe_allow_html=True)
-    
-    # Customer List
-    st.markdown('<div class="content-card">', unsafe_allow_html=True)
-    st.markdown('<h3>Top Customers</h3>', unsafe_allow_html=True)
-    
-    df_cust = get_all_customers()
-    if not df_cust.empty:
-        for _, row in df_cust.head(4).iterrows():
-            st.markdown(f"""
-            <div style="display: flex; align-items: center; margin-bottom: 12px;">
-                <div style="width: 30px; height: 30px; background: #f0f0f0; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 10px;">👤</div>
-                <div style="flex-grow: 1;">
-                    <div style="font-weight: 600; font-size: 0.85rem;">{row['customer_name']}</div>
-                    <div style="font-size: 0.7rem; color: #888;">{row['order_count']} Orders</div>
+    with c2:
+        st.markdown('<div class="content-card">', unsafe_allow_html=True)
+        st.markdown('<h3>Stats</h3>', unsafe_allow_html=True)
+        
+        # Mock Stats
+        ui.stats_item("Online", "52%", "#ECC94B", "🛒")
+        ui.stats_item("Stockists", "21%", "#38A169", "🏢")
+        ui.stats_item("Exhibitions", "74%", "#2B6CB0", "🎪")
+        ui.stats_item("Custom", "14%", "#2D3748", "🎁")
+        
+        st.markdown('</div>', unsafe_allow_html=True)
+        
+        # Customer List
+        st.markdown('<div class="content-card">', unsafe_allow_html=True)
+        st.markdown('<h3>Top Customers</h3>', unsafe_allow_html=True)
+        
+        df_cust = get_all_customers()
+        if not df_cust.empty:
+            for _, row in df_cust.head(4).iterrows():
+                st.markdown(f"""
+                <div style="display: flex; align-items: center; margin-bottom: 12px;">
+                    <div style="width: 30px; height: 30px; background: #f0f0f0; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 10px;">👤</div>
+                    <div style="flex-grow: 1;">
+                        <div style="font-weight: 600; font-size: 0.85rem;">{row['customer_name']}</div>
+                        <div style="font-size: 0.7rem; color: #888;">{row['order_count']} Orders</div>
+                    </div>
+                    <div style="font-weight: bold; font-size: 0.8rem;">{row['total_revenue']/1000:,.0f}k</div>
                 </div>
-                <div style="font-weight: bold; font-size: 0.8rem;">{row['total_revenue']/1000:,.0f}k</div>
-            </div>
-            """, unsafe_allow_html=True)
-    
-    st.markdown('</div>', unsafe_allow_html=True)
+                """, unsafe_allow_html=True)
+        
+        st.markdown('</div>', unsafe_allow_html=True)
+
+elif page == "📅 Seasonality Advisor":
+    show_seasonality_view()
+
+elif page == "💰 Cash Flow Strategist":
+    show_cash_flow_view()
+
+else:
+    st.info(f"Page '{page}' is under development.")
