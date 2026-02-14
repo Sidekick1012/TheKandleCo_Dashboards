@@ -107,6 +107,6 @@ def show_cash_flow_view(year=2025, months=None):
         
         ui.stats_item("Accounts Payable", "Rs. 120k", "#E53E3E", icon="🧾")
         ui.stats_item("Outstanding Loans", "Rs. 0", "#38A169", icon="🕊️")
-        ui.stats_item("Upcoming Payroll", "Rs. 240k", "#ECC94B", icon="👥")
+        ui.stats_item("Upcoming Payroll", "Rs. 240k", "#D4AF37", icon="👥")
         
         st.markdown('</div>', unsafe_allow_html=True)

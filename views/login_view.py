@@ -211,7 +211,7 @@ div[data-testid="stTextInput"] label {
     width: 32px !important;
     height: 100% !important;
     background: #1A202C !important;
-    color: #ecc94b !important;
+    color: #D4AF37 !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;

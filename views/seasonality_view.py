@@ -93,7 +93,7 @@ def show_seasonality_view(year=2025, months=None):
         st.markdown('<p style="color: #718096; font-size: 0.85rem; margin-top: -0.5rem; margin-bottom: 1rem;"><b>Meaning:</b> Aglay mahino mein kin products ki demand zyada ho sakti hai.</p>', unsafe_allow_html=True)
         
         ui.stats_item("Holiday Gift Set A", "95%", "#38A169", icon="🎁")
-        ui.stats_item("Midnight Breeze Jars", "80%", "#ECC94B", icon="🏺")
+        ui.stats_item("Midnight Breeze Jars", "80%", "#D4AF37", icon="🏺")
         ui.stats_item("Wick Trimmers", "45%", "#E53E3E", icon="✂️")
         
         st.caption("Predicted stock requirements based on historical burn rates.")

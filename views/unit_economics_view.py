@@ -117,7 +117,7 @@ def show_unit_economics_view(year=2025, months=None):
         st.markdown('---')
         st.markdown('**Product Mix Recommendation**:')
         ui.stats_item("Premium Range (High Margin)", "65%", "#38A169", icon="✨")
-        ui.stats_item("Entry Range (High Volume)", "25%", "#ECC94B", icon="🚪")
+        ui.stats_item("Entry Range (High Volume)", "25%", "#D4AF37", icon="🚪")
         ui.stats_item("Trial/Sample Packs", "10%", "#E53E3E", icon="🧪")
         
         st.markdown('</div>', unsafe_allow_html=True)

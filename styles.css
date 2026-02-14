@@ -81,7 +81,7 @@ header svg path {
 /* Active/Selected Item Styling */
 /* Streamlit doesn't always use data-selected on label, targeting based on radio checked state inside */
 .stRadio div[role="radiogroup"] label[data-checked="true"] {
-    background: linear-gradient(90deg, #d4af37 0%, #ecc94b 100%) !important;
+    background: linear-gradient(90deg, #d4af37 0%, #D4AF37 100%) !important;
     box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3) !important;
     border: 1px solid rgba(255, 255, 255, 0.2) !important;
 }

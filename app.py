@@ -136,7 +136,7 @@ with st.sidebar:
                 width: 38px !important; 
                 height: 100% !important;
                 background: #1A202C !important;
-                color: #ecc94b !important;
+                color: #D4AF37 !important;
                 display: flex !important;
                 align-items: center !important;
                 justify-content: center !important;
@@ -174,7 +174,7 @@ with st.sidebar:
     except Exception as e:
         st.markdown('<div style="text-align: center; margin-bottom: 2rem; color: white; font-family: Playfair Display; font-size: 1.5rem; margin-top: -30px;">The Kandle Co.</div>', unsafe_allow_html=True)
     # --- Navigator ---
-    st.markdown('<div class="sidebar-section-header" style="color: #ecc94b; font-weight: 600; font-size: 0.75rem; letter-spacing: 2px; opacity: 0.8;">NAVIGATOR</div>', unsafe_allow_html=True)
+    st.markdown('<div class="sidebar-section-header" style="color: #D4AF37; font-weight: 600; font-size: 0.75rem; letter-spacing: 2px; opacity: 0.8;">NAVIGATOR</div>', unsafe_allow_html=True)
     page = st.radio("Menu", [
         "📊 Revenue Overview", 
         "📅 Seasonality Advisor", 
@@ -185,7 +185,7 @@ with st.sidebar:
     st.markdown("---")
     
     # --- Global Filters ---
-    st.markdown('<div class="sidebar-section-header" style="color: #ecc94b; font-weight: 600; font-size: 0.75rem; letter-spacing: 2px; opacity: 0.8;">GLOBAL FILTERS</div>', unsafe_allow_html=True)
+    st.markdown('<div class="sidebar-section-header" style="color: #D4AF37; font-weight: 600; font-size: 0.75rem; letter-spacing: 2px; opacity: 0.8;">GLOBAL FILTERS</div>', unsafe_allow_html=True)
     
     # Year Selection
     years = [2024, 2025]
@@ -213,8 +213,8 @@ if page == "📊 Revenue Overview":
     st.markdown('<h1 class="main-title" style="font-size: 1.6rem;">📊 Revenue Overview</h1>', unsafe_allow_html=True)
     # Dashboard Header & Filter Context
     st.markdown(f"""
-        <div style="background: rgba(236, 201, 75, 0.1); padding: 1rem; border-radius: 10px; border-left: 5px solid #ECC94B; margin-bottom: 2rem;">
-            <p style="margin: 0; font-weight: 600; color: #ECC94B;">🔍 Filter Context: {st.session_state.selected_year} | {", ".join(st.session_state.selected_months) if st.session_state.selected_months else "Full Year"}</p>
+        <div style="background: rgba(212, 175, 55, 0.1); padding: 1rem; border-radius: 10px; border-left: 5px solid #D4AF37; margin-bottom: 2rem;">
+            <p style="margin: 0; font-weight: 600; color: #D4AF37;">🔍 Filter Context: {st.session_state.selected_year} | {", ".join(st.session_state.selected_months) if st.session_state.selected_months else "Full Year"}</p>
             <p style="margin: 5px 0 0 0; font-size: 0.85rem; color: #718096;">All metrics below are <b>Synced</b> to your sidebar selection. This dashboard provides a comprehensive snapshot of your financial health, including real bank balance and net profitability.</p>
         </div>
     """, unsafe_allow_html=True)
@@ -318,7 +318,7 @@ if page == "📊 Revenue Overview":
         else:
             p_online = p_stockist = p_custom = p_exhibition = 0
             
-        ui.stats_item("Online", f"{p_online:.0f}%", "#ECC94B", "🛒")
+        ui.stats_item("Online", f"{p_online:.0f}%", "#D4AF37", "🛒")
         ui.stats_item("Stockists", f"{p_stockist:.0f}%", "#38A169", "🏢")
         ui.stats_item("Custom", f"{p_custom:.0f}%", "#2D3748", "🎁")
         ui.stats_item("Exhibitions", f"{p_exhibition:.0f}%", "#2B6CB0", "🎪")
