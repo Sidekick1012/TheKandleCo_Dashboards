@@ -70,11 +70,9 @@ with st.sidebar:
     except Exception as e:
         # Fallback if image not found or fails to open
         st.markdown('<div style="text-align: center; margin-bottom: 2rem; color: white; font-family: Playfair Display; font-size: 1.5rem;">The Kandle Co.</div>', unsafe_allow_html=True)
-    
-    
     # --- Navigator ---
     st.markdown('<div style="color: #ecc94b; font-weight: bold; font-size: 0.8rem; letter-spacing: 1px; margin: 1.5rem 0 0.5rem 0;">NAVIGATOR</div>', unsafe_allow_html=True)
-    page = st.radio("Menu", ["Dashboard", "Sales", "Expenses", "Inventory", "Settings"], label_visibility="collapsed")
+    page = st.radio("Menu", ["Revenue Overview", "Sales Analysis", "Expense Tracker", "Inventory Status", "Settings"], label_visibility="collapsed")
     
     st.markdown("---")
     
@@ -100,18 +98,13 @@ with st.sidebar:
     if st.button("Logout"):
         st.session_state.authenticated = False
         st.rerun()
-    
-    if st.button("Logout"):
-        st.session_state.authenticated = False
-        st.rerun()
 
 # --- Main Content ---
 
 # Top Row: Metric Cards
 # Fetch Data for Cards
-# Using Jul-2024 data as default since we just synced it
 df_sales = get_monthly_sales_trend()
-df_curr = apply_filters(df_sales, 2024, ['Jul'])
+df_curr = apply_filters(df_sales, st.session_state.selected_year, st.session_state.selected_months)
 
 total_sales = df_curr['total_sales'].sum() if not df_curr.empty else 0
 total_expenses = 0 # Placeholder until expense sync
@@ -120,13 +113,13 @@ net_profit = 0 # Placeholder
 cols = st.columns(4)
 
 with cols[0]:
-    ui.metric_card("Total Balance", "$2,256", "Updated hour ago", "metric-card-1", icon="💰") # Placeholder currency
+    ui.metric_card("Total Balance", "Rs. 0", "Current Session", "metric-card-1", icon="💰") 
 with cols[1]:
-    ui.metric_card("Total Sales", f"Rs. {total_sales:,.0f}", "Jul-2024", "metric-card-2", icon="💼")
+    ui.metric_card("Total Sales", f"Rs. {total_sales:,.0f}", f"{st.session_state.selected_year} Selection", "metric-card-2", icon="💼")
 with cols[2]:
-    ui.metric_card("Total Expenses", "$120", "Updated hour ago", "metric-card-3", icon="💸")
+    ui.metric_card("Total Expenses", "Rs. 0", "Current Session", "metric-card-3", icon="💸")
 with cols[3]:
-    ui.metric_card("Total Visitors", "3", "Updated hour ago", "metric-card-4", icon="👥")
+    ui.metric_card("Total Visitors", "0", "Current Session", "metric-card-4", icon="👥")
 
 # Row 2: Charts and Lists
 c1, c2 = st.columns([2, 1])
@@ -135,10 +128,8 @@ with c1:
     st.markdown('<div class="content-card">', unsafe_allow_html=True)
     st.markdown('<h3>Observations</h3>', unsafe_allow_html=True)
     
-    # Mock Observations
-    ui.observation_item("Top Product: Burning Firewood", "2", 85)
-    ui.observation_item("Stockist: Shams", "5", 65, color="#ECC94B")
-    ui.observation_item("Inventory Alert: Glass Jars", "1", 25, color="#E53E3E")
+    # Observe based on current selection
+    ui.observation_item("Sales Goal", f"{st.session_state.selected_year}", 100 if total_sales > 0 else 0)
     
     st.markdown('</div>', unsafe_allow_html=True)
     
@@ -146,8 +137,11 @@ with c1:
     st.markdown('<div class="content-card">', unsafe_allow_html=True)
     st.markdown('<h3>Sales Trend</h3>', unsafe_allow_html=True)
     
-    if not df_sales.empty:
-        fig = px.line(df_sales, x='month_year', y='total_sales', markers=True)
+    # Show trend for whole year or selected months
+    df_trend = apply_filters(df_sales, st.session_state.selected_year, None) # Trend for whole year
+    
+    if not df_trend.empty:
+        fig = px.line(df_trend, x='month_year', y='total_sales', markers=True)
         fig.update_layout(
             plot_bgcolor='white',
             paper_bgcolor='white',
