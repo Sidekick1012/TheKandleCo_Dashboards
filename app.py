@@ -68,7 +68,7 @@ with st.sidebar:
         logo_path = os.path.join(os.path.dirname(__file__), "assets", "logo.png")
         col1, col2, col3 = st.columns([1, 2, 1])
         with col2:
-            st.markdown('<div style="margin-top: -50px !important;">', unsafe_allow_html=True)
+            st.markdown('<div style="margin-top: -100px !important;">', unsafe_allow_html=True)
             st.image(logo_path, width=100)
             st.markdown('</div>', unsafe_allow_html=True)
     except Exception as e:
