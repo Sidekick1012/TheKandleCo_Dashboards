@@ -175,7 +175,7 @@ div[data-testid="stTextInput"] label {
 .stButton > button,
 [data-testid="stFormSubmitButton"] button {
     position: relative !important;
-    background: linear-gradient(90deg, #d4af37 calc(100% - 32px), #1A202C calc(100% - 32px)) !important;
+    background: linear-gradient(90deg, #D4AF37 calc(100% - 32px), #1A202C calc(100% - 32px)) !important;
     color: #0F172A !important;
     border: none !important;
     border-radius: 0 4px 4px 0 !important;
@@ -229,7 +229,7 @@ div[data-testid="stTextInput"] label {
     width: 0 !important;
     height: 0 !important;
     border-left: 8px solid transparent !important;
-    border-bottom: 6px solid #b7902d !important;
+    border-bottom: 6px solid #B69121 !important; /* Darker Gold for fold */
 }
 
 /* Ensure inner text is visible and bold */

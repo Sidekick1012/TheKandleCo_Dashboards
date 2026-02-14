@@ -98,7 +98,7 @@ with st.sidebar:
             /* Ribbon Style Logout Button */
             div.stButton > button:first-child {
                 position: relative !important;
-                background: linear-gradient(90deg, #d4af37 calc(100% - 38px), #1A202C calc(100% - 38px)) !important;
+                background: linear-gradient(90deg, #D4AF37 calc(100% - 38px), #1A202C calc(100% - 38px)) !important;
                 color: #0F172A !important;
                 border: none !important;
                 border-radius: 0 4px 4px 0 !important;
@@ -153,7 +153,7 @@ with st.sidebar:
                 width: 0 !important;
                 height: 0 !important;
                 border-left: 10px solid transparent !important;
-                border-bottom: 8px solid #b7902d !important;
+                border-bottom: 8px solid #B69121 !important;
             }
         </style>
     """, unsafe_allow_html=True)
