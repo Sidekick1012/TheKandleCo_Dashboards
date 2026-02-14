@@ -217,8 +217,14 @@ div[data-testid="stTextInput"] label {
 }
 
 .custom-footer span {
-    color: #000000 !important; /* Sidekick also black */
-    font-weight: 700 !important;
+    display: inline-block !important;
+    vertical-align: middle !important;
+}
+
+.footer-logo {
+    height: 12px !important; /* Scaled to match font size 13px */
+    width: auto !important;
+    margin-bottom: 2px !important;
 }
 
 /* ===== ANIMATIONS ===== */
@@ -281,6 +287,6 @@ div[data-testid="stTextInput"] label {
         # Footer
         st.markdown("""
         <div class="custom-footer">
-            Designed & Developed by <span>Sidekick</span>
+            Designed & Developed by <span><img src="app/static/assets/sidekick_logo.png" class="footer-logo"></span>
         </div>
         """, unsafe_allow_html=True)
