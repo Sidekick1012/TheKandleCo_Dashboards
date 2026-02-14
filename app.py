@@ -105,7 +105,7 @@ with st.sidebar:
                 font-weight: 800 !important;
                 text-transform: uppercase !important;
                 letter-spacing: 1.5px !important;
-                margin-top: 1.5rem !important;
+                margin-top: 0.5rem !important;
                 padding: 0.6rem !important;
                 box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3) !important;
                 transition: all 0.3s ease !important;
