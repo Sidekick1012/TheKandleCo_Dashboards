@@ -33,7 +33,6 @@ st.set_page_config(
     layout="wide", # Changed to wide for the dashboard layout
     initial_sidebar_state="expanded"
 )
- Riverside, CA
 
 from views.login_view import show_login_page
 
