@@ -20,6 +20,20 @@ body {
 }
 
 /* Sidebar Menu Items */
+button[data-testid="baseButton-header"] {
+    color: white !important;
+}
+
+button[data-testid="baseButton-headerNoPadding"] {
+    color: white !important;
+}
+
+/* Specifically the icon inside */
+button span svg {
+    fill: white !important;
+    color: white !important;
+}
+
 .stRadio>div {
     background-color: transparent;
     color: white;
