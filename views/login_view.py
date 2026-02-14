@@ -285,11 +285,12 @@ div[data-testid="stTextInput"] label {
             <p class="brand-subtitle">LUXURY CANDLE STUDIO</p>
         </div>
         """, unsafe_allow_html=True)
-        
         # Login Box
-        st.markdown('<div class="login-box">', unsafe_allow_html=True)
-        st.markdown('<h2 class="login-header">Business Intelligence Suite</h2>', unsafe_allow_html=True)
-        st.markdown('<div class="header-accent-line"></div>', unsafe_allow_html=True)
+        st.markdown('''
+            <div class="login-box">
+                <h2 class="login-header">Business Intelligence Suite</h2>
+                <div class="header-accent-line"></div>
+        ''', unsafe_allow_html=True)
         
         # Form for Enter key support
         with st.form("login_form"):
