@@ -244,7 +244,7 @@ if page == "📊 Revenue Overview":
                 margin=dict(t=10, l=10, r=10, b=10),
                 xaxis=dict(showgrid=False),
                 yaxis=dict(showgrid=True, gridcolor='#eee'),
-                height=250
+                height=200
             )
             fig.update_traces(line_color='#2F855A', line_width=3)
             st.plotly_chart(fig, use_container_width=True)
