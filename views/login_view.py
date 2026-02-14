@@ -59,14 +59,13 @@ header, footer, #MainMenu {visibility: hidden !important;}
 }
 
 /* ===== LOGIN BOX ===== */
-/* Dark card to support the light text usage requested */
 .login-box {
     width: 320px !important;
     padding: 30px 25px !important;
     border-radius: 15px !important;
-    background: #2a1f16 !important; /* Dark Brown background */
-    border: 1px solid #3e2f24 !important;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.15) !important;
+    background: #ffffff !important; /* White background */
+    border: 1px solid #f0f0f0 !important;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.08) !important;
     text-align: center !important;
     animation: fadeUp 1.0s ease-out !important;
     margin: 0 auto !important;
@@ -75,14 +74,14 @@ header, footer, #MainMenu {visibility: hidden !important;}
 
 .login-box:hover {
     transform: translateY(-5px);
-    box-shadow: 0 15px 50px rgba(0,0,0,0.25) !important;
+    box-shadow: 0 15px 50px rgba(0,0,0,0.12) !important;
 }
 
 .login-header {
     font-family: 'Playfair Display', serif !important;
     margin-bottom: 15px !important;
     font-size: 22px !important;
-    color: #e6c79c !important; /* RESTORED GOLD COLOR */
+    color: #2a1f16 !important; /* Dark text for contrast */
     font-weight: 600 !important;
 }
 
@@ -94,26 +93,26 @@ div[data-testid="stTextInput"] {
 
 /* Target the BaseWeb input container (the box) */
 div[data-baseweb="input"] {
-    background-color: rgba(255, 255, 255, 0.08) !important; /* Restored glass style */
-    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    background-color: #f7f7f7 !important; /* Light grey bg */
+    border: 1px solid #eee !important;
     border-radius: 8px !important;
-    color: white !important;
+    color: #333 !important;
     transition: border-color 0.3s, box-shadow 0.3s;
 }
 
 div[data-baseweb="input"]:focus-within {
     border-color: #e6c79c !important;
-    background-color: rgba(255, 255, 255, 0.12) !important;
+    background-color: #fff !important;
     box-shadow: 0 0 0 2px rgba(230, 199, 156, 0.2) !important;
 }
 
 /* Target the actual input element */
 input[type="text"], input[type="password"] {
     background: transparent !important;
-    color: #fff !important; /* Restored White Text */
+    color: #333 !important; /* Dark text */
     font-family: 'Poppins', sans-serif !important;
     font-size: 12px !important;
-    caret-color: #e6c79c !important;
+    caret-color: #c89b6d !important;
     padding: 10px 12px !important;
 }
 
@@ -124,7 +123,7 @@ div[data-baseweb="base-input"] {
 }
 
 input::placeholder {
-    color: #aaa !important; /* Restored lighter placeholder */
+    color: #999 !important;
     font-size: 12px !important;
 }
 
@@ -139,20 +138,20 @@ div[data-testid="stTextInput"] label {
     padding: 10px !important;
     border-radius: 8px !important;
     border: none !important;
-    background: #c89b6d !important; /* Restored lighter button */
-    color: #2a1f16 !important; /* Dark text on button */
-    font-weight: 600 !important;
+    background: #2a1f16 !important; /* Dark button */
+    color: #ffffff !important;
+    font-weight: 500 !important;
     font-size: 13px !important;
     letter-spacing: 1px !important;
     cursor: pointer !important;
     transition: all 0.3s ease !important;
     margin-top: 5px !important;
-    box-shadow: 0 4px 15px rgba(200, 155, 109, 0.2) !important;
+    box-shadow: 0 4px 15px rgba(42, 31, 22, 0.2) !important;
 }
 
 .stButton > button:hover {
-    background: #e6c79c !important;
-    color: #2a1f16 !important;
+    background: #c89b6d !important;
+    color: #fff !important;
     transform: translateY(-2px) !important;
     box-shadow: 0 6px 20px rgba(200, 155, 109, 0.3) !important;
 }
@@ -168,13 +167,13 @@ div[data-testid="stTextInput"] label {
     width: 100% !important;
     text-align: center !important;
     font-size: 11px !important;
-    color: #8c6b4f !important; /* Darker footer for white bg */
+    color: #aaa !important;
     left: 0 !important;
     animation: fadeIn 2s ease-in;
 }
 
 .custom-footer span {
-    color: #2a1f16 !important; 
+    color: #c89b6d !important;
     font-weight: 500 !important;
 }
 
