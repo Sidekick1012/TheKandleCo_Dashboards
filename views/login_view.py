@@ -132,32 +132,67 @@ div[data-testid="stTextInput"] label {
     display: none !important;
 }
 
-/* ===== BUTTON ===== */
+/* ===== RIBBON BUTTON ===== */
 .stButton > button {
-    width: 100% !important;
-    padding: 10px !important;
-    border-radius: 8px !important;
+    position: relative !important;
+    background: linear-gradient(90deg, #d4af37 calc(100% - 42px), #1A202C calc(100% - 42px)) !important;
+    color: #0F172A !important;
     border: none !important;
-    background: #2a1f16 !important; /* Dark button */
-    color: #ffffff !important;
-    font-weight: 500 !important;
-    font-size: 13px !important;
-    letter-spacing: 1px !important;
-    cursor: pointer !important;
+    border-radius: 0 6px 6px 0 !important; /* Rounded right only */
+    width: 100% !important;
+    height: 44px !important;
+    font-weight: 900 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 2px !important;
+    padding-right: 48px !important; /* Space for arrow */
+    padding-left: 15px !important;
+    text-align: left !important;
+    margin-top: 15px !important;
+    overflow: visible !important;
+    box-shadow: 4px 4px 15px rgba(0,0,0,0.15) !important;
+    font-size: 0.9rem !important;
+    white-space: nowrap !important;
     transition: all 0.3s ease !important;
-    margin-top: 5px !important;
-    box-shadow: 0 4px 15px rgba(42, 31, 22, 0.2) !important;
 }
 
 .stButton > button:hover {
-    background: #c89b6d !important;
-    color: #fff !important;
-    transform: translateY(-2px) !important;
-    box-shadow: 0 6px 20px rgba(200, 155, 109, 0.3) !important;
+    transform: scale(1.02) !important;
+    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4) !important;
 }
 
-.stButton > button:active {
-    transform: translateY(0) !important;
+/* Dark Section with Arrow */
+.stButton > button::after {
+    content: "➜" !important;
+    position: absolute !important;
+    right: 0 !important;
+    top: 0 !important;
+    width: 42px !important;
+    height: 100% !important;
+    background: #1A202C !important;
+    color: #ecc94b !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 1.2rem !important;
+    border-radius: 0 6px 6px 0 !important;
+}
+
+/* Ribbon Fold */
+.stButton > button::before {
+    content: "" !important;
+    position: absolute !important;
+    left: 0 !important;
+    top: -8px !important;
+    width: 0 !important;
+    height: 0 !important;
+    border-left: 10px solid transparent !important;
+    border-bottom: 8px solid #b7902d !important;
+}
+
+/* Ensure inner text is visible and bold */
+.stButton > button p {
+    margin: 0 !important;
+    font-weight: 900 !important;
 }
 
 /* ===== FOOTER ===== */
@@ -223,7 +258,7 @@ div[data-testid="stTextInput"] label {
             username = st.text_input("Username", placeholder="Username", label_visibility="collapsed")
             password = st.text_input("Password", type="password", placeholder="Password", label_visibility="collapsed")
             
-            submitted = st.form_submit_button("Sign In")
+            submitted = st.form_submit_button("LOGIN")
             
             if submitted:
                 if check_login(username, password):
