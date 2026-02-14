@@ -95,17 +95,26 @@ with st.sidebar:
                 height: auto;
             }
 
-            /* Premium Logout Button */
+            /* Premium Logout Button - HEAVY DESIGN */
             div.stButton > button:first-child {
-                background: transparent !important;
-                color: #ECC94B !important;
-                border: 1px solid #ECC94B !important;
-                border-radius: 8px !important;
+                background: linear-gradient(90deg, #d4af37 0%, #ecc94b 100%) !important;
+                color: #1A365D !important;
+                border: none !important;
+                border-radius: 10px !important;
                 width: 100% !important;
-                font-weight: 600 !important;
+                font-weight: 800 !important;
                 text-transform: uppercase !important;
-                letter-spacing: 1px !important;
-                margin-top: 0.5rem !important;
+                letter-spacing: 1.5px !important;
+                margin-top: 1.5rem !important;
+                padding: 0.6rem !important;
+                box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3) !important;
+                transition: all 0.3s ease !important;
+            }
+            div.stButton > button:first-child:hover {
+                transform: translateY(-2px) !important;
+                box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5) !important;
+                background: linear-gradient(90deg, #ecc94b 0%, #d4af37 100%) !important;
+                color: #0F172A !important;
             }
         </style>
     """, unsafe_allow_html=True)
