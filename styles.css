@@ -12,7 +12,7 @@ body {
     /* Dark Navy/Green Theme */
     border-radius: 0 !important;
     padding-top: 0px !important;
-    width: 200px !important;
+    width: 250px !important;
 }
 
 [data-testid="stSidebar"] [data-testid="stSidebarUserContent"] {
@@ -27,13 +27,15 @@ body {
 /* Sidebar Toggle & Header Buttons color */
 button[data-testid="baseButton-header"],
 button[data-testid="baseButton-headerNoPadding"],
-[data-testid="stHeader"] button {
+[data-testid="stHeader"] button,
+[data-testid="stSidebarCollapseButton"] button {
     color: white !important;
 }
 
 button[data-testid="baseButton-header"] svg,
 button[data-testid="baseButton-headerNoPadding"] svg,
-[data-testid="stHeader"] svg {
+[data-testid="stHeader"] svg,
+[data-testid="stSidebarCollapseButton"] svg {
     fill: white !important;
     color: white !important;
 }
