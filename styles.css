@@ -12,7 +12,7 @@ body {
     /* Dark Navy/Green Theme */
     border-radius: 0 !important;
     padding-top: 0px !important;
-    width: 250px !important;
+    width: 200px !important;
 }
 
 [data-testid="stSidebar"] [data-testid="stSidebarUserContent"] {
@@ -24,17 +24,16 @@ body {
     border-color: rgba(255, 255, 255, 0.1);
 }
 
-/* Sidebar Menu Items */
-button[data-testid="baseButton-header"] {
+/* Sidebar Toggle & Header Buttons color */
+button[data-testid="baseButton-header"],
+button[data-testid="baseButton-headerNoPadding"],
+[data-testid="stHeader"] button {
     color: white !important;
 }
 
-button[data-testid="baseButton-headerNoPadding"] {
-    color: white !important;
-}
-
-/* Specifically the icon inside */
-button span svg {
+button[data-testid="baseButton-header"] svg,
+button[data-testid="baseButton-headerNoPadding"] svg,
+[data-testid="stHeader"] svg {
     fill: white !important;
     color: white !important;
 }
