@@ -40,7 +40,8 @@ def show_unit_economics_view(year=2025, months=None):
     # --- Row 2: SKU Margin Ranking (Horizontal Bar) ---
     st.markdown('<div class="content-card">', unsafe_allow_html=True)
     st.markdown('<h3>SKU Margin Ranking: Winners & Bleeders</h3>', unsafe_allow_html=True)
-    st.markdown('<p style="font-size: 0.8rem; color: #718096; margin-bottom: 2rem;">Ranked by Gross Margin % to show which products contribute most to profit per rupee.</p>', unsafe_allow_html=True)
+    st.markdown('<p style="font-size: 0.8rem; color: #718096; margin-bottom: -0.5rem;">Ranked by Gross Margin % to show which products contribute most to profit per rupee.</p>', unsafe_allow_html=True)
+    st.markdown('<p style="color: #718096; font-size: 0.85rem; margin-bottom: 2rem;"><b>Meaning:</b> Sabse zyada profit dene wale products upar hain, aur sabse kam profit wale niche.</p>', unsafe_allow_html=True)
     
     # Sort for ranking chart
     df_rank = df_econ.sort_values("Gross Margin %", ascending=True)
@@ -69,6 +70,7 @@ def show_unit_economics_view(year=2025, months=None):
     with c1:
         st.markdown('<div class="content-card">', unsafe_allow_html=True)
         st.markdown('<h3>The "Revenue Bridge" (Waterfall)</h3>', unsafe_allow_html=True)
+        st.markdown('<p style="color: #718096; font-size: 0.85rem; margin-top: -0.5rem; margin-bottom: 1rem;"><b>Meaning:</b> Ek item ki sale price mein se kitna paisa materials, packing, aur marketing mein jata hai.</p>', unsafe_allow_html=True)
         
         # Select SKU for breakdown
         selected_sku_name = st.selectbox("Select Product to Analyze Bridge", df_econ['Product'].tolist())
@@ -106,6 +108,7 @@ def show_unit_economics_view(year=2025, months=None):
     with c2:
         st.markdown('<div class="content-card">', unsafe_allow_html=True)
         st.markdown('<h3>CFO Strategic Advice</h3>', unsafe_allow_html=True)
+        st.markdown('<p style="color: #718096; font-size: 0.85rem; margin-top: -0.5rem; margin-bottom: 1rem;"><b>Meaning:</b> Konsi product band karni hai aur kis par zyada tawajjo deni hai.</p>', unsafe_allow_html=True)
         
         st.info("**Winner Focus**: 'Oud Fusion' is a high-margin star. Increasing ad spend by 15% here is safely justified by the ROI.")
         st.warning("**The Packaging Trap**: Packaging costs for the 100g range have risen 12% since 2023. Consider sourcing jars in bulk to reclaim 3% margin.")

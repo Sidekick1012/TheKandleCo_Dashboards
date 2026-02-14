@@ -48,6 +48,7 @@ def show_seasonality_view(year=2025, months=None):
     # --- Line Chart: YoY Comparison ---
     st.markdown('<div class="content-card">', unsafe_allow_html=True)
     st.markdown(f'<h3>Year-over-Year Comparison ({year} Selection Highlighted)</h3>', unsafe_allow_html=True)
+    st.markdown('<p style="color: #718096; font-size: 0.85rem; margin-top: -0.5rem; margin-bottom: 1.5rem;"><b>Meaning:</b> Ye graph aapke selected period ko guzishta saal (Previous Year) se compare karta hai taake growth trend nazar aaye.</p>', unsafe_allow_html=True)
     
     # Prepare data for plotting
     plot_df = df_yoy.reset_index().melt(id_vars='month_name', var_name='Year', value_name='Sales')
@@ -77,6 +78,7 @@ def show_seasonality_view(year=2025, months=None):
     with c1:
         st.markdown('<div class="content-card">', unsafe_allow_html=True)
         st.markdown('<h3>Insights & Forecasting</h3>', unsafe_allow_html=True)
+        st.markdown('<p style="color: #718096; font-size: 0.85rem; margin-top: -0.5rem; margin-bottom: 1rem;"><b>Meaning:</b> Historical data ki bunyaad par future ke liye strategic mashwaray.</p>', unsafe_allow_html=True)
         
         st.info("**Trend Identified**: Every year, sales spike in October (Diwali prep). Recommendation: Start inventory build-up by late August.")
         st.success("**Growth Highlight**: 2025 Online Sales are consistently 15% higher than 2024 same-month benchmarks.")
@@ -87,6 +89,7 @@ def show_seasonality_view(year=2025, months=None):
     with c2:
         st.markdown('<div class="content-card">', unsafe_allow_html=True)
         st.markdown('<h3>Forecasted Demand</h3>', unsafe_allow_html=True)
+        st.markdown('<p style="color: #718096; font-size: 0.85rem; margin-top: -0.5rem; margin-bottom: 1rem;"><b>Meaning:</b> Aglay mahino mein kin products ki demand zyada ho sakti hai.</p>', unsafe_allow_html=True)
         
         ui.stats_item("Holiday Gift Set A", "95%", "#38A169", icon="🎁")
         ui.stats_item("Midnight Breeze Jars", "80%", "#ECC94B", icon="🏺")

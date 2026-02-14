@@ -52,6 +52,7 @@ def show_cash_flow_view(year=2025, months=None):
     # --- Area Chart: Revenue vs Expenses ---
     st.markdown('<div class="content-card">', unsafe_allow_html=True)
     st.markdown(f'<h3>Liquidity Bridge: Revenue vs. Burn ({year})</h3>', unsafe_allow_html=True)
+    st.markdown('<p style="color: #718096; font-size: 0.85rem; margin-top: -0.5rem; margin-bottom: 1.5rem;"><b>Meaning:</b> Ye graph batata hai ke kya aapki Sales (Inflow) aapke Monthly Kharach (Burn) ko cover kar rahi hain ya nahi.</p>', unsafe_allow_html=True)
     
     if not df_sales.empty and not df_expenses.empty:
         # Merge Sales and Expenses for Comparison
@@ -90,6 +91,7 @@ def show_cash_flow_view(year=2025, months=None):
     with c1:
         st.markdown('<div class="content-card">', unsafe_allow_html=True)
         st.markdown('<h3>CFO Observations</h3>', unsafe_allow_html=True)
+        st.markdown('<p style="color: #718096; font-size: 0.85rem; margin-top: -0.5rem; margin-bottom: 1rem;"><b>Meaning:</b> Cash flow ko behtar banane ke liye zaroori nukaat aur recommendations.</p>', unsafe_allow_html=True)
         
         st.warning("**Inventory Trap**: We have Rs. 500k tied in stockist receivables. Action: Follow up with 'Luxe Living' for faster settlements.")
         st.success("**Operational Health**: Fixed costs (Rent, Salaries) are covered by Online Sales alone. 100% of Exhibition sales are pure surplus.")
@@ -100,6 +102,7 @@ def show_cash_flow_view(year=2025, months=None):
     with c2:
         st.markdown('<div class="content-card">', unsafe_allow_html=True)
         st.markdown('<h3>Liability Status</h3>', unsafe_allow_html=True)
+        st.markdown('<p style="color: #718096; font-size: 0.85rem; margin-top: -0.5rem; margin-bottom: 1rem;"><b>Meaning:</b> Wo raqam jo aapne abhi logon ko deni hai (Payments due).</p>', unsafe_allow_html=True)
         
         ui.stats_item("Accounts Payable", "Rs. 120k", "#E53E3E", icon="🧾")
         ui.stats_item("Outstanding Loans", "Rs. 0", "#38A169", icon="🕊️")
