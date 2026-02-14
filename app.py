@@ -95,27 +95,53 @@ with st.sidebar:
                 height: auto;
             }
 
-            /* Premium Logout Button - HEAVY & COMPACT */
+            /* Ribbon Style Logout Button */
             div.stButton > button:first-child {
-                background: linear-gradient(90deg, #d4af37 0%, #ecc94b 100%) !important;
-                color: #1A365D !important;
+                position: relative !important;
+                background: linear-gradient(90deg, #d4af37 75%, #1A202C 75%) !important;
+                color: #0F172A !important; /* Dark text for gold background */
                 border: none !important;
-                border-radius: 6px !important;
+                border-radius: 0 4px 4px 0 !important;
                 width: 100% !important;
+                height: 40px !important;
                 font-weight: 900 !important;
                 text-transform: uppercase !important;
                 letter-spacing: 2px !important;
-                margin-top: 0rem !important;
-                padding: 0.3rem 0 !important; /* Extremely low height */
-                min-height: 35px !important;
-                font-size: 0.8rem !important;
-                box-shadow: 0 2px 10px rgba(212, 175, 55, 0.3) !important;
-                transition: all 0.2s ease !important;
+                padding-right: 25% !important;
+                padding-left: 10px !important;
+                text-align: left !important;
+                margin-top: 2rem !important;
+                overflow: visible !important;
+                box-shadow: 4px 4px 10px rgba(0,0,0,0.2) !important;
             }
-            div.stButton > button:first-child:hover {
-                transform: scale(1.02) !important;
-                box-shadow: 0 4px 15px rgba(212, 175, 55, 0.5) !important;
-                background: linear-gradient(90deg, #ecc94b 0%, #d4af37 100%) !important;
+
+            /* Dark Section with Arrow */
+            div.stButton > button:first-child::after {
+                content: "➜" !important;
+                position: absolute !important;
+                right: 0 !important;
+                top: 0 !important;
+                width: 25% !important;
+                height: 100% !important;
+                background: #1A202C !important;
+                color: #ecc94b !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                font-size: 1.2rem !important;
+                border-radius: 0 4px 4px 0 !important;
+            }
+
+            /* Ribbon Fold */
+            div.stButton > button:first-child::before {
+                content: "" !important;
+                position: absolute !important;
+                left: 0 !important;
+                top: -8px !important;
+                width: 0 !important;
+                height: 0 !important;
+                border-left: 10px solid transparent !important;
+                border-bottom: 8px solid #b7902d !important;
             }
         </style>
     """, unsafe_allow_html=True)
@@ -165,7 +191,7 @@ with st.sidebar:
         st.rerun()
     
     
-    if st.button("Logout"):
+    if st.button("LOG OUT"):
         st.session_state.authenticated = False
         st.rerun()
 
