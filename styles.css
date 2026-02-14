@@ -26,31 +26,29 @@ body {
     scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
 }
 
-/* Sidebar Toggle & Header Buttons color - CRITICAL FIX */
-button[kind="header"],
-button[data-testid*="Button"],
+/* Sidebar Toggle & Header Buttons color - CROSS-VERSION FIX */
 [data-testid="stHeader"] button,
+[data-testid="stSidebarCollapseButton"],
+button[kind="header"],
 header button,
-.st-emotion-cache-18ni77z,
-.st-emotion-cache-79elbk {
+[data-testid="stSidebar"] button {
     color: white !important;
 }
 
-button svg,
-button svg path,
 [data-testid="stHeader"] svg,
-[data-testid="stHeader"] svg path,
-[data-testid="stSidebar"] svg path {
+[data-testid="stSidebarCollapseButton"] svg,
+[data-testid="stSidebar"] svg,
+header svg {
     fill: white !important;
     color: white !important;
     stroke: white !important;
 }
 
-/* Force the specific collapse button icon */
-[data-testid="stSidebarCollapseButton"] svg {
+[data-testid="stHeader"] svg path,
+[data-testid="stSidebarCollapseButton"] svg path,
+[data-testid="stSidebar"] svg path,
+header svg path {
     fill: white !important;
-    color: white !important;
-    stroke: white !important;
 }
 
 /* Navigation Menu (Radio Buttons) */

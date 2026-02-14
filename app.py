@@ -65,30 +65,36 @@ with st.sidebar:
     # Aggressive UI Injection for Sidebar
     st.markdown("""
         <style>
-            /* Kill Sidebar Top Padding & Enable Hidden Scrolling */
+            /* Force Sidebar Toggle Buttons to be White */
+            button[data-testid="stSidebarCollapseButton"], 
+            button[kind="header"],
+            [data-testid="stHeader"] button,
+            header button svg {
+                color: white !important;
+                fill: white !important;
+            }
+            
+            /* Aggressive Sidebar Reset */
             [data-testid="stSidebarContent"] {
                 padding-top: 0rem !important;
-                overflow-x: hidden !important;
-                overflow-y: auto !important;
-                scrollbar-width: none; /* Firefox */
-                -ms-overflow-style: none; /* IE/Edge */
-            }
-            [data-testid="stSidebarContent"]::-webkit-scrollbar {
-                display: none; /* Chrome/Safari */
+                margin-top: 0rem !important;
             }
             
-            /* Logo Space Adjustment */
-            .logo-container {
-                margin-top: -130px !important;
-                margin-bottom: -50px !important;
+            [data-testid="stSidebarNav"] {
+                padding-top: 0rem !important;
             }
-            
-            /* Compact Section Margins */
-            .sidebar-section-header {
-                margin-top: 0.5rem !important;
-                margin-bottom: 0.5rem !important;
+
+            /* Logo Positioning - Move higher and center */
+            .sidebar-logo-container {
+                text-align: center;
+                margin-top: -80px !important;
+                margin-bottom: 20px !important;
             }
-            
+            .sidebar-logo-container img {
+                width: 120px;
+                filter: brightness(0) invert(1); /* Ensure logo is white if it's black */
+            }
+
             /* Premium Logout Button */
             div.stButton > button:first-child {
                 background: transparent !important;
@@ -99,28 +105,17 @@ with st.sidebar:
                 font-weight: 600 !important;
                 text-transform: uppercase !important;
                 letter-spacing: 1px !important;
-                margin-top: 1rem !important;
-            }
-            div.stButton > button:first-child:hover {
-                background: rgba(236, 201, 75, 0.1) !important;
-                border-color: white !important;
-                color: white !important;
+                margin-top: 0.5rem !important;
             }
         </style>
     """, unsafe_allow_html=True)
 
-    # Logo Section
-    import os
-    try:
-        logo_path = os.path.join(os.path.dirname(__file__), "assets", "logo.png")
-        col1, col2, col3 = st.columns([1, 2, 1])
-        with col2:
-            st.markdown('<div class="logo-container">', unsafe_allow_html=True)
-            st.image(logo_path, width=100)
-            st.markdown('</div>', unsafe_allow_html=True)
-    except Exception as e:
-        # Fallback if image not found or fails to open
-        st.markdown('<div style="text-align: center; margin-bottom: 2rem; color: white; font-family: Playfair Display; font-size: 1.5rem; margin-top: -100px;">The Kandle Co.</div>', unsafe_allow_html=True)
+    # Logo Section (Direct HTML for better control)
+    st.markdown("""
+        <div class="sidebar-logo-container">
+            <img src="https://thekandleco.com/cdn/shop/files/logo_black.png?v=1685600000">
+        </div>
+    """, unsafe_allow_html=True)
     # --- Navigator ---
     st.markdown('<div class="sidebar-section-header" style="color: #ecc94b; font-weight: 600; font-size: 0.75rem; letter-spacing: 2px; opacity: 0.8;">NAVIGATOR</div>', unsafe_allow_html=True)
     page = st.radio("Menu", [
