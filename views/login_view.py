@@ -92,11 +92,21 @@ header, footer, #MainMenu {visibility: hidden !important;}
 }
 
 .login-header {
-    font-family: 'Playfair Display', serif !important;
-    margin-bottom: 15px !important;
-    font-size: 22px !important;
-    color: #2a1f16 !important; /* Dark text for contrast */
+    font-family: 'Poppins', sans-serif !important;
+    margin-bottom: 5px !important;
+    font-size: 14px !important;
+    color: #2a1f16 !important;
     font-weight: 600 !important;
+    letter-spacing: 2px !important;
+    text-transform: uppercase !important;
+}
+
+.header-accent-line {
+    width: 40px !important;
+    height: 2px !important;
+    background: #D4AF37 !important;
+    margin: 5px auto 25px auto !important;
+    border-radius: 2px !important;
 }
 
 /* ===== INPUTS ===== */
@@ -278,7 +288,8 @@ div[data-testid="stTextInput"] label {
         
         # Login Box
         st.markdown('<div class="login-box">', unsafe_allow_html=True)
-        st.markdown('<h2 class="login-header">Member Login</h2>', unsafe_allow_html=True)
+        st.markdown('<h2 class="login-header">Business Intelligence Suite</h2>', unsafe_allow_html=True)
+        st.markdown('<div class="header-accent-line"></div>', unsafe_allow_html=True)
         
         # Form for Enter key support
         with st.form("login_form"):
