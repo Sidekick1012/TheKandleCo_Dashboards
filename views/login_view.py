@@ -133,18 +133,19 @@ div[data-testid="stTextInput"] label {
 }
 
 /* ===== RIBBON BUTTON ===== */
-.stButton > button {
+.stButton > button,
+[data-testid="stFormSubmitButton"] button {
     position: relative !important;
     background: linear-gradient(90deg, #d4af37 calc(100% - 42px), #1A202C calc(100% - 42px)) !important;
     color: #0F172A !important;
     border: none !important;
-    border-radius: 0 6px 6px 0 !important; /* Rounded right only */
+    border-radius: 0 6px 6px 0 !important;
     width: 100% !important;
     height: 44px !important;
     font-weight: 900 !important;
     text-transform: uppercase !important;
-    letter-spacing: 2px !important;
-    padding-right: 48px !important; /* Space for arrow */
+    letter-spacing: 1.5px !important;
+    padding-right: 48px !important;
     padding-left: 15px !important;
     text-align: left !important;
     margin-top: 15px !important;
@@ -155,13 +156,15 @@ div[data-testid="stTextInput"] label {
     transition: all 0.3s ease !important;
 }
 
-.stButton > button:hover {
+.stButton > button:hover,
+[data-testid="stFormSubmitButton"] button:hover {
     transform: scale(1.02) !important;
     box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4) !important;
 }
 
 /* Dark Section with Arrow */
-.stButton > button::after {
+.stButton > button::after,
+[data-testid="stFormSubmitButton"] button::after {
     content: "➜" !important;
     position: absolute !important;
     right: 0 !important;
@@ -178,7 +181,8 @@ div[data-testid="stTextInput"] label {
 }
 
 /* Ribbon Fold */
-.stButton > button::before {
+.stButton > button::before,
+[data-testid="stFormSubmitButton"] button::before {
     content: "" !important;
     position: absolute !important;
     left: 0 !important;
@@ -190,9 +194,11 @@ div[data-testid="stTextInput"] label {
 }
 
 /* Ensure inner text is visible and bold */
-.stButton > button p {
+.stButton > button p,
+[data-testid="stFormSubmitButton"] button p {
     margin: 0 !important;
     font-weight: 900 !important;
+    color: #0F172A !important;
 }
 
 /* ===== FOOTER ===== */
