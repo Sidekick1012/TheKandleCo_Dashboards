@@ -41,7 +41,7 @@ header, footer, #MainMenu {visibility: hidden !important;}
 
 .brand-title {
     font-family: 'Playfair Display', serif !important;
-    font-size: 52px !important;
+    font-size: 40px !important;
     letter-spacing: 6px !important;
     font-weight: 600 !important;
     color: #e6c79c !important;
@@ -73,7 +73,7 @@ header, footer, #MainMenu {visibility: hidden !important;}
 
 .login-header {
     font-family: 'Playfair Display', serif !important;
-    margin-bottom: 30px !important;
+    margin-bottom: 20px !important;
     font-size: 28px !important;
     color: #e6c79c !important;
     flash-control: text !important;
@@ -158,7 +158,7 @@ div[data-testid="stTextInput"] label {
     bottom: 30px !important;
     width: 100% !important;
     text-align: center !important;
-    font-size: 14px !important;
+    font-size: 20px !important;
     color: #8c6b4f !important;
     left: 0 !important;
 }
@@ -199,7 +199,7 @@ div[data-testid="stTextInput"] label {
         </div>
         """, unsafe_allow_html=True)
         
-        # Login Box
+        # Login Bo
         st.markdown('<div class="login-box">', unsafe_allow_html=True)
         st.markdown('<h2 class="login-header">Member Login</h2>', unsafe_allow_html=True)
         
