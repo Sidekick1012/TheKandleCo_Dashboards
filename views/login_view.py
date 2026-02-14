@@ -95,7 +95,7 @@ div[data-testid="stTextInput"] {
 /* Target the BaseWeb input container (the box) */
 div[data-baseweb="input"] {
     background-color: #f7f7f7 !important; /* Light grey bg */
-    border: 1px solid #eee !important;
+    border: 1px solid #D4AF37 !important; /* Gold border for inputs */
     border-radius: 8px !important;
     color: #333 !important;
     transition: border-color 0.3s, box-shadow 0.3s;
