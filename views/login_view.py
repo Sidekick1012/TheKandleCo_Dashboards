@@ -217,7 +217,7 @@ div[data-testid="stTextInput"] label {
 }
 
 .custom-footer span {
-    color: #D4AF37 !important; /* Brighter gold for the brand name */
+    color: #000000 !important; /* Sidekick also black */
     font-weight: 700 !important;
 }
 
