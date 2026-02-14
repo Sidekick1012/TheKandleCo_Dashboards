@@ -10,9 +10,8 @@ body {
 [data-testid="stSidebar"] {
     background-color: #1A365D !important;
     /* Dark Navy/Green Theme */
-    border-top-right-radius: 20px;
-    border-bottom-right-radius: 20px;
-    padding-top: 2rem;
+    border-radius: 0 !important;
+    padding-top: 0.5rem !important;
 }
 
 [data-testid="stSidebar"] hr {

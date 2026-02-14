@@ -60,16 +60,13 @@ ui.load_css()
 with st.sidebar:
     # Logo Section
     import os
-    col1, col2, col3 = st.columns([1, 2, 1])
-    with col2:
-        try:
-            logo_path = os.path.join(os.path.dirname(__file__), "assets", "logo.jpg")
-            st.image(logo_path, width=120)
-        except Exception as e:
-            # Fallback if image not found or fails to open
-            st.markdown('<div style="text-align: center; margin-bottom: 2rem; color: white; font-family: Playfair Display; font-size: 1.5rem;">The Kandle Co.</div>', unsafe_allow_html=True)
+    try:
+        logo_path = os.path.join(os.path.dirname(__file__), "assets", "logo.png")
+        st.image(logo_path, use_container_width=True)
+    except Exception as e:
+        # Fallback if image not found or fails to open
+        st.markdown('<div style="text-align: center; margin-bottom: 2rem; color: white; font-family: Playfair Display; font-size: 1.5rem;">The Kandle Co.</div>', unsafe_allow_html=True)
     
-    st.markdown('<div style="margin-bottom: 20px;"></div>', unsafe_allow_html=True) # Spacing
     
     # User Profile Section (Mock)
     st.markdown("""
