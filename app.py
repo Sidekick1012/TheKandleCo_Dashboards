@@ -62,20 +62,60 @@ from views.unit_economics_view import show_unit_economics_view
 
 # --- Sidebar ---
 with st.sidebar:
+    # Aggressive UI Injection for Sidebar
+    st.markdown("""
+        <style>
+            /* Kill Sidebar Top Padding */
+            [data-testid="stSidebarContent"] {
+                padding-top: 0rem !important;
+                overflow-x: hidden !important;
+                overflow-y: hidden !important; /* Force Scroll-Free */
+            }
+            [data-testid="stSidebarContent"]::-webkit-scrollbar {
+                display: none;
+            }
+            
+            /* Logo Space Adjustment */
+            .logo-container {
+                margin-top: -130px !important;
+                margin-bottom: -40px !important;
+                transition: all 0.3s ease;
+            }
+            
+            /* Premium Logout Button */
+            div.stButton > button:first-child {
+                background: transparent !important;
+                color: #ECC94B !important;
+                border: 1px solid #ECC94B !important;
+                border-radius: 8px !important;
+                width: 100% !important;
+                font-weight: 600 !important;
+                text-transform: uppercase !important;
+                letter-spacing: 1px !important;
+                margin-top: 2rem !important;
+            }
+            div.stButton > button:first-child:hover {
+                background: rgba(236, 201, 75, 0.1) !important;
+                border-color: white !important;
+                color: white !important;
+            }
+        </style>
+    """, unsafe_allow_html=True)
+
     # Logo Section
     import os
     try:
         logo_path = os.path.join(os.path.dirname(__file__), "assets", "logo.png")
         col1, col2, col3 = st.columns([1, 2, 1])
         with col2:
-            st.markdown('<div style="margin-top: -100px !important;">', unsafe_allow_html=True)
+            st.markdown('<div class="logo-container">', unsafe_allow_html=True)
             st.image(logo_path, width=100)
             st.markdown('</div>', unsafe_allow_html=True)
     except Exception as e:
         # Fallback if image not found or fails to open
-        st.markdown('<div style="text-align: center; margin-bottom: 2rem; color: white; font-family: Playfair Display; font-size: 1.5rem;">The Kandle Co.</div>', unsafe_allow_html=True)
+        st.markdown('<div style="text-align: center; margin-bottom: 2rem; color: white; font-family: Playfair Display; font-size: 1.5rem; margin-top: -100px;">The Kandle Co.</div>', unsafe_allow_html=True)
     # --- Navigator ---
-    st.markdown('<div style="color: #ecc94b; font-weight: 600; font-size: 0.75rem; letter-spacing: 2px; margin: 2rem 0 1rem 0; opacity: 0.8;">NAVIGATOR</div>', unsafe_allow_html=True)
+    st.markdown('<div style="color: #ecc94b; font-weight: 600; font-size: 0.75rem; letter-spacing: 2px; margin: 0.5rem 0 1rem 0; opacity: 0.8;">NAVIGATOR</div>', unsafe_allow_html=True)
     page = st.radio("Menu", [
         "📊 Revenue Overview", 
         "📅 Seasonality Advisor", 
