@@ -13,8 +13,8 @@ def show_login_page():
             data = f.read()
         return base64.b64encode(data).decode()
     
-    logo_b64 = get_base64_of_bin_file("assets/sidekick_logo.jpeg")
-    logo_src = f"data:image/jpeg;base64,{logo_b64}" if logo_b64 else ""
+    logo_b64 = get_base64_of_bin_file("assets/sidekick_logo.png")
+    logo_src = f"data:image/png;base64,{logo_b64}" if logo_b64 else ""
 
     # Inject Custom CSS
     # CSS Style Definition
