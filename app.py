@@ -80,11 +80,7 @@ with st.sidebar:
         "📊 Revenue Overview", 
         "📅 Seasonality Advisor", 
         "💰 Cash Flow Strategist",
-        "🩺 Margin Doctor",
-        "📈 Sales Analysis", 
-        "💸 Expense Tracker", 
-        "📦 Inventory Status", 
-        "⚙️ Settings"
+        "🩺 Margin Doctor"
     ], label_visibility="collapsed")
     
     st.markdown("---")
@@ -212,6 +208,3 @@ elif page == "💰 Cash Flow Strategist":
 
 elif page == "🩺 Margin Doctor":
     show_unit_economics_view()
-
-else:
-    st.info(f"Page '{page}' is under development.")
