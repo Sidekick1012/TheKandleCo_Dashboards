@@ -45,7 +45,7 @@ header, footer, #MainMenu {visibility: hidden !important;}
     font-size: 32px !important;
     letter-spacing: 4px !important;
     font-weight: 700 !important;
-    color: #2a1f16 !important; /* Keep dark for the main title on white bg */
+    color: #2a1f16 !important; /* Matches Sidekick footer color */
     margin: 0 !important;
     line-height: 1.2 !important;
 }
