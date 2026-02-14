@@ -74,15 +74,15 @@ header, footer, #MainMenu {visibility: hidden !important;}
 
 /* ===== LOGIN BOX ===== */
 .login-box {
-    width: 320px !important;
-    padding: 20px 25px !important;
+    width: 350px !important; /* Slightly wider */
+    padding: 15px 25px !important; /* Even slimmer height */
     border-radius: 15px !important;
     background: #ffffff !important; /* White background */
     border: 1px solid #D4AF37 !important; /* Vibrant Gold Border */
     box-shadow: 0 10px 40px rgba(212, 175, 55, 0.1) !important;
     text-align: center !important;
     animation: fadeUp 1.0s ease-out !important;
-    margin: 0 auto !important;
+    margin: 30px auto 0 auto !important; /* Added 30px gap from top */
     transition: transform 0.3s ease;
 }
 
