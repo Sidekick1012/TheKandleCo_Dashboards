@@ -136,22 +136,22 @@ div[data-testid="stTextInput"] label {
 .stButton > button,
 [data-testid="stFormSubmitButton"] button {
     position: relative !important;
-    background: linear-gradient(90deg, #d4af37 calc(100% - 38px), #1A202C calc(100% - 38px)) !important;
+    background: linear-gradient(90deg, #d4af37 calc(100% - 32px), #1A202C calc(100% - 32px)) !important;
     color: #0F172A !important;
     border: none !important;
     border-radius: 0 4px 4px 0 !important;
     width: 100% !important;
-    height: 38px !important;
+    height: 32px !important;
     font-weight: 900 !important;
     text-transform: uppercase !important;
-    letter-spacing: 1px !important;
-    padding-right: 42px !important;
-    padding-left: 12px !important;
+    letter-spacing: 0.5px !important;
+    padding-right: 38px !important;
+    padding-left: 10px !important;
     text-align: left !important;
-    margin-top: 15px !important;
+    margin-top: 10px !important;
     overflow: visible !important;
-    box-shadow: 4px 4px 12px rgba(0,0,0,0.12) !important;
-    font-size: 0.8rem !important;
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.1) !important;
+    font-size: 0.75rem !important;
     white-space: nowrap !important;
     transition: all 0.3s ease !important;
 }
@@ -169,14 +169,14 @@ div[data-testid="stTextInput"] label {
     position: absolute !important;
     right: 0 !important;
     top: 0 !important;
-    width: 38px !important;
+    width: 32px !important;
     height: 100% !important;
     background: #1A202C !important;
     color: #ecc94b !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    font-size: 1rem !important;
+    font-size: 0.9rem !important;
     border-radius: 0 4px 4px 0 !important;
 }
 
@@ -186,11 +186,11 @@ div[data-testid="stTextInput"] label {
     content: "" !important;
     position: absolute !important;
     left: 0 !important;
-    top: -8px !important;
+    top: -6px !important;
     width: 0 !important;
     height: 0 !important;
-    border-left: 10px solid transparent !important;
-    border-bottom: 8px solid #b7902d !important;
+    border-left: 8px solid transparent !important;
+    border-bottom: 6px solid #b7902d !important;
 }
 
 /* Ensure inner text is visible and bold */
@@ -199,6 +199,7 @@ div[data-testid="stTextInput"] label {
     margin: 0 !important;
     font-weight: 900 !important;
     color: #0F172A !important;
+    font-size: 0.75rem !important;
 }
 
 /* ===== FOOTER ===== */
