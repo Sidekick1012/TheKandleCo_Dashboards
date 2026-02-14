@@ -38,6 +38,8 @@ button[data-testid="baseButton-headerNoPadding"] svg,
 [data-testid="stSidebarCollapseButton"] svg {
     fill: white !important;
     color: white !important;
+    filter: invert(1) brightness(2) !important;
+    /* Force white */
 }
 
 .stRadio>div {
