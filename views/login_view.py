@@ -113,8 +113,15 @@ header, footer, #MainMenu {visibility: hidden !important;}
     width: 40px !important;
     height: 2px !important;
     background: #D4AF37 !important;
-    margin: 5px auto 20px auto !important;
+    margin: 5px auto 10px auto !important; /* Reduced bottom gap */
     border-radius: 2px !important;
+}
+
+/* Move the form/fields higher */
+[data-testid="stForm"] {
+    border: none !important;
+    padding: 0 !important;
+    margin-top: -5px !important;
 }
 
 /* ===== INPUTS ===== */
