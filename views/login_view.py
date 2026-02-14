@@ -235,7 +235,7 @@ div[data-testid="stTextInput"] label {
 }
 
 .footer-logo {
-    height: 13px !important; /* Matches exactly with font-size 13px */
+    height: 20px !important; /* Increased for better prominence */
     width: auto !important;
     vertical-align: middle !important;
 }
