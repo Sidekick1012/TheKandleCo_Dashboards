@@ -6,11 +6,12 @@ body {
     color: #2D3748;
 }
 
-/* Sidebar Styling */
+/* Modern Stylish Sidebar Styling */
 [data-testid="stSidebar"] {
-    background-color: #1A365D !important;
-    /* Dark Navy/Green Theme */
-    border-radius: 0 !important;
+    background: linear-gradient(180deg, #1A365D 0%, #0F172A 100%) !important;
+    backdrop-filter: blur(15px) !important;
+    -webkit-backdrop-filter: blur(15px) !important;
+    border-right: 1px solid rgba(255, 255, 255, 0.05) !important;
     padding-top: 0px !important;
     width: 250px !important;
 }
@@ -19,9 +20,10 @@ body {
     padding-top: 0px !important;
 }
 
-[data-testid="stSidebar"] hr {
-    margin: 1rem 0;
-    border-color: rgba(255, 255, 255, 0.1);
+/* Sidebar Custom Scrollbar */
+[data-testid="stSidebar"]>div:first-child {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
 }
 
 /* Sidebar Toggle & Header Buttons color - CRITICAL FIX */
@@ -51,32 +53,14 @@ button svg path,
     stroke: white !important;
 }
 
+/* Navigation Menu (Radio Buttons) */
 .stRadio>div {
-    background-color: transparent;
-    color: white !important;
+    background-color: transparent !important;
+    padding: 0 !important;
 }
 
 .stRadio [data-testid="stMarkdownContainer"] p {
     color: white !important;
-}
-
-.stRadio>label {
-    color: white !important;
-    font-size: 14px;
-    padding: 10px 15px;
-    border-radius: 10px;
-    transition: all 0.3s ease;
-}
-
-.stRadio>label:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-    color: white !important;
-}
-
-/* Active Sidebar Item */
-.stRadio>label[data-checked="true"] {
-    background-color: #38A169 !important;
-    /* Green Accent */
     color: white !important;
     font-weight: 600;
 }

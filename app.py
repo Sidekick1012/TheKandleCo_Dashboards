@@ -71,17 +71,18 @@ with st.sidebar:
         # Fallback if image not found or fails to open
         st.markdown('<div style="text-align: center; margin-bottom: 2rem; color: white; font-family: Playfair Display; font-size: 1.5rem;">The Kandle Co.</div>', unsafe_allow_html=True)
     # --- Navigator ---
-    st.markdown('<div style="color: #ecc94b; font-weight: bold; font-size: 0.8rem; letter-spacing: 1px; margin: 1.5rem 0 0.5rem 0;">NAVIGATOR</div>', unsafe_allow_html=True)
-    page = st.radio("Menu", ["Revenue Overview", "Sales Analysis", "Expense Tracker", "Inventory Status", "Settings"], label_visibility="collapsed")
+    st.markdown('<div style="color: #ecc94b; font-weight: 600; font-size: 0.75rem; letter-spacing: 2px; margin: 2rem 0 1rem 0; opacity: 0.8;">NAVIGATOR</div>', unsafe_allow_html=True)
+    page = st.radio("Menu", ["📊 Revenue Overview", "📈 Sales Analysis", "💸 Expense Tracker", "📦 Inventory Status", "⚙️ Settings"], label_visibility="collapsed")
     
     st.markdown("---")
     
     # --- Global Filters ---
-    st.markdown('<div style="color: #ecc94b; font-weight: bold; font-size: 0.8rem; letter-spacing: 1px; margin-bottom: 1rem;">GLOBAL FILTERS</div>', unsafe_allow_html=True)
+    st.markdown('<div style="color: #ecc94b; font-weight: 600; font-size: 0.75rem; letter-spacing: 2px; margin-bottom: 1.2rem; opacity: 0.8;">GLOBAL FILTERS</div>', unsafe_allow_html=True)
     
     # Year Selection
     years = [2024, 2025]
-    selected_year = st.selectbox("Select Year", years, index=years.index(st.session_state.selected_year))
+    curr_year_idx = years.index(st.session_state.selected_year) if st.session_state.selected_year in years else 0
+    selected_year = st.selectbox("📅 Select Year", years, index=curr_year_idx)
     if selected_year != st.session_state.selected_year:
         st.session_state.selected_year = selected_year
         st.rerun()
