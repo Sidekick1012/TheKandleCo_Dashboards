@@ -65,21 +65,28 @@ with st.sidebar:
     # Aggressive UI Injection for Sidebar
     st.markdown("""
         <style>
-            /* Kill Sidebar Top Padding */
+            /* Kill Sidebar Top Padding & Enable Hidden Scrolling */
             [data-testid="stSidebarContent"] {
                 padding-top: 0rem !important;
                 overflow-x: hidden !important;
-                overflow-y: hidden !important; /* Force Scroll-Free */
+                overflow-y: auto !important;
+                scrollbar-width: none; /* Firefox */
+                -ms-overflow-style: none; /* IE/Edge */
             }
             [data-testid="stSidebarContent"]::-webkit-scrollbar {
-                display: none;
+                display: none; /* Chrome/Safari */
             }
             
             /* Logo Space Adjustment */
             .logo-container {
                 margin-top: -130px !important;
-                margin-bottom: -40px !important;
-                transition: all 0.3s ease;
+                margin-bottom: -50px !important;
+            }
+            
+            /* Compact Section Margins */
+            .sidebar-section-header {
+                margin-top: 0.5rem !important;
+                margin-bottom: 0.5rem !important;
             }
             
             /* Premium Logout Button */
@@ -92,7 +99,7 @@ with st.sidebar:
                 font-weight: 600 !important;
                 text-transform: uppercase !important;
                 letter-spacing: 1px !important;
-                margin-top: 2rem !important;
+                margin-top: 1rem !important;
             }
             div.stButton > button:first-child:hover {
                 background: rgba(236, 201, 75, 0.1) !important;
@@ -115,7 +122,7 @@ with st.sidebar:
         # Fallback if image not found or fails to open
         st.markdown('<div style="text-align: center; margin-bottom: 2rem; color: white; font-family: Playfair Display; font-size: 1.5rem; margin-top: -100px;">The Kandle Co.</div>', unsafe_allow_html=True)
     # --- Navigator ---
-    st.markdown('<div style="color: #ecc94b; font-weight: 600; font-size: 0.75rem; letter-spacing: 2px; margin: 0.5rem 0 1rem 0; opacity: 0.8;">NAVIGATOR</div>', unsafe_allow_html=True)
+    st.markdown('<div class="sidebar-section-header" style="color: #ecc94b; font-weight: 600; font-size: 0.75rem; letter-spacing: 2px; opacity: 0.8;">NAVIGATOR</div>', unsafe_allow_html=True)
     page = st.radio("Menu", [
         "📊 Revenue Overview", 
         "📅 Seasonality Advisor", 
@@ -126,7 +133,7 @@ with st.sidebar:
     st.markdown("---")
     
     # --- Global Filters ---
-    st.markdown('<div style="color: #ecc94b; font-weight: 600; font-size: 0.75rem; letter-spacing: 2px; margin-bottom: 1.2rem; opacity: 0.8;">GLOBAL FILTERS</div>', unsafe_allow_html=True)
+    st.markdown('<div class="sidebar-section-header" style="color: #ecc94b; font-weight: 600; font-size: 0.75rem; letter-spacing: 2px; opacity: 0.8;">GLOBAL FILTERS</div>', unsafe_allow_html=True)
     
     # Year Selection
     years = [2024, 2025]
