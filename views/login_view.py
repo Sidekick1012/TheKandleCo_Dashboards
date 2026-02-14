@@ -5,12 +5,13 @@ import time
 def show_login_page():
     # Inject Custom CSS
     # CSS Style Definition
-    LOGIN_STYLE = """
+LOGIN_STYLE = """
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-/* Force fullpage background */
+/* Force fullpage white background */
 [data-testid="stAppViewContainer"] {
-    background: radial-gradient(circle at center, #2a1f16 0%, #0f0c09 70%) !important;
+    background-color: #ffffff !important;
+    background-image: none !important;
     font-family: 'Poppins', sans-serif !important;
 }
 
@@ -35,73 +36,84 @@ header, footer, #MainMenu {visibility: hidden !important;}
 /* ===== BRAND ===== */
 .brand-container {
     text-align: center;
-    margin-bottom: 40px;
-    animation: fadeDown 1.2s ease;
+    margin-bottom: 25px; /* Reduced from 40px */
+    animation: fadeDown 1.0s ease-out;
 }
 
 .brand-title {
     font-family: 'Playfair Display', serif !important;
-    font-size: 40px !important;
-    letter-spacing: 6px !important;
-    font-weight: 600 !important;
-    color: #e6c79c !important;
+    font-size: 32px !important; /* Reduced from 40px */
+    letter-spacing: 4px !important; /* Reduced from 6px */
+    font-weight: 700 !important;
+    color: #2a1f16 !important; /* Dark brown for contrast on white */
     margin: 0 !important;
     line-height: 1.2 !important;
 }
 
 .brand-subtitle {
-    margin-top: 10px !important;
-    font-size: 12px !important;
-    letter-spacing: 6px !important;
-    color: #b08968 !important;
+    margin-top: 5px !important;
+    font-size: 10px !important; /* Reduced from 12px */
+    letter-spacing: 4px !important;
+    color: #8c6b4f !important;
     text-transform: uppercase !important;
 }
 
 /* ===== LOGIN BOX ===== */
 .login-box {
-    width: 380px !important;
-    padding: 50px 40px !important;
-    border-radius: 20px !important;
-    background: rgba(255,255,255,0.05) !important;
-    backdrop-filter: blur(20px) !important;
-    -webkit-backdrop-filter: blur(20px) !important;
-    box-shadow: 0 0 60px rgba(212,163,115,0.2) !important;
+    width: 320px !important; /* Reduced from 380px */
+    padding: 30px 25px !important; /* Reduced padding */
+    border-radius: 15px !important;
+    background: #ffffff !important;
+    border: 1px solid #f0f0f0 !important;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.08) !important; /* Soft shadow */
     text-align: center !important;
-    animation: fadeUp 1.2s ease !important;
+    animation: fadeUp 1.0s ease-out !important;
     margin: 0 auto !important;
+    transition: transform 0.3s ease;
+}
+
+.login-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 50px rgba(0,0,0,0.12) !important;
 }
 
 .login-header {
     font-family: 'Playfair Display', serif !important;
-    margin-bottom: 20px !important;
-    font-size: 28px !important;
-    color: #e6c79c !important;
-    flash-control: text !important;
+    margin-bottom: 15px !important;
+    font-size: 22px !important; /* Reduced from 28px */
+    color: #2a1f16 !important;
+    font-weight: 600 !important;
 }
 
 /* ===== INPUTS ===== */
 /* Target the outermost container of the input */
 div[data-testid="stTextInput"] {
-    background: transparent !important;
-    margin-bottom: 20px !important;
+    margin-bottom: 15px !important; /* Reduced margin */
 }
 
 /* Target the BaseWeb input container (the box) */
 div[data-baseweb="input"] {
-    background-color: rgba(255, 255, 255, 0.08) !important;
-    border: none !important;
-    border-radius: 10px !important;
-    color: white !important;
+    background-color: #f7f7f7 !important; /* Light grey bg */
+    border: 1px solid #eee !important;
+    border-radius: 8px !important;
+    color: #333 !important;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+div[data-baseweb="input"]:focus-within {
+    border-color: #e6c79c !important;
+    background-color: #fff !important;
+    box-shadow: 0 0 0 2px rgba(230, 199, 156, 0.2) !important;
 }
 
 /* Target the actual input element */
 input[type="text"], input[type="password"] {
     background: transparent !important;
-    color: #fff !important;
+    color: #333 !important; /* Dark text */
     font-family: 'Poppins', sans-serif !important;
-    font-size: 14px !important;
-    caret-color: #e6c79c !important;
-    padding: 14px !important;
+    font-size: 12px !important; /* Reduced from 14px */
+    caret-color: #c89b6d !important;
+    padding: 10px 12px !important; /* Reduced padding */
 }
 
 /* Remove default focus borders */
@@ -111,7 +123,8 @@ div[data-baseweb="base-input"] {
 }
 
 input::placeholder {
-    color: #aaa !important;
+    color: #999 !important;
+    font-size: 12px !important;
 }
 
 /* Remove default labels */
@@ -122,55 +135,51 @@ div[data-testid="stTextInput"] label {
 /* ===== BUTTON ===== */
 .stButton > button {
     width: 100% !important;
-    padding: 14px !important;
-    border-radius: 10px !important;
+    padding: 10px !important; /* Reduced padding */
+    border-radius: 8px !important;
     border: none !important;
-    background: #c89b6d !important;
-    color: #2a1f16 !important;
-    font-weight: 600 !important;
-    letter-spacing: 2px !important;
+    background: #2a1f16 !important; /* Dark button for contrast */
+    color: #ffffff !important;
+    font-weight: 500 !important;
+    font-size: 13px !important;
+    letter-spacing: 1px !important;
     cursor: pointer !important;
-    transition: 0.3s ease !important;
-    margin-top: 0px !important;
+    transition: all 0.3s ease !important;
+    margin-top: 5px !important;
+    box-shadow: 0 4px 15px rgba(42, 31, 22, 0.2) !important;
 }
 
 .stButton > button:hover {
-    background: #e6c79c !important;
-    transform: scale(1.03) !important;
-    color: #2a1f16 !important;
-}
-
-.stButton > button:focus {
-    color: #2a1f16 !important;
-    border: none !important;
-    box-shadow: none !important;
-    outline: none !important;
+    background: #c89b6d !important; /* Gold on hover */
+    color: #fff !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 20px rgba(200, 155, 109, 0.3) !important;
 }
 
 .stButton > button:active {
-    color: #2a1f16 !important;
-    background: #c89b6d !important;
+    transform: translateY(0) !important;
 }
 
 /* ===== FOOTER ===== */
 .custom-footer {
     position: fixed !important;
-    bottom: 30px !important;
+    bottom: 20px !important;
     width: 100% !important;
     text-align: center !important;
-    font-size: 20px !important;
-    color: #8c6b4f !important;
+    font-size: 11px !important; /* Reduced from 20px */
+    color: #aaa !important;
     left: 0 !important;
+    animation: fadeIn 2s ease-in;
 }
 
 .custom-footer span {
-    color: #e6c79c !important;
+    color: #c89b6d !important;
     font-weight: 500 !important;
 }
 
 /* ===== ANIMATIONS ===== */
 @keyframes fadeDown {
-    from { opacity: 0; transform: translateY(-30px); }
+    from { opacity: 0; transform: translateY(-20px); }
     to { opacity: 1; transform: translateY(0); }
 }
 
@@ -179,9 +188,14 @@ div[data-testid="stTextInput"] label {
     to { opacity: 1; transform: translateY(0); }
 }
 
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
 @media(max-width: 420px) {
-    .login-box { width: 90% !important; }
-    .brand-title { font-size: 38px !important; }
+    .login-box { width: 85% !important; }
+    .brand-title { font-size: 28px !important; }
 }
 </style>
 """
