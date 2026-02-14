@@ -65,8 +65,8 @@ header, footer, #MainMenu {visibility: hidden !important;}
     padding: 30px 25px !important;
     border-radius: 15px !important;
     background: #ffffff !important; /* White background */
-    border: 1px solid #f0f0f0 !important;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.08) !important;
+    border: 1px solid #D4AF37 !important; /* Vibrant Gold Border */
+    box-shadow: 0 10px 40px rgba(212, 175, 55, 0.1) !important;
     text-align: center !important;
     animation: fadeUp 1.0s ease-out !important;
     margin: 0 auto !important;
@@ -102,9 +102,9 @@ div[data-baseweb="input"] {
 }
 
 div[data-baseweb="input"]:focus-within {
-    border-color: #e6c79c !important;
+    border-color: #D4AF37 !important;
     background-color: #fff !important;
-    box-shadow: 0 0 0 2px rgba(230, 199, 156, 0.2) !important;
+    box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.15) !important;
 }
 
 /* Target the actual input element */
