@@ -94,11 +94,12 @@ header, footer, #MainMenu {visibility: hidden !important;}
 .login-header {
     font-family: 'Poppins', sans-serif !important;
     margin-bottom: 5px !important;
-    font-size: 14px !important;
+    font-size: 13px !important; /* Reduced for single line */
     color: #2a1f16 !important;
-    font-weight: 600 !important;
-    letter-spacing: 2px !important;
+    font-weight: 700 !important;
+    letter-spacing: 1px !important; /* Reduced for single line */
     text-transform: uppercase !important;
+    white-space: nowrap !important; /* Force single line */
 }
 
 .header-accent-line {
