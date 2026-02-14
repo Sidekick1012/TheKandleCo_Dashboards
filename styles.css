@@ -184,8 +184,13 @@ h3 {
 }
 
 /* ==================== CUSTOM TWEAKS ==================== */
-/* Hide Streamlit Header/Footer */
-header {
+/* Make header transparent but keep toggle button visible */
+[data-testid="stHeader"] {
+    background: transparent !important;
+    color: white !important;
+}
+
+#MainMenu {
     visibility: hidden;
 }
 
