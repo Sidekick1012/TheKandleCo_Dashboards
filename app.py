@@ -98,23 +98,32 @@ with st.sidebar:
             /* Ribbon Style Logout Button */
             div.stButton > button:first-child {
                 position: relative !important;
-                background: linear-gradient(90deg, #d4af37 85%, #1A202C 85%) !important;
+                background: linear-gradient(90deg, #d4af37 calc(100% - 40px), #1A202C calc(100% - 40px)) !important;
                 color: #0F172A !important;
                 border: none !important;
                 border-radius: 0 4px 4px 0 !important;
                 width: 100% !important;
-                height: 42px !important;
+                height: 38px !important;
                 font-weight: 800 !important;
                 text-transform: uppercase !important;
-                letter-spacing: 0px !important; /* Removed for space */
-                padding-right: 18% !important; /* Tighter padding for text area */
-                padding-left: 8px !important;
+                letter-spacing: 0px !important;
+                padding-right: 45px !important; /* Space for arrow */
+                padding-left: 12px !important;
                 text-align: left !important;
                 margin-top: 2rem !important;
                 overflow: visible !important;
                 box-shadow: 4px 4px 10px rgba(0,0,0,0.2) !important;
                 white-space: nowrap !important;
-                font-size: 0.85rem !important;
+                font-size: 0.75rem !important;
+                display: flex !important;
+                align-items: center !important;
+            }
+
+            /* Force inner text to not wrap */
+            div.stButton > button:first-child p {
+                margin: 0 !important;
+                white-space: nowrap !important;
+                font-size: 0.75rem !important;
             }
 
             /* Dark Section with Arrow */
@@ -123,14 +132,14 @@ with st.sidebar:
                 position: absolute !important;
                 right: 0 !important;
                 top: 0 !important;
-                width: 15% !important; /* Even narrower arrow section */
+                width: 40px !important; /* Fixed width */
                 height: 100% !important;
                 background: #1A202C !important;
                 color: #ecc94b !important;
                 display: flex !important;
                 align-items: center !important;
                 justify-content: center !important;
-                font-size: 1.1rem !important;
+                font-size: 1rem !important;
                 border-radius: 0 4px 4px 0 !important;
             }
 
