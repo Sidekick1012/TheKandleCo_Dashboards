@@ -115,32 +115,56 @@ if page == "📊 Revenue Overview":
     # Top Row: Metric Cards
     # Fetch Data for Cards
     df_sales = get_monthly_sales_trend()
-    df_curr = apply_filters(df_sales, st.session_state.selected_year, st.session_state.selected_months)
+    df_exp = get_expense_breakdown()
+    df_cash = get_cash_flow_data()
+    df_pl = get_profit_loss_trends()
     
-    total_sales = df_curr['total_sales'].sum() if not df_curr.empty else 0
-    total_expenses = 0 # Placeholder until expense sync
-    net_profit = 0 # Placeholder
+    # Apply Filters
+    df_sales_curr = apply_filters(df_sales, st.session_state.selected_year, st.session_state.selected_months)
+    df_exp_curr = apply_filters(df_exp, st.session_state.selected_year, st.session_state.selected_months)
+    df_cash_curr = apply_filters(df_cash, st.session_state.selected_year, st.session_state.selected_months)
+    df_pl_curr = apply_filters(df_pl, st.session_state.selected_year, st.session_state.selected_months)
+    
+    # Calculate Totals
+    total_sales = df_sales_curr['total_sales'].sum() if not df_sales_curr.empty else 0
+    total_expenses = df_exp_curr['total_admin_expenses'].sum() if not df_exp_curr.empty else 0
+    net_profit = df_pl_curr['net_profit_loss'].sum() if not df_pl_curr.empty else 0
+    
+    # For Balance, we take the latest month in the selection
+    current_balance = df_cash_curr.iloc[-1]['net_cash'] if not df_cash_curr.empty else 0
     
     cols = st.columns(4)
     
     with cols[0]:
-        ui.metric_card("Total Balance", "Rs. 0", "Current Session", "metric-card-1", icon="💰") 
+        ui.metric_card("Total Balance", f"Rs. {current_balance:,.0f}", "Cash + Bank", "metric-card-1", icon="💰") 
     with cols[1]:
         ui.metric_card("Total Sales", f"Rs. {total_sales:,.0f}", f"{st.session_state.selected_year} Selection", "metric-card-2", icon="💼")
     with cols[2]:
-        ui.metric_card("Total Expenses", "Rs. 0", "Current Session", "metric-card-3", icon="💸")
+        ui.metric_card("Total Expenses", f"Rs. {total_expenses:,.0f}", "Admin & Shared", "metric-card-3", icon="💸")
     with cols[3]:
-        ui.metric_card("Total Visitors", "0", "Current Session", "metric-card-4", icon="👥")
+        # Calculate Margin
+        margin = (net_profit / total_sales * 100) if total_sales > 0 else 0
+        ui.metric_card("Net Profit", f"Rs. {net_profit:,.0f}", f"{margin:.1f}% Margin", "metric-card-4", icon="📈")
     
     # Row 2: Charts and Lists
     c1, c2 = st.columns([2, 1])
     
     with c1:
         st.markdown('<div class="content-card">', unsafe_allow_html=True)
-        st.markdown('<h3>Observations</h3>', unsafe_allow_html=True)
+        st.markdown('<h3>Critical Observations</h3>', unsafe_allow_html=True)
         
-        # Observe based on current selection
-        ui.observation_item("Sales Goal", f"{st.session_state.selected_year}", 100 if total_sales > 0 else 0)
+        # Calculate Target Progress
+        # Let's assume a target of Rs. 1.5M per month
+        n_months = len(st.session_state.selected_months)
+        target = 1500000 * n_months
+        progress = min(100, int((total_sales / target) * 100)) if target > 0 else 0
+        
+        ui.observation_item("Revenue Target Progress", f"Target: Rs. {target/1000000:.1f}M", progress)
+        
+        # Gross Margin Observation
+        avg_gross = df_pl_curr['gross_margin_percentage'].mean() if not df_pl_curr.empty else 0
+        margin_status = "Healthy" if avg_gross >= 60 else "Attention Required"
+        ui.observation_item("Average Gross Margin", f"{margin_status} ({avg_gross:.1f}%)", int(avg_gross))
         
         st.markdown('</div>', unsafe_allow_html=True)
         
@@ -170,13 +194,21 @@ if page == "📊 Revenue Overview":
     
     with c2:
         st.markdown('<div class="content-card">', unsafe_allow_html=True)
-        st.markdown('<h3>Stats</h3>', unsafe_allow_html=True)
+        st.markdown('<h3>Channel Mix</h3>', unsafe_allow_html=True)
         
-        # Mock Stats
-        ui.stats_item("Online", "52%", "#ECC94B", "🛒")
-        ui.stats_item("Stockists", "21%", "#38A169", "🏢")
-        ui.stats_item("Exhibitions", "74%", "#2B6CB0", "🎪")
-        ui.stats_item("Custom", "14%", "#2D3748", "🎁")
+        # Calculate real stats
+        if total_sales > 0:
+            p_online = (df_sales_curr['online_sales'].sum() / total_sales) * 100
+            p_stockist = (df_sales_curr['stockist_sales'].sum() / total_sales) * 100
+            p_custom = (df_sales_curr['custom_order_sales'].sum() / total_sales) * 100
+            p_exhibition = (df_sales_curr['exhibition_sales'].sum() / total_sales) * 100
+        else:
+            p_online = p_stockist = p_custom = p_exhibition = 0
+            
+        ui.stats_item("Online", f"{p_online:.0f}%", "#ECC94B", "🛒")
+        ui.stats_item("Stockists", f"{p_stockist:.0f}%", "#38A169", "🏢")
+        ui.stats_item("Custom", f"{p_custom:.0f}%", "#2D3748", "🎁")
+        ui.stats_item("Exhibitions", f"{p_exhibition:.0f}%", "#2B6CB0", "🎪")
         
         st.markdown('</div>', unsafe_allow_html=True)
         
