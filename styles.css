@@ -24,22 +24,31 @@ body {
     border-color: rgba(255, 255, 255, 0.1);
 }
 
-/* Sidebar Toggle & Header Buttons color */
-button[data-testid="baseButton-header"],
-button[data-testid="baseButton-headerNoPadding"],
+/* Sidebar Toggle & Header Buttons color - CRITICAL FIX */
+button[kind="header"],
+button[data-testid*="Button"],
 [data-testid="stHeader"] button,
-[data-testid="stSidebarCollapseButton"] button {
+header button,
+.st-emotion-cache-18ni77z,
+.st-emotion-cache-79elbk {
     color: white !important;
 }
 
-button[data-testid="baseButton-header"] svg,
-button[data-testid="baseButton-headerNoPadding"] svg,
+button svg,
+button svg path,
 [data-testid="stHeader"] svg,
+[data-testid="stHeader"] svg path,
+[data-testid="stSidebar"] svg path {
+    fill: white !important;
+    color: white !important;
+    stroke: white !important;
+}
+
+/* Force the specific collapse button icon */
 [data-testid="stSidebarCollapseButton"] svg {
     fill: white !important;
     color: white !important;
-    filter: invert(1) brightness(2) !important;
-    /* Force white */
+    stroke: white !important;
 }
 
 .stRadio>div {
