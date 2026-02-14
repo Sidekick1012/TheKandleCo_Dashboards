@@ -63,7 +63,8 @@ with st.sidebar:
     with col2:
         try:
             st.image("assets/logo.jpg", width=120)
-        except Exception:
+        except Exception as e:
+            st.error(f"Error loading logo: {e}")
             # Fallback if image not found (user hasn't saved it yet)
             st.markdown('<div style="text-align: center; margin-bottom: 2rem; color: white; font-family: Playfair Display; font-size: 1.5rem;">The Kandle Co.</div>', unsafe_allow_html=True)
     
