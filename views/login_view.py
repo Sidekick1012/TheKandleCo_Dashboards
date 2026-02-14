@@ -74,8 +74,8 @@ header, footer, #MainMenu {visibility: hidden !important;}
 
 /* ===== LOGIN BOX ===== */
 .login-box {
-    width: 320px !important;
-    padding: 30px 25px !important;
+    width: 380px !important;
+    padding: 40px 35px !important;
     border-radius: 15px !important;
     background: #ffffff !important; /* White background */
     border: 1px solid #D4AF37 !important; /* Vibrant Gold Border */
