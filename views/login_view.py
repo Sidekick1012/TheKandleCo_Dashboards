@@ -74,8 +74,8 @@ header, footer, #MainMenu {visibility: hidden !important;}
 
 /* ===== LOGIN BOX ===== */
 .login-box {
-    width: 380px !important;
-    padding: 40px 35px !important;
+    width: 320px !important;
+    padding: 30px 25px !important;
     border-radius: 15px !important;
     background: #ffffff !important; /* White background */
     border: 1px solid #D4AF37 !important; /* Vibrant Gold Border */
@@ -92,21 +92,28 @@ header, footer, #MainMenu {visibility: hidden !important;}
 }
 
 .login-header {
-    font-family: 'Poppins', sans-serif !important;
+    font-family: 'Playfair Display', serif !important;
     margin-bottom: 5px !important;
-    font-size: 13px !important; /* Reduced for single line */
+    font-size: 22px !important;
     color: #2a1f16 !important;
-    font-weight: 700 !important;
-    letter-spacing: 1px !important; /* Reduced for single line */
+    font-weight: 600 !important;
+}
+
+.login-subheader {
+    font-family: 'Poppins', sans-serif !important;
+    font-size: 10px !important;
+    color: #A8855F !important;
+    letter-spacing: 1px !important;
     text-transform: uppercase !important;
-    white-space: nowrap !important; /* Force single line */
+    margin-bottom: 5px !important;
+    font-weight: 500 !important;
 }
 
 .header-accent-line {
     width: 40px !important;
     height: 2px !important;
     background: #D4AF37 !important;
-    margin: 5px auto 25px auto !important;
+    margin: 5px auto 20px auto !important;
     border-radius: 2px !important;
 }
 
@@ -289,7 +296,8 @@ div[data-testid="stTextInput"] label {
         # Login Box
         st.markdown('''
             <div class="login-box">
-                <h2 class="login-header">Business Intelligence Suite</h2>
+                <h2 class="login-header">Member Login</h2>
+                <p class="login-subheader">Business Intelligence Suite</p>
                 <div class="header-accent-line"></div>
         ''', unsafe_allow_html=True)
         
