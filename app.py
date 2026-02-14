@@ -98,7 +98,7 @@ with st.sidebar:
             /* Ribbon Style Logout Button */
             div.stButton > button:first-child {
                 position: relative !important;
-                background: linear-gradient(90deg, #d4af37 80%, #1A202C 80%) !important;
+                background: linear-gradient(90deg, #d4af37 85%, #1A202C 85%) !important;
                 color: #0F172A !important;
                 border: none !important;
                 border-radius: 0 4px 4px 0 !important;
@@ -106,15 +106,15 @@ with st.sidebar:
                 height: 42px !important;
                 font-weight: 800 !important;
                 text-transform: uppercase !important;
-                letter-spacing: 0.5px !important; /* Minimal spacing for visibility */
-                padding-right: 22% !important; /* Adjusted for smaller arrow space */
-                padding-left: 10px !important;
+                letter-spacing: 0px !important; /* Removed for space */
+                padding-right: 18% !important; /* Tighter padding for text area */
+                padding-left: 8px !important;
                 text-align: left !important;
                 margin-top: 2rem !important;
                 overflow: visible !important;
                 box-shadow: 4px 4px 10px rgba(0,0,0,0.2) !important;
                 white-space: nowrap !important;
-                font-size: 0.8rem !important;
+                font-size: 0.85rem !important;
             }
 
             /* Dark Section with Arrow */
@@ -123,7 +123,7 @@ with st.sidebar:
                 position: absolute !important;
                 right: 0 !important;
                 top: 0 !important;
-                width: 20% !important; /* Narrower arrow section */
+                width: 15% !important; /* Even narrower arrow section */
                 height: 100% !important;
                 background: #1A202C !important;
                 color: #ecc94b !important;
