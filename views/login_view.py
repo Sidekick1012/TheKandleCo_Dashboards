@@ -208,25 +208,29 @@ div[data-testid="stTextInput"] label {
         # Brand Header
         st.markdown("""
         <div class="brand-container">
-            <h1 class="brand-title">THE KANDLE CO</h1>
+            <h1 class="brand-title" style="font-size: 42px !important;">The Kandle CO.</h1>
             <p class="brand-subtitle">LUXURY CANDLE STUDIO</p>
         </div>
         """, unsafe_allow_html=True)
         
-        # Login Bo
+        # Login Box
         st.markdown('<div class="login-box">', unsafe_allow_html=True)
         st.markdown('<h2 class="login-header">Member Login</h2>', unsafe_allow_html=True)
         
-        # Inputs (Streamlit widgets wrapped to match style)
-        username = st.text_input("Username", placeholder="Username", label_visibility="collapsed")
-        password = st.text_input("Password", type="password", placeholder="Password", label_visibility="collapsed")
-        
-        if st.button("Sign In"):
-            if check_login(username, password):
-                st.session_state.authenticated = True
-                st.rerun()
-            else:
-                st.error("Invalid credentials")
+        # Form for Enter key support
+        with st.form("login_form"):
+            # Inputs (Streamlit widgets wrapped to match style)
+            username = st.text_input("Username", placeholder="Username", label_visibility="collapsed")
+            password = st.text_input("Password", type="password", placeholder="Password", label_visibility="collapsed")
+            
+            submitted = st.form_submit_button("Sign In")
+            
+            if submitted:
+                if check_login(username, password):
+                    st.session_state.authenticated = True
+                    st.rerun()
+                else:
+                    st.error("Invalid credentials")
         
         st.markdown('</div>', unsafe_allow_html=True)
         
