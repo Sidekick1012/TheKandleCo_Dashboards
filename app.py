@@ -185,8 +185,8 @@ if page == "📊 Revenue Overview":
     total_expenses = df_exp_curr['total_admin_expenses'].sum() if not df_exp_curr.empty else 0
     net_profit = df_pl_curr['net_profit_loss'].sum() if not df_pl_curr.empty else 0
     
-    # For Balance, we take the latest month in the selection
-    current_balance = df_cash_curr.iloc[-1]['net_cash'] if not df_cash_curr.empty else 0
+    # For Balance, we take the latest month in the selection (data is DESC by default)
+    current_balance = df_cash_curr.iloc[0]['net_cash'] if not df_cash_curr.empty else 0
     
     cols = st.columns(4)
     
@@ -207,6 +207,7 @@ if page == "📊 Revenue Overview":
     with c1:
         st.markdown('<div class="content-card">', unsafe_allow_html=True)
         st.markdown('<h3>Critical Observations</h3>', unsafe_allow_html=True)
+        st.markdown('<p style="color: #718096; font-size: 0.85rem; margin-top: -0.5rem; margin-bottom: 1.5rem;"><b>Meaning:</b> Ye section aapko batata hai ke aap apne Monthly Targets (<b>Rs. 1.5M per month</b>) aur Profitability goals ke kitne qareeb hain.</p>', unsafe_allow_html=True)
         
         # Calculate Target Progress
         # Let's assume a target of Rs. 1.5M per month
@@ -226,11 +227,15 @@ if page == "📊 Revenue Overview":
         # Graph Section
         st.markdown('<div class="content-card">', unsafe_allow_html=True)
         st.markdown('<h3>Sales Trend</h3>', unsafe_allow_html=True)
+        st.markdown('<p style="color: #718096; font-size: 0.85rem; margin-top: -0.5rem; margin-bottom: 1rem;"><b>Meaning:</b> Ye graph aapki sales ki raftaar (Performance) dikhata hai aapke selected period ke liye.</p>', unsafe_allow_html=True)
         
-        # Show trend for whole year or selected months
-        df_trend = apply_filters(df_sales, st.session_state.selected_year, None) # Trend for whole year
+        # Show trend for selected months
+        df_trend = apply_filters(df_sales, st.session_state.selected_year, st.session_state.selected_months)
         
         if not df_trend.empty:
+            # Sort chronologically (reverse DESC) for chart flow
+            df_trend = df_trend.iloc[::-1]
+            
             fig = px.line(df_trend, x='month_year', y='total_sales', markers=True)
             fig.update_layout(
                 plot_bgcolor='white',
@@ -250,6 +255,7 @@ if page == "📊 Revenue Overview":
     with c2:
         st.markdown('<div class="content-card">', unsafe_allow_html=True)
         st.markdown('<h3>Channel Mix</h3>', unsafe_allow_html=True)
+        st.markdown('<p style="color: #718096; font-size: 0.85rem; margin-top: -0.5rem; margin-bottom: 1.5rem;"><b>Meaning:</b> Ye chart batata hai ke aapka paisa kahan se aa raha hai (Online, Shops, ya Exhibitions).</p>', unsafe_allow_html=True)
         
         # Calculate real stats
         if total_sales > 0:
@@ -270,6 +276,7 @@ if page == "📊 Revenue Overview":
         # Customer List
         st.markdown('<div class="content-card">', unsafe_allow_html=True)
         st.markdown('<h3>Top Customers</h3>', unsafe_allow_html=True)
+        st.markdown('<p style="color: #718096; font-size: 0.85rem; margin-top: -0.5rem; margin-bottom: 1.5rem;"><b>Meaning:</b> Ye aapke VIP customers hain jo sabse zyada purchase karte hain.</p>', unsafe_allow_html=True)
         
         df_cust = get_all_customers()
         if not df_cust.empty:

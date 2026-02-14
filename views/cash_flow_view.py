@@ -59,6 +59,11 @@ def show_cash_flow_view(year=2025, months=None):
                            df_expenses[['month_year', 'total_admin_expenses']], 
                            on='month_year')
         
+        # Sort Chronologically for Left-to-Right Flow
+        # Since 'month_year' is 'Mon-YYYY', we should ideally have a date column, 
+        # but for now we can reverse the DESC order
+        df_comp = df_comp.iloc[::-1] 
+        
         df_plot = df_comp.melt(id_vars='month_year', var_name='Metric', value_name='Amount')
         df_plot['Metric'] = df_plot['Metric'].replace({'total_sales': 'Revenue', 'total_admin_expenses': 'Expenses'})
         
