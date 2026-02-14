@@ -6,7 +6,14 @@ import ui_components as ui
 
 def show_seasonality_view(year=2025, months=None):
     st.markdown('<h1 class="main-title">📅 Seasonality & Forecasting</h1>', unsafe_allow_html=True)
-    st.markdown(f'<p style="color: #718096; margin-top: -1rem;">Strategic Analysis for {year} | {", ".join(months) if months else "All Year"}</p>', unsafe_allow_html=True)
+    
+    # Dashboard Header & Filter Context
+    st.markdown(f"""
+        <div style="background: rgba(43, 108, 176, 0.1); padding: 1rem; border-radius: 10px; border-left: 5px solid #2B6CB0; margin-bottom: 2rem;">
+            <p style="margin: 0; font-weight: 600; color: #2B6CB0;">🔍 Filter Context: {year} | {", ".join(months) if months else "All Year"}</p>
+            <p style="margin: 5px 0 0 0; font-size: 0.85rem; color: #718096;"><b>YoY Growth</b> compares your selected period in {year} against the same period in {year-1}. This helps identify which months are your true growth drivers.</p>
+        </div>
+    """, unsafe_allow_html=True)
     
     # Fetch YoY Growth Data
     # For Seasonality, we usually want to see the whole year to spot trends, 

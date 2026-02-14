@@ -7,7 +7,14 @@ import ui_components as ui
 
 def show_unit_economics_view(year=2025, months=None):
     st.markdown('<h1 class="main-title">🩺 The Margin Doctor</h1>', unsafe_allow_html=True)
-    st.markdown(f'<p style="color: #718096; margin-top: -1rem;">SKU-Level Profitability Analysis for {year} | {", ".join(months) if months else "All Year"}</p>', unsafe_allow_html=True)
+    
+    # Dashboard Header & Filter Context
+    st.markdown(f"""
+        <div style="background: rgba(229, 62, 62, 0.1); padding: 1rem; border-radius: 10px; border-left: 5px solid #E53E3E; margin-bottom: 2rem;">
+            <p style="margin: 0; font-weight: 600; color: #E53E3E;">🔍 Filter Context: {year} | {", ".join(months) if months else "All Year"}</p>
+            <p style="margin: 5px 0 0 0; font-size: 0.85rem; color: #718096;"><b>Gross Margin</b> is profit after raw material costs. The <b>Revenue Bridge</b> shows where every rupee goes (Marketing, Packaging, etc.). Pro-rated for your sidebar selection.</p>
+        </div>
+    """, unsafe_allow_html=True)
     
     # Fetch Data
     df_econ = data_utils.get_unit_economics_data(year, months)

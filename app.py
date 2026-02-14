@@ -159,6 +159,14 @@ with st.sidebar:
 # --- Main Content Routing ---
 
 if page == "📊 Revenue Overview":
+    # Dashboard Header & Filter Context
+    st.markdown(f"""
+        <div style="background: rgba(236, 201, 75, 0.1); padding: 1rem; border-radius: 10px; border-left: 5px solid #ECC94B; margin-bottom: 2rem;">
+            <p style="margin: 0; font-weight: 600; color: #ECC94B;">🔍 Filter Context: {st.session_state.selected_year} | {", ".join(st.session_state.selected_months) if st.session_state.selected_months else "Full Year"}</p>
+            <p style="margin: 5px 0 0 0; font-size: 0.85rem; color: #718096;">All metrics below are <b>Synced</b> to your sidebar selection. This dashboard provides a comprehensive snapshot of your financial health, including real bank balance and net profitability.</p>
+        </div>
+    """, unsafe_allow_html=True)
+
     # Top Row: Metric Cards
     # Fetch Data for Cards
     df_sales = get_monthly_sales_trend()

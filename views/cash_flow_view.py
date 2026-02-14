@@ -6,7 +6,14 @@ import ui_components as ui
 
 def show_cash_flow_view(year=2025, months=None):
     st.markdown('<h1 class="main-title">💰 Cash Flow Advisor</h1>', unsafe_allow_html=True)
-    st.markdown(f'<p style="color: #718096; margin-top: -1rem;">Strategic Liquidity Management for {year} | {", ".join(months) if months else "All Year"}</p>', unsafe_allow_html=True)
+    
+    # Dashboard Header & Filter Context
+    st.markdown(f"""
+        <div style="background: rgba(46, 161, 105, 0.1); padding: 1rem; border-radius: 10px; border-left: 5px solid #38A169; margin-bottom: 2rem;">
+            <p style="margin: 0; font-weight: 600; color: #38A169;">🔍 Filter Context: {year} | {", ".join(months) if months else "All Year"}</p>
+            <p style="margin: 5px 0 0 0; font-size: 0.85rem; color: #718096;"><b>Monthly Burn</b> is your average spending. <b>Runway</b> shows how many months you can survive if you make zero new sales. Data is 100% synced to your sidebar.</p>
+        </div>
+    """, unsafe_allow_html=True)
     
     # Fetch Data
     df_sales_raw = data_utils.get_monthly_sales_trend()
