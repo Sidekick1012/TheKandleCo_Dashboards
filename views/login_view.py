@@ -82,7 +82,7 @@ header, footer, #MainMenu {visibility: hidden !important;}
     box-shadow: 0 10px 40px rgba(212, 175, 55, 0.1) !important;
     text-align: center !important;
     animation: fadeUp 1.0s ease-out !important;
-    margin: 30px auto 0 auto !important; /* Added 30px gap from top */
+    margin: 10px auto 30px auto !important; /* Reduced top gap, added bottom gap */
     transition: transform 0.3s ease;
 }
 
