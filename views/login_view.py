@@ -1,8 +1,21 @@
 import streamlit as st
 from login import check_login
 import time
+import base64
+import os
 
 def show_login_page():
+    # Helper for Base64 image
+    def get_base64_of_bin_file(bin_file):
+        if not os.path.exists(bin_file):
+            return ""
+        with open(bin_file, 'rb') as f:
+            data = f.read()
+        return base64.b64encode(data).decode()
+    
+    logo_b64 = get_base64_of_bin_file("assets/sidekick_logo.jpeg")
+    logo_src = f"data:image/jpeg;base64,{logo_b64}" if logo_b64 else ""
+
     # Inject Custom CSS
     # CSS Style Definition
     LOGIN_STYLE = """
@@ -285,8 +298,8 @@ div[data-testid="stTextInput"] label {
         st.markdown('</div>', unsafe_allow_html=True)
         
         # Footer
-        st.markdown("""
+        st.markdown(f"""
         <div class="custom-footer">
-            Designed & Developed by <span><img src="app/static/assets/sidekick_logo.jpeg" class="footer-logo"></span>
+            Designed & Developed by <span><img src="{logo_src}" class="footer-logo"></span>
         </div>
         """, unsafe_allow_html=True)
