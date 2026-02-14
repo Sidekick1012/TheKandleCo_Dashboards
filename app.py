@@ -28,11 +28,12 @@ import ui_components as ui
 LOGO_URL = "https://thekandleco.com/cdn/shop/files/logo_black.png?v=1685600000" # Placeholder if needed
 
 st.set_page_config(
-    page_title="🕯️ The Kandle Co",
-    page_icon="🕯️",
+    page_title="The Kandle Co",
+    page_icon="assets/logo.png",
     layout="wide", # Changed to wide for the dashboard layout
     initial_sidebar_state="expanded"
 )
+ Riverside, CA
 
 from views.login_view import show_login_page
 
