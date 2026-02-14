@@ -6,7 +6,7 @@ import data_utils
 import ui_components as ui
 
 def show_unit_economics_view(year=2025, months=None):
-    st.markdown('<h1 class="main-title">🩺 The Margin Doctor</h1>', unsafe_allow_html=True)
+    st.markdown('<h1 class="main-title" style="font-size: 1.6rem;">🩺 The Margin Doctor</h1>', unsafe_allow_html=True)
     
     # Dashboard Header & Filter Context
     st.markdown(f"""
@@ -54,7 +54,7 @@ def show_unit_economics_view(year=2025, months=None):
     fig_rank.update_layout(
         plot_bgcolor='white',
         paper_bgcolor='white',
-        height=600,
+        height=400,
         xaxis=dict(showgrid=True, gridcolor='#F0F2F6', range=[0, 100]),
         yaxis=dict(showgrid=False),
         margin=dict(t=20, b=20, l=20, r=20),
@@ -98,8 +98,8 @@ def show_unit_economics_view(year=2025, months=None):
             plot_bgcolor='white',
             paper_bgcolor='white',
             showlegend = False,
-            margin=dict(t=50, b=20, l=20, r=20),
-            height=400
+            margin=dict(t=40, b=20, l=20, r=20),
+            height=280
         )
         
         st.plotly_chart(fig_waterfall, use_container_width=True)

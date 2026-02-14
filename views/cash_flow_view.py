@@ -5,7 +5,7 @@ import data_utils
 import ui_components as ui
 
 def show_cash_flow_view(year=2025, months=None):
-    st.markdown('<h1 class="main-title">💰 Cash Flow Advisor</h1>', unsafe_allow_html=True)
+    st.markdown('<h1 class="main-title" style="font-size: 1.6rem;">💰 Cash Flow Advisor</h1>', unsafe_allow_html=True)
     
     # Dashboard Header & Filter Context
     st.markdown(f"""
@@ -77,7 +77,8 @@ def show_cash_flow_view(year=2025, months=None):
             plot_bgcolor='white',
             paper_bgcolor='white',
             hovermode="x unified",
-            margin=dict(t=40, b=40, l=40, r=40)
+            margin=dict(t=30, b=30, l=30, r=30),
+            height=300
         )
         
         st.plotly_chart(fig, use_container_width=True)

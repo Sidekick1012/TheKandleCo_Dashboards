@@ -159,6 +159,7 @@ with st.sidebar:
 # --- Main Content Routing ---
 
 if page == "📊 Revenue Overview":
+    st.markdown('<h1 class="main-title" style="font-size: 1.6rem;">📊 Revenue Overview</h1>', unsafe_allow_html=True)
     # Dashboard Header & Filter Context
     st.markdown(f"""
         <div style="background: rgba(236, 201, 75, 0.1); padding: 1rem; border-radius: 10px; border-left: 5px solid #ECC94B; margin-bottom: 2rem;">
