@@ -1,8 +1,9 @@
 import streamlit as st
 from login import check_login
-import time
+import streamlit as st
 import base64
 import os
+import time
 
 def show_login_page():
     # Helper for Base64 image
@@ -285,6 +286,40 @@ div[data-testid="stTextInput"] label {
     .login-box { width: 85% !important; }
     .brand-title { font-size: 28px !important; }
 }
+
+/* ===== PROGRESS BAR ===== */
+.progress-outer {
+    width: 100% !important;
+    height: 6px !important;
+    background: rgba(42, 31, 22, 0.1) !important;
+    border-radius: 10px !important;
+    overflow: hidden !important;
+    margin: 20px 0 10px 0 !important;
+    border: 1px solid rgba(212, 175, 55, 0.2) !important;
+}
+
+.progress-inner {
+    height: 100% !important;
+    background: linear-gradient(90deg, #D4AF37, #F6E05E, #D4AF37) !important;
+    background-size: 200% 100% !important;
+    animation: shimmer 2s infinite linear !important;
+    width: 0%;
+    transition: width 0.5s ease !important;
+}
+
+.status-text {
+    font-family: 'Poppins', sans-serif !important;
+    font-size: 11px !important;
+    color: #A8855F !important;
+    font-weight: 500 !important;
+    letter-spacing: 1px !important;
+    text-transform: uppercase !important;
+}
+
+@keyframes shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
 </style>
 """
     st.html(LOGIN_STYLE)
@@ -318,6 +353,28 @@ div[data-testid="stTextInput"] label {
             
             if submitted:
                 if check_login(username, password):
+                    # Heavy Animated Progress Bar
+                    status_placeholder = st.empty()
+                    progress_placeholder = st.empty()
+                    
+                    statuses = [
+                        "Initializing Neural Sync...",
+                        "Authorizing Credentials...",
+                        "Synchronizing Financial Data...",
+                        "Decrypting Intelligence Suite...",
+                        "Finalizing Secure Connection..."
+                    ]
+                    
+                    for i, status in enumerate(statuses):
+                        percent = (i + 1) * 20
+                        status_placeholder.markdown(f'<div class="status-text">{status}</div>', unsafe_allow_html=True)
+                        progress_placeholder.markdown(f'''
+                            <div class="progress-outer">
+                                <div class="progress-inner" style="width: {percent}%;"></div>
+                            </div>
+                        ''', unsafe_allow_html=True)
+                        time.sleep(0.4)
+                    
                     st.session_state.authenticated = True
                     st.rerun()
                 else:
