@@ -42,7 +42,7 @@ header, footer, #MainMenu {visibility: hidden !important;}
 
 .brand-title {
     font-family: 'Playfair Display', serif !important;
-    font-size: 32px !important;
+    font-size: 42px !important; /* Updated to 42px */
     letter-spacing: 4px !important;
     font-weight: 700 !important;
     color: #e6c79c !important; /* Restored Gold color */
@@ -208,7 +208,7 @@ div[data-testid="stTextInput"] label {
         # Brand Header
         st.markdown("""
         <div class="brand-container">
-            <h1 class="brand-title" style="font-size: 42px !important;">The Kandle CO.</h1>
+            <h1 class="brand-title">The Kandle CO.</h1>
             <p class="brand-subtitle">LUXURY CANDLE STUDIO</p>
         </div>
         """, unsafe_allow_html=True)
