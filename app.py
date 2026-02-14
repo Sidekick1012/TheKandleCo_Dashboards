@@ -50,6 +50,89 @@ if not st.session_state.get("authenticated", False):
     show_login_page()
     st.stop()
 
+# Dashboard Initialization Mask (Only runs once after login)
+if st.session_state.get("needs_sync", False):
+    st.markdown("""
+        <style>
+        .init-mask {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: #0F172A;
+            z-index: 999999;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #D4AF37;
+            font-family: 'Playfair Display', serif;
+        }
+        .init-logo {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            animation: pulse 2s infinite;
+        }
+        .init-progress-bar {
+            width: 300px;
+            height: 2px;
+            background: rgba(212, 175, 55, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        .init-progress-fill {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            background: #D4AF37;
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+        .init-status {
+            margin-top: 1.5rem;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            opacity: 0.8;
+        }
+        @keyframes pulse {
+            0% { opacity: 0.5; transform: scale(0.98); }
+            50% { opacity: 1; transform: scale(1); }
+            100% { opacity: 0.5; transform: scale(0.98); }
+        }
+        </style>
+    """, unsafe_allow_html=True)
+
+    init_container = st.empty()
+    
+    status_messages = [
+        "Initializing Command Center...",
+        "Establishing Secure Handshake...",
+        "Authorizing Data Pipelines...",
+        "Synthesizing Strategic Visuals...",
+        "Optimizing Dashboard Matrix...",
+        "System Ready: Welcome to Kandle Intelligence"
+    ]
+    
+    for i, msg in enumerate(status_messages):
+        progress = (i + 1) * (100 / len(status_messages))
+        init_container.markdown(f"""
+            <div class="init-mask">
+                <div class="init-logo">The Kandle CO.</div>
+                <div class="init-progress-bar">
+                    <div class="init-progress-fill" style="width: {progress}%"></div>
+                </div>
+                <div class="init-status">{msg}</div>
+            </div>
+        """, unsafe_allow_html=True)
+        time.sleep(0.6)
+    
+    st.session_state.needs_sync = False
+    st.rerun()
+
 # Load Custom CSS (only after authentication)
 ui.load_css()
 

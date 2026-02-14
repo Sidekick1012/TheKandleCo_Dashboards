@@ -376,6 +376,7 @@ div[data-testid="stTextInput"] label {
                         time.sleep(0.4)
                     
                     st.session_state.authenticated = True
+                    st.session_state.needs_sync = True
                     st.rerun()
                 else:
                     st.error("Invalid credentials")
