@@ -5,7 +5,7 @@ import time
 def show_login_page():
     # Inject Custom CSS
     # CSS Style Definition
-LOGIN_STYLE = """
+    LOGIN_STYLE = """
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 /* Force fullpage white background */
