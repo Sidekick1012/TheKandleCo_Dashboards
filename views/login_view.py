@@ -136,22 +136,22 @@ div[data-testid="stTextInput"] label {
 .stButton > button,
 [data-testid="stFormSubmitButton"] button {
     position: relative !important;
-    background: linear-gradient(90deg, #d4af37 calc(100% - 42px), #1A202C calc(100% - 42px)) !important;
+    background: linear-gradient(90deg, #d4af37 calc(100% - 38px), #1A202C calc(100% - 38px)) !important;
     color: #0F172A !important;
     border: none !important;
-    border-radius: 0 6px 6px 0 !important;
+    border-radius: 0 4px 4px 0 !important;
     width: 100% !important;
-    height: 44px !important;
+    height: 38px !important;
     font-weight: 900 !important;
     text-transform: uppercase !important;
-    letter-spacing: 1.5px !important;
-    padding-right: 48px !important;
-    padding-left: 15px !important;
+    letter-spacing: 1px !important;
+    padding-right: 42px !important;
+    padding-left: 12px !important;
     text-align: left !important;
     margin-top: 15px !important;
     overflow: visible !important;
-    box-shadow: 4px 4px 15px rgba(0,0,0,0.15) !important;
-    font-size: 0.9rem !important;
+    box-shadow: 4px 4px 12px rgba(0,0,0,0.12) !important;
+    font-size: 0.8rem !important;
     white-space: nowrap !important;
     transition: all 0.3s ease !important;
 }
@@ -169,15 +169,15 @@ div[data-testid="stTextInput"] label {
     position: absolute !important;
     right: 0 !important;
     top: 0 !important;
-    width: 42px !important;
+    width: 38px !important;
     height: 100% !important;
     background: #1A202C !important;
     color: #ecc94b !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    font-size: 1.2rem !important;
-    border-radius: 0 6px 6px 0 !important;
+    font-size: 1rem !important;
+    border-radius: 0 4px 4px 0 !important;
 }
 
 /* Ribbon Fold */

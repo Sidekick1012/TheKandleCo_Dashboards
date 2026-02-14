@@ -98,23 +98,23 @@ with st.sidebar:
             /* Ribbon Style Logout Button */
             div.stButton > button:first-child {
                 position: relative !important;
-                background: linear-gradient(90deg, #d4af37 calc(100% - 42px), #1A202C calc(100% - 42px)) !important;
+                background: linear-gradient(90deg, #d4af37 calc(100% - 38px), #1A202C calc(100% - 38px)) !important;
                 color: #0F172A !important;
                 border: none !important;
                 border-radius: 0 4px 4px 0 !important;
                 width: 100% !important;
-                height: 42px !important;
+                height: 38px !important;
                 font-weight: 900 !important;
                 text-transform: uppercase !important;
                 letter-spacing: 0.5px !important;
-                padding-right: 48px !important; /* Space for arrow */
+                padding-right: 44px !important; /* Space for arrow */
                 padding-left: 12px !important;
                 text-align: left !important;
                 margin-top: 2rem !important;
                 overflow: visible !important;
                 box-shadow: 4px 4px 10px rgba(0,0,0,0.2) !important;
                 white-space: nowrap !important;
-                font-size: 0.85rem !important;
+                font-size: 0.8rem !important;
                 display: flex !important;
                 align-items: center !important;
             }
@@ -123,7 +123,7 @@ with st.sidebar:
             div.stButton > button:first-child p {
                 margin: 0 !important;
                 white-space: nowrap !important;
-                font-size: 0.85rem !important;
+                font-size: 0.8rem !important;
                 font-weight: 900 !important;
             }
 
@@ -133,14 +133,14 @@ with st.sidebar:
                 position: absolute !important;
                 right: 0 !important;
                 top: 0 !important;
-                width: 42px !important; 
+                width: 38px !important; 
                 height: 100% !important;
                 background: #1A202C !important;
                 color: #ecc94b !important;
                 display: flex !important;
                 align-items: center !important;
                 justify-content: center !important;
-                font-size: 1.2rem !important;
+                font-size: 1.1rem !important;
                 border-radius: 0 4px 4px 0 !important;
             }
 
