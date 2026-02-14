@@ -42,19 +42,20 @@ header, footer, #MainMenu {visibility: hidden !important;}
 
 .brand-title {
     font-family: 'Playfair Display', serif !important;
-    font-size: 42px !important; /* Updated to 42px */
+    font-size: 42px !important;
     letter-spacing: 4px !important;
     font-weight: 700 !important;
-    color: #e6c79c !important; /* Restored Gold color */
+    color: #D4AF37 !important; /* Premium Vibrant Gold */
     margin: 0 !important;
     line-height: 1.2 !important;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.05) !important;
 }
 
 .brand-subtitle {
     margin-top: 5px !important;
     font-size: 10px !important;
     letter-spacing: 4px !important;
-    color: #8c6b4f !important;
+    color: #A8855F !important; /* Fresher contrast */
     text-transform: uppercase !important;
 }
 
