@@ -300,6 +300,6 @@ div[data-testid="stTextInput"] label {
         # Footer
         st.markdown(f"""
         <div class="custom-footer">
-            Designed & Developed by <span><img src="{logo_src}" class="footer-logo"></span>
+            Designed & Developed by<span><img src="{logo_src}" class="footer-logo"></span>
         </div>
         """, unsafe_allow_html=True)
