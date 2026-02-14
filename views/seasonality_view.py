@@ -4,11 +4,13 @@ import plotly.express as px
 import data_utils
 import ui_components as ui
 
-def show_seasonality_view():
+def show_seasonality_view(year=2025, months=None):
     st.markdown('<h1 class="main-title">📅 Seasonality & Forecasting</h1>', unsafe_allow_html=True)
-    st.markdown('<p style="color: #718096; margin-top: -1rem;">Strategic Year-over-Year (YoY) Analysis & Trend Forecasting</p>', unsafe_allow_html=True)
+    st.markdown(f'<p style="color: #718096; margin-top: -1rem;">Strategic Analysis for {year} | {", ".join(months) if months else "All Year"}</p>', unsafe_allow_html=True)
     
     # Fetch YoY Growth Data
+    # For Seasonality, we usually want to see the whole year to spot trends, 
+    # but we can highlight the selected months
     df_yoy = data_utils.get_yoy_growth_data()
     
     if df_yoy.empty:
@@ -18,24 +20,36 @@ def show_seasonality_view():
     # --- Top Row: Strategic Insights ---
     cols = st.columns(3)
     
+    # Calculate Growth for selected months
+    if str(year) in df_yoy.columns and str(year-1) in df_yoy.columns:
+        curr_vals = df_yoy.loc[months, str(year)].sum() if months else df_yoy[str(year)].sum()
+        prev_vals = df_yoy.loc[months, str(year-1)].sum() if months else df_yoy[str(year-1)].sum()
+        growth = ((curr_vals - prev_vals) / prev_vals * 100) if prev_vals > 0 else 0
+        growth_str = f"{'+' if growth > 0 else ''}{growth:.1f}%"
+    else:
+        growth_str = "N/A"
+
     with cols[0]:
         ui.metric_card("Peak Month", "Oct-Nov", "Historical Spike", "metric-card-1", icon="🔥")
     with cols[1]:
-        ui.metric_card("Avg Growth", "+12.5%", "YoY Trend", "metric-card-2", icon="📈")
+        ui.metric_card(f"{year} Growth", growth_str, "vs Previous Year", "metric-card-2", icon="📈")
     with cols[2]:
-        ui.metric_card("Low Season", "Jul-Aug", "Cash Buffer Needed", "metric-card-3", icon="❄️")
+        ui.metric_card("Season Status", "Peak" if 'Oct' in months or 'Nov' in months else "Standard", "Based on Selection", "metric-card-3", icon="⚖️")
 
     st.markdown("---")
 
     # --- Line Chart: YoY Comparison ---
     st.markdown('<div class="content-card">', unsafe_allow_html=True)
-    st.markdown('<h3>Year-over-Year Sales Comparison</h3>', unsafe_allow_html=True)
+    st.markdown(f'<h3>Year-over-Year Comparison ({year} Selection Highlighted)</h3>', unsafe_allow_html=True)
     
     # Prepare data for plotting
     plot_df = df_yoy.reset_index().melt(id_vars='month_name', var_name='Year', value_name='Sales')
     
+    # Highlight selected months in the chart by adding a column
+    plot_df['Is_Selected'] = plot_df['month_name'].isin(months if months else [])
+    
     fig = px.line(plot_df, x='month_name', y='Sales', color='Year', markers=True,
-                  title="Monthly Revenue Trend (2024 vs 2025)",
+                  title=f"Monthly Revenue Trend",
                   labels={"month_name": "Month", "Sales": "Total Revenue (Rs.)"})
     
     fig.update_layout(

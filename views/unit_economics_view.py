@@ -5,12 +5,12 @@ import plotly.graph_objects as go
 import data_utils
 import ui_components as ui
 
-def show_unit_economics_view():
+def show_unit_economics_view(year=2025, months=None):
     st.markdown('<h1 class="main-title">🩺 The Margin Doctor</h1>', unsafe_allow_html=True)
-    st.markdown('<p style="color: #718096; margin-top: -1rem;">SKU-Level Profitability & Unit Economics Analysis</p>', unsafe_allow_html=True)
+    st.markdown(f'<p style="color: #718096; margin-top: -1rem;">SKU-Level Profitability Analysis for {year} | {", ".join(months) if months else "All Year"}</p>', unsafe_allow_html=True)
     
     # Fetch Data
-    df_econ = data_utils.get_unit_economics_data()
+    df_econ = data_utils.get_unit_economics_data(year, months)
     
     if df_econ.empty:
         st.warning("Product catalog data not found. Please ensure products are synced.")

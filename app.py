@@ -280,10 +280,10 @@ if page == "📊 Revenue Overview":
         st.markdown('</div>', unsafe_allow_html=True)
 
 elif page == "📅 Seasonality Advisor":
-    show_seasonality_view()
+    show_seasonality_view(st.session_state.selected_year, st.session_state.selected_months)
 
 elif page == "💰 Cash Flow Strategist":
-    show_cash_flow_view()
+    show_cash_flow_view(st.session_state.selected_year, st.session_state.selected_months)
 
 elif page == "🩺 Margin Doctor":
-    show_unit_economics_view()
+    show_unit_economics_view(st.session_state.selected_year, st.session_state.selected_months)

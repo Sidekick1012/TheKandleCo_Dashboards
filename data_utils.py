@@ -451,10 +451,10 @@ def get_alerts(year=2025, months=None):
         
     return alerts
 
-def get_unit_economics_data():
+def get_unit_economics_data(year=2025, months=None):
     """
     Enhanced version of profitability proxy for the 'Margin Doctor' dashboard.
-    Calculates SKU-level margins and estimates volumes.
+    Calculates SKU-level margins and estimates volumes based on filters.
     """
     df_products = get_all_products()
     if df_products.empty:
@@ -462,20 +462,26 @@ def get_unit_economics_data():
         
     products_data = []
     
-    # Calculate Overhead Overhead (Marketing + Packaging)
-    df_exp = get_expense_breakdown()
+    # Calculate Overhead (Marketing + Packaging) for the selected period
+    df_exp_all = get_expense_breakdown()
+    df_exp = apply_filters(df_exp_all, year, months)
+    
     if not df_exp.empty:
-        # Total historical avg for overheads
-        avg_marketing = df_exp['advertising_promotions'].mean()
-        avg_packing = df_exp['packing_material'].mean()
+        # Total for selection
+        total_marketing = df_exp['advertising_promotions'].sum()
+        total_packing = df_exp['packing_material'].sum()
     else:
-        avg_marketing, avg_packing = 50000, 20000 # Fallbacks
+        # Fallbacks for empty selection (pro-rated)
+        n_m = len(months) if months else 12
+        total_marketing, total_packing = 50000 * n_m, 20000 * n_m
         
-    # Estimate total units sold per month to get 'Overhead per Unit'
-    # Proxy: Let's assume an average of 1000 units sold across all SKUs per month
-    est_monthly_units = 1200 
-    mkt_per_unit = avg_marketing / est_monthly_units
-    pack_per_unit = avg_packing / est_monthly_units
+    # Estimate total units sold in the selected period
+    # Assume 1200 units/avg month
+    n_months = len(months) if months else 12
+    total_est_units = 1200 * n_months
+    
+    mkt_per_unit = total_marketing / total_est_units if total_est_units > 0 else 0
+    pack_per_unit = total_packing / total_est_units if total_est_units > 0 else 0
     
     for _, row in df_products.iterrows():
         cost = row['cost']
@@ -495,7 +501,9 @@ def get_unit_economics_data():
             vol_multiplier = 1.0
             
         base_vol = 800 if row['variant'] == '100g' else 300
-        volume = int(np.random.normal(base_vol * vol_multiplier, 50))
+        # Scale volume by number of months
+        scaled_base = (base_vol * (n_months / 12)) * vol_multiplier
+        volume = int(np.random.normal(scaled_base, scaled_base * 0.1 if scaled_base > 0 else 1))
         
         products_data.append({
             "SKU": row['sku'],
