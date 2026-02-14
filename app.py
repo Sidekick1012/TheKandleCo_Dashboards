@@ -72,34 +72,34 @@ with st.sidebar:
         st.markdown('<div style="text-align: center; margin-bottom: 2rem; color: white; font-family: Playfair Display; font-size: 1.5rem;">The Kandle Co.</div>', unsafe_allow_html=True)
     
     
-    # User Profile Section (Mock)
-    st.markdown("""
-    <div style="display: flex; align-items: center; gap: 10px; padding: 10px; background: rgba(255,255,255,0.1); border-radius: 12px; margin-bottom: 2rem;">
-        <div style="width: 40px; height: 40px; background: #ddd; border-radius: 50%; display: flex; align-items: center; justify-content: center;">👤</div>
-        <div style="color: white;">
-            <div style="font-size: 0.9rem; font-weight: bold;">Admin User</div>
-            <div style="font-size: 0.7rem; opacity: 0.7;">View Profile</div>
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
-    
-    # Navigation
+    # --- Navigator ---
+    st.markdown('<div style="color: #ecc94b; font-weight: bold; font-size: 0.8rem; letter-spacing: 1px; margin: 1.5rem 0 0.5rem 0;">NAVIGATOR</div>', unsafe_allow_html=True)
     page = st.radio("Menu", ["Dashboard", "Sales", "Expenses", "Inventory", "Settings"], label_visibility="collapsed")
     
     st.markdown("---")
     
-    # Calendar Widget Placeholder
-    st.markdown("""
-    <div class="calendar-widget">
-        <div class="calendar-header">Aug 2024</div>
-        <div style="display: grid; grid-template-columns: repeat(7, 1fr); gap: 5px; font-size: 0.7rem; color: #718096;">
-            <div>S</div><div>M</div><div>T</div><div>W</div><div>T</div><div>F</div><div>S</div>
-            <div></div><div></div><div></div><div></div><div>1</div><div>2</div><div>3</div>
-            <div>4</div><div>5</div><div>6</div><div style="background: #38A169; color: white; border-radius: 50%;">7</div><div>8</div><div>9</div><div>10</div>
-            <div>11</div><div>12</div><div>13</div><div>14</div><div>15</div><div>16</div><div>17</div>
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
+    # --- Global Filters ---
+    st.markdown('<div style="color: #ecc94b; font-weight: bold; font-size: 0.8rem; letter-spacing: 1px; margin-bottom: 1rem;">GLOBAL FILTERS</div>', unsafe_allow_html=True)
+    
+    # Year Selection
+    years = [2024, 2025]
+    selected_year = st.selectbox("Select Year", years, index=years.index(st.session_state.selected_year))
+    if selected_year != st.session_state.selected_year:
+        st.session_state.selected_year = selected_year
+        st.rerun()
+        
+    # Month Selection
+    all_months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+    selected_months = st.multiselect("Select Months", all_months, default=st.session_state.selected_months)
+    if selected_months != st.session_state.selected_months:
+        st.session_state.selected_months = selected_months
+        st.rerun()
+    
+    st.markdown("---")
+    
+    if st.button("Logout"):
+        st.session_state.authenticated = False
+        st.rerun()
     
     if st.button("Logout"):
         st.session_state.authenticated = False
