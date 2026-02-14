@@ -87,12 +87,12 @@ with st.sidebar:
             /* Logo Positioning - Move higher and center */
             .sidebar-logo-container {
                 text-align: center;
-                margin-top: -80px !important;
-                margin-bottom: 20px !important;
+                margin-top: -30px !important;
+                margin-bottom: 10px !important;
             }
             .sidebar-logo-container img {
-                width: 120px;
-                filter: brightness(0) invert(1); /* Ensure logo is white if it's black */
+                width: 140px;
+                height: auto;
             }
 
             /* Premium Logout Button */
@@ -110,12 +110,21 @@ with st.sidebar:
         </style>
     """, unsafe_allow_html=True)
 
-    # Logo Section (Direct HTML for better control)
-    st.markdown("""
-        <div class="sidebar-logo-container">
-            <img src="https://thekandleco.com/cdn/shop/files/logo_black.png?v=1685600000">
-        </div>
-    """, unsafe_allow_html=True)
+    # Logo Section (Local Base64 for guaranteed loading)
+    import base64
+    import os
+    try:
+        logo_path = os.path.join(os.path.dirname(__file__), "assets", "logo.png")
+        with open(logo_path, "rb") as f:
+            data = base64.b64encode(f.read()).decode("utf-8")
+        
+        st.markdown(f"""
+            <div class="sidebar-logo-container">
+                <img src="data:image/png;base64,{data}">
+            </div>
+        """, unsafe_allow_html=True)
+    except Exception as e:
+        st.markdown('<div style="text-align: center; margin-bottom: 2rem; color: white; font-family: Playfair Display; font-size: 1.5rem; margin-top: -30px;">The Kandle Co.</div>', unsafe_allow_html=True)
     # --- Navigator ---
     st.markdown('<div class="sidebar-section-header" style="color: #ecc94b; font-weight: 600; font-size: 0.75rem; letter-spacing: 2px; opacity: 0.8;">NAVIGATOR</div>', unsafe_allow_html=True)
     page = st.radio("Menu", [
