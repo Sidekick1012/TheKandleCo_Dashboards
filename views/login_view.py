@@ -209,15 +209,16 @@ div[data-testid="stTextInput"] label {
     bottom: 20px !important;
     width: 100% !important;
     text-align: center !important;
-    font-size: 11px !important;
-    color: #aaa !important;
+    font-size: 13px !important;
+    color: #000000 !important; /* Bold black */
     left: 0 !important;
     animation: fadeIn 2s ease-in;
+    font-weight: 500 !important;
 }
 
 .custom-footer span {
-    color: #c89b6d !important;
-    font-weight: 500 !important;
+    color: #D4AF37 !important; /* Brighter gold for the brand name */
+    font-weight: 700 !important;
 }
 
 /* ===== ANIMATIONS ===== */
