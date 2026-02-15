@@ -320,6 +320,76 @@ div[data-testid="stTextInput"] label {
     0% { background-position: 200% 0; }
     100% { background-position: -200% 0; }
 }
+
+/* ===== LOGIN PAGE CANDLES ===== */
+.login-candle-container {
+    position: absolute !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    z-index: 5 !important;
+}
+
+.candle-left {
+    left: -80px !important;
+}
+
+.candle-right {
+    right: -80px !important;
+}
+
+.candle-jar {
+    width: 35px !important;
+    height: 45px !important;
+    background: linear-gradient(135deg, #2D3748 0%, #1A202C 100%) !important;
+    border-radius: 4px 4px 8px 8px !important;
+    position: relative !important;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15) !important;
+    border: 1px solid rgba(212, 175, 55, 0.2) !important;
+}
+
+.candle-flame {
+    position: absolute !important;
+    top: -14px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 8px !important;
+    height: 16px !important;
+    background: #D4AF37 !important;
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40% !important;
+    background: linear-gradient(to bottom, #FFF8E1 0%, #D4AF37 100%) !important;
+    filter: blur(0.5px) !important;
+    box-shadow: 0 0 10px #D4AF37, 0 0 20px rgba(212, 175, 55, 0.4) !important;
+    animation: flicker 2.5s infinite alternate !important;
+}
+
+.candle-glow {
+    position: absolute !important;
+    top: -20px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 50px !important;
+    height: 50px !important;
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.2) 0%, transparent 70%) !important;
+    border-radius: 50% !important;
+    animation: glow-pulse 4s infinite ease-in-out !important;
+}
+
+@keyframes flicker {
+    0% { transform: translateX(-50%) scale(1); opacity: 0.9; }
+    20% { transform: translateX(-52%) scale(1.05); opacity: 1; }
+    40% { transform: translateX(-48%) scale(0.95); opacity: 0.85; }
+    60% { transform: translateX(-51%) scale(1.02); opacity: 0.95; }
+    80% { transform: translateX(-49%) scale(0.98); opacity: 0.9; }
+    100% { transform: translateX(-50%) scale(1.05); opacity: 1; }
+}
+
+@keyframes glow-pulse {
+    0%, 100% { transform: translateX(-50%) scale(1); opacity: 0.3; }
+    50% { transform: translateX(-50%) scale(1.2); opacity: 0.6; }
+}
 </style>
 """
     st.html(LOGIN_STYLE)
@@ -337,10 +407,27 @@ div[data-testid="stTextInput"] label {
         """, unsafe_allow_html=True)
         # Login Box
         st.markdown('''
-            <div class="login-box">
-                <h2 class="login-header">Member Login</h2>
-                <p class="login-subheader">Business Intelligence Suite</p>
-                <div class="header-accent-line"></div>
+            <div style="position: relative;">
+                <!-- Left Candle -->
+                <div class="login-candle-container candle-left">
+                    <div class="candle-jar">
+                        <div class="candle-glow"></div>
+                        <div class="candle-flame"></div>
+                    </div>
+                </div>
+                
+                <!-- Right Candle -->
+                <div class="login-candle-container candle-right">
+                    <div class="candle-jar">
+                        <div class="candle-glow"></div>
+                        <div class="candle-flame"></div>
+                    </div>
+                </div>
+
+                <div class="login-box">
+                    <h2 class="login-header">Member Login</h2>
+                    <p class="login-subheader">Business Intelligence Suite</p>
+                    <div class="header-accent-line"></div>
         ''', unsafe_allow_html=True)
         
         # Form for Enter key support
