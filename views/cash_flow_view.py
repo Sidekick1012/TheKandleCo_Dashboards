@@ -5,7 +5,7 @@ import data_utils
 import ui_components as ui
 
 def show_cash_flow_view(year=2025, months=None):
-    st.markdown('<h1 class="main-title" style="font-size: 1.3rem;">💰 Cash Flow Advisor</h1>', unsafe_allow_html=True)
+    ui.title_with_candle("Cash Flow Advisor", icon="💰")
     
     # Dashboard Header & Filter Context
     st.markdown(f"""

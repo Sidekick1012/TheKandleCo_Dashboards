@@ -47,3 +47,15 @@ def stats_item(label, value, icon_color, icon="🛒"):
         </div>
     </div>
     """, unsafe_allow_html=True)
+def title_with_candle(text, icon="📊"):
+    st.markdown(f"""
+    <div class="title-candle-wrapper">
+        <div class="candle-container title-candle">
+            <div class="candle-jar">
+                <div class="candle-glow"></div>
+                <div class="candle-flame"></div>
+            </div>
+        </div>
+        <h1 class="main-title" style="margin: 0; font-size: 1.3rem;">{icon} {text}</h1>
+    </div>
+    """, unsafe_allow_html=True)

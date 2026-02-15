@@ -278,6 +278,19 @@ footer {
     transition: opacity 0.3s ease;
 }
 
+/* Title-specific Candle Styling */
+.title-candle-wrapper {
+    display: inline-flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 1rem;
+}
+
+.title-candle {
+    transform: scale(0.6);
+    margin-bottom: -10px;
+}
+
 .candle-container:hover {
     opacity: 1;
 }

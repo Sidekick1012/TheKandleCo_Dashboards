@@ -290,21 +290,10 @@ with st.sidebar:
         st.session_state.authenticated = False
         st.rerun()
 
-    # --- Subtle Branded Animation ---
-    st.markdown("""
-        <div class="candle-container">
-            <div class="candle-jar">
-                <div class="candle-glow"></div>
-                <div class="candle-flame"></div>
-            </div>
-            <div class="candle-caption">The Kandle Co.</div>
-        </div>
-    """, unsafe_allow_html=True)
-
 # --- Main Content Routing ---
 
 if page == "📊 Revenue Overview":
-    st.markdown('<h1 class="main-title" style="font-size: 1.3rem;">📊 Revenue Overview</h1>', unsafe_allow_html=True)
+    ui.title_with_candle("Revenue Overview", icon="📊")
     # Dashboard Header & Filter Context
     st.markdown(f"""
         <div style="background: rgba(212, 175, 55, 0.1); padding: 1rem; border-radius: 10px; border-left: 5px solid #D4AF37; margin-bottom: 2rem;">
