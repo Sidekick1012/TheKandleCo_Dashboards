@@ -60,3 +60,36 @@ def title_with_candle(text, icon="📊"):
         <h1 class="main-title">{icon} {text}</h1>
     </div>
     """, unsafe_allow_html=True)
+
+def year_selector():
+    st.markdown('<div style="font-size: 0.7rem; color: #D4AF37; margin-top: 0.5rem; letter-spacing: 1px; font-weight: 600; opacity: 0.8;">SELECT YEAR</div>', unsafe_allow_html=True)
+    years = [2024, 2025]
+    curr_selected = st.session_state.get('selected_year', 2024)
+    
+    cols = st.columns(2)
+    for i, yr in enumerate(years):
+        with cols[i]:
+            if st.button(str(yr), key=f"yr_{yr}", use_container_width=True, 
+                         type="primary" if yr == curr_selected else "secondary"):
+                st.session_state.selected_year = yr
+                st.rerun()
+
+def month_selector():
+    st.markdown('<div style="font-size: 0.7rem; color: #D4AF37; margin-top: 1rem; letter-spacing: 1px; font-weight: 600; opacity: 0.8;">SELECT MONTHS</div>', unsafe_allow_html=True)
+    
+    all_months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+    selected = st.session_state.get('selected_months', [])
+    
+    # 4 Columns for more stability and professional look
+    cols = st.columns(4)
+    for i, month in enumerate(all_months):
+        with cols[i % 4]:
+            is_active = month in selected
+            if st.button(month, key=f"month_btn_{month}", use_container_width=True, 
+                         type="primary" if is_active else "secondary"):
+                if month in selected:
+                    selected.remove(month)
+                else:
+                    selected.append(month)
+                st.session_state.selected_months = selected
+                st.rerun()
