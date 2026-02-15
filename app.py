@@ -256,17 +256,6 @@ with st.sidebar:
         """, unsafe_allow_html=True)
     except Exception as e:
         st.markdown('<div style="text-align: center; margin-bottom: 2rem; color: white; font-family: Playfair Display; font-size: 1.5rem; margin-top: -30px;">The Kandle Co.</div>', unsafe_allow_html=True)
-    # --- Global Filters ---
-    st.markdown('<div class="sidebar-section-header" style="color: #D4AF37; font-weight: 600; font-size: 0.75rem; letter-spacing: 2px; opacity: 0.8; margin-top: 1rem;">GLOBAL FILTERS</div>', unsafe_allow_html=True)
-    
-    # Year Selection first (Chips)
-    ui.year_selector()
-        
-    # Month Selection (Chips)
-    ui.month_selector()
-
-    st.markdown("---")
-
     # --- Navigator ---
     st.markdown('<div class="sidebar-section-header" style="color: #D4AF37; font-weight: 600; font-size: 0.75rem; letter-spacing: 2px; opacity: 0.8;">NAVIGATOR</div>', unsafe_allow_html=True)
     page = st.radio("Menu", [
@@ -275,6 +264,26 @@ with st.sidebar:
         "💰 Cash Flow Strategist",
         "🩺 Margin Doctor"
     ], label_visibility="collapsed")
+    
+    st.markdown("---")
+    
+    # --- Global Filters ---
+    st.markdown('<div class="sidebar-section-header" style="color: #D4AF37; font-weight: 600; font-size: 0.75rem; letter-spacing: 2px; opacity: 0.8;">GLOBAL FILTERS</div>', unsafe_allow_html=True)
+    
+    # Year Selection
+    years = [2024, 2025]
+    curr_year_idx = years.index(st.session_state.selected_year) if st.session_state.selected_year in years else 0
+    selected_year = st.selectbox("📅 Select Year", years, index=curr_year_idx)
+    if selected_year != st.session_state.selected_year:
+        st.session_state.selected_year = selected_year
+        st.rerun()
+        
+    # Month Selection
+    all_months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+    selected_months = st.multiselect("Select Months", all_months, default=st.session_state.selected_months)
+    if selected_months != st.session_state.selected_months:
+        st.session_state.selected_months = selected_months
+        st.rerun()
 
     st.markdown("---")
     if st.button("LOG OUT"):
