@@ -8,10 +8,11 @@ body {
 
 /* Modern Stylish Sidebar Styling */
 [data-testid="stSidebar"] {
-    background: linear-gradient(180deg, #1A365D 0%, #0F172A 100%) !important;
+    background-color: #5B8373 !important;
+    background-image: none !important;
     backdrop-filter: blur(15px) !important;
     -webkit-backdrop-filter: blur(15px) !important;
-    border-right: 1px solid rgba(255, 255, 255, 0.05) !important;
+    border-right: 1px solid rgba(255, 255, 255, 0.1) !important;
     padding-top: 0px !important;
     width: 250px !important;
 }
