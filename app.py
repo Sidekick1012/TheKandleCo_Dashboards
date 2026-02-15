@@ -256,6 +256,12 @@ with st.sidebar:
         """, unsafe_allow_html=True)
     except Exception as e:
         st.markdown('<div style="text-align: center; margin-bottom: 2rem; color: white; font-family: Playfair Display; font-size: 1.5rem; margin-top: -30px;">The Kandle Co.</div>', unsafe_allow_html=True)
+    if st.button("LOG OUT"):
+        st.session_state.authenticated = False
+        st.rerun()
+
+    st.markdown("---")
+
     # --- Navigator ---
     st.markdown('<div class="sidebar-section-header" style="color: #D4AF37; font-weight: 600; font-size: 0.75rem; letter-spacing: 2px; opacity: 0.8;">NAVIGATOR</div>', unsafe_allow_html=True)
     page = st.radio("Menu", [
@@ -283,11 +289,6 @@ with st.sidebar:
     selected_months = st.multiselect("Select Months", all_months, default=st.session_state.selected_months)
     if selected_months != st.session_state.selected_months:
         st.session_state.selected_months = selected_months
-        st.rerun()
-    
-    
-    if st.button("LOG OUT"):
-        st.session_state.authenticated = False
         st.rerun()
 
 # --- Main Content Routing ---

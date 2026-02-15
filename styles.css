@@ -59,15 +59,15 @@ header svg path {
 
 .stRadio [data-testid="stMarkdownContainer"] p {
     color: white !important;
-    font-size: 0.95rem !important;
+    font-size: 0.85rem !important;
     font-weight: 500 !important;
 }
 
 /* Hover & Active States for Menu Items */
 .stRadio>label {
-    margin-bottom: 8px !important;
-    padding: 12px 16px !important;
-    border-radius: 12px !important;
+    margin-bottom: 4px !important;
+    padding: 8px 12px !important;
+    border-radius: 10px !important;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
     border: 1px solid transparent !important;
     color: white !important;
@@ -75,25 +75,25 @@ header svg path {
 
 .stRadio>label:hover {
     background: rgba(255, 255, 255, 0.08) !important;
-    transform: translateX(5px);
+    transform: translateX(3px);
 }
 
 /* Active/Selected Item Styling */
 /* Streamlit doesn't always use data-selected on label, targeting based on radio checked state inside */
 .stRadio div[role="radiogroup"] label[data-checked="true"] {
     background: linear-gradient(90deg, #d4af37 0%, #D4AF37 100%) !important;
-    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3) !important;
-    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
 }
 
 .stRadio div[role="radiogroup"] label[data-checked="true"] p {
-    color: #1A365D !important;
+    color: #0F172A !important;
     font-weight: 700 !important;
 }
 
 /* Section Dividers */
 [data-testid="stSidebar"] hr {
-    margin: 1.0rem 0 !important;
+    margin: 0.8rem 0 !important;
     background-color: rgba(255, 255, 255, 0.05) !important;
     border: none !important;
     height: 1px !important;
@@ -104,9 +104,9 @@ header svg path {
 [data-testid="stSidebar"] [data-testid="stMarkdownContainer"] p,
 [data-testid="stSidebar"] .stWidgetLabel {
     color: white !important;
-    font-size: 0.8rem !important;
+    font-size: 0.75rem !important;
     font-weight: 500 !important;
-    margin-bottom: 0.2rem !important;
+    margin-bottom: 0.15rem !important;
 }
 
 
@@ -343,31 +343,31 @@ footer {
 
 .candle-flame {
     position: absolute;
-    top: -18px;
+    top: -20px;
     left: 50%;
     transform: translateX(-50%);
-    width: 12px;
-    height: 22px;
-    background: radial-gradient(circle at 50% 80%, #FFF 0%, #FFF8E1 20%, #D4AF37 60%, rgba(212, 175, 55, 0) 100%);
+    width: 14px;
+    height: 26px;
+    background: radial-gradient(circle at 50% 80%, #FFF 0%, #FFF8E1 15%, #FFD700 40%, #D4AF37 70%, rgba(212, 175, 55, 0) 100%);
     border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-    filter: blur(0.3px);
+    filter: blur(0.2px);
     box-shadow:
-        0 0 15px #D4AF37,
-        0 0 30px rgba(212, 175, 55, 0.6),
-        0 0 45px rgba(212, 175, 55, 0.2);
-    animation: flicker 2s infinite alternate ease-in-out;
+        0 0 20px #D4AF37,
+        0 0 40px rgba(212, 175, 55, 0.5),
+        0 0 60px rgba(212, 175, 55, 0.2);
+    animation: flicker 1.8s infinite alternate ease-in-out;
 }
 
 .candle-glow {
     position: absolute;
-    top: -30px;
+    top: -35px;
     left: 50%;
     transform: translateX(-50%);
-    width: 80px;
-    height: 80px;
-    background: radial-gradient(circle, rgba(212, 175, 55, 0.15) 0%, transparent 70%);
+    width: 100px;
+    height: 100px;
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.2) 0%, transparent 75%);
     border-radius: 50%;
-    animation: glow-pulse 3s infinite ease-in-out;
+    animation: glow-pulse 2.5s infinite ease-in-out;
     pointer-events: none;
 }
 
