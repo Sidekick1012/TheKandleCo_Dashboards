@@ -411,6 +411,7 @@ div[data-testid="stTextInput"] label {
 <!-- Left Candle -->
 <div class="login-candle-container candle-left">
 <div class="candle-jar">
+<div class="candle-wick"></div>
 <div class="candle-glow"></div>
 <div class="candle-flame"></div>
 </div>
@@ -418,6 +419,7 @@ div[data-testid="stTextInput"] label {
 <!-- Right Candle -->
 <div class="login-candle-container candle-right">
 <div class="candle-jar">
+<div class="candle-wick"></div>
 <div class="candle-glow"></div>
 <div class="candle-flame"></div>
 </div>

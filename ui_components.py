@@ -52,10 +52,11 @@ def title_with_candle(text, icon="📊"):
     <div class="title-candle-wrapper">
         <div class="candle-container title-candle">
             <div class="candle-jar">
+                <div class="candle-wick"></div>
                 <div class="candle-glow"></div>
                 <div class="candle-flame"></div>
             </div>
         </div>
-        <h1 class="main-title" style="margin: 0; font-size: 1.3rem;">{icon} {text}</h1>
+        <h1 class="main-title">{icon} {text}</h1>
     </div>
     """, unsafe_allow_html=True)
