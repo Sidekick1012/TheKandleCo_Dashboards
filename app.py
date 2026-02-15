@@ -285,6 +285,11 @@ with st.sidebar:
         st.session_state.selected_months = selected_months
         st.rerun()
 
+    st.markdown("---")
+    if st.button("LOG OUT"):
+        st.session_state.authenticated = False
+        st.rerun()
+
 # --- Main Content Routing ---
 
 if page == "📊 Revenue Overview":
