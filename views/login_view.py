@@ -1,9 +1,8 @@
-import streamlit as st
 from login import check_login
-import streamlit as st
 import base64
 import os
 import time
+import textwrap
 
 def show_login_page():
     # Helper for Base64 image
@@ -406,28 +405,29 @@ div[data-testid="stTextInput"] label {
         </div>
         """, unsafe_allow_html=True)
         # Login Box
-        st.markdown('''
-            <div style="position: relative;">
-                <!-- Left Candle -->
-                <div class="login-candle-container candle-left">
-                    <div class="candle-jar">
-                        <div class="candle-glow"></div>
-                        <div class="candle-flame"></div>
-                    </div>
-                </div>
-                
-                <!-- Right Candle -->
-                <div class="login-candle-container candle-right">
-                    <div class="candle-jar">
-                        <div class="candle-glow"></div>
-                        <div class="candle-flame"></div>
-                    </div>
-                </div>
+        st.markdown(textwrap.dedent('''
+<div style="position: relative; width: 350px; margin: 0 auto;">
+    <!-- Left Candle -->
+    <div class="login-candle-container candle-left">
+        <div class="candle-jar">
+            <div class="candle-glow"></div>
+            <div class="candle-flame"></div>
+        </div>
+    </div>
+    
+    <!-- Right Candle -->
+    <div class="login-candle-container candle-right">
+        <div class="candle-jar">
+            <div class="candle-glow"></div>
+            <div class="candle-flame"></div>
+        </div>
+    </div>
 
-                <div class="login-box">
-                    <h2 class="login-header">Member Login</h2>
-                    <p class="login-subheader">Business Intelligence Suite</p>
-                    <div class="header-accent-line"></div>
+    <div class="login-box" style="margin: 0 !important; width: 100% !important;">
+        <h2 class="login-header">Member Login</h2>
+        <p class="login-subheader">Business Intelligence Suite</p>
+        <div class="header-accent-line"></div>
+'''), unsafe_allow_html=True)
         ''', unsafe_allow_html=True)
         
         # Form for Enter key support
@@ -468,7 +468,7 @@ div[data-testid="stTextInput"] label {
                 else:
                     st.error("Invalid credentials")
         
-        st.markdown('</div>', unsafe_allow_html=True)
+        st.markdown('</div></div>', unsafe_allow_html=True)
         
         # Footer
         st.markdown(f"""
