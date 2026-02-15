@@ -1,3 +1,4 @@
+import streamlit as st
 from login import check_login
 import base64
 import os
@@ -428,7 +429,6 @@ div[data-testid="stTextInput"] label {
         <p class="login-subheader">Business Intelligence Suite</p>
         <div class="header-accent-line"></div>
 '''), unsafe_allow_html=True)
-        ''', unsafe_allow_html=True)
         
         # Form for Enter key support
         with st.form("login_form"):
