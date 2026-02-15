@@ -265,3 +265,112 @@ footer {
     font-size: 1.5rem !important;
     margin-bottom: 0.5rem !important;
 }
+
+/* ==================== LUXURY CANDLE ANIMATION ==================== */
+.candle-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2rem;
+    padding: 1rem;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.candle-container:hover {
+    opacity: 1;
+}
+
+.candle-jar {
+    width: 40px;
+    height: 50px;
+    background: linear-gradient(135deg, #2D3748 0%, #1A202C 100%);
+    border-radius: 4px 4px 8px 8px;
+    position: relative;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.candle-flame {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 10px;
+    height: 18px;
+    background: #D4AF37;
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    background: linear-gradient(to bottom, #FFF8E1 0%, #D4AF37 100%);
+    filter: blur(0.5px);
+    box-shadow: 0 0 10px #D4AF37, 0 0 20px rgba(212, 175, 55, 0.4);
+    animation: flicker 2.5s infinite alternate;
+}
+
+.candle-glow {
+    position: absolute;
+    top: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 60px;
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.2) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: glow-pulse 4s infinite ease-in-out;
+}
+
+@keyframes flicker {
+    0% {
+        transform: translateX(-50%) scale(1);
+        opacity: 0.9;
+    }
+
+    20% {
+        transform: translateX(-52%) scale(1.05);
+        opacity: 1;
+    }
+
+    40% {
+        transform: translateX(-48%) scale(0.95);
+        opacity: 0.85;
+    }
+
+    60% {
+        transform: translateX(-51%) scale(1.02);
+        opacity: 0.95;
+    }
+
+    80% {
+        transform: translateX(-49%) scale(0.98);
+        opacity: 0.9;
+    }
+
+    100% {
+        transform: translateX(-50%) scale(1.05);
+        opacity: 1;
+    }
+}
+
+@keyframes glow-pulse {
+
+    0%,
+    100% {
+        transform: translateX(-50%) scale(1);
+        opacity: 0.3;
+    }
+
+    50% {
+        transform: translateX(-50%) scale(1.2);
+        opacity: 0.6;
+    }
+}
+
+.candle-caption {
+    margin-top: 10px;
+    font-size: 0.65rem;
+    color: #D4AF37;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 600;
+    opacity: 0.6;
+}

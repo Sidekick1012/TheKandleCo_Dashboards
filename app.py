@@ -290,6 +290,17 @@ with st.sidebar:
         st.session_state.authenticated = False
         st.rerun()
 
+    # --- Subtle Branded Animation ---
+    st.markdown("""
+        <div class="candle-container">
+            <div class="candle-jar">
+                <div class="candle-glow"></div>
+                <div class="candle-flame"></div>
+            </div>
+            <div class="candle-caption">The Kandle Co.</div>
+        </div>
+    """, unsafe_allow_html=True)
+
 # --- Main Content Routing ---
 
 if page == "📊 Revenue Overview":
