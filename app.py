@@ -60,7 +60,7 @@ if st.session_state.get("needs_sync", False):
             left: 0;
             width: 100vw;
             height: 100vh;
-            background: #0F172A;
+            background: #5B8373;
             z-index: 999999;
             display: flex;
             flex-direction: column;
