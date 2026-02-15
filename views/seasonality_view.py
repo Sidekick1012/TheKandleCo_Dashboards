@@ -5,7 +5,7 @@ import data_utils
 import ui_components as ui
 
 def show_seasonality_view(year=2025, months=None):
-    st.markdown('<h1 class="main-title" style="font-size: 1.6rem;">📅 Seasonality & Forecasting</h1>', unsafe_allow_html=True)
+    st.markdown('<h1 class="main-title" style="font-size: 1.3rem;">📅 Seasonality & Forecasting</h1>', unsafe_allow_html=True)
     
     # Dashboard Header & Filter Context
     st.markdown(f"""
